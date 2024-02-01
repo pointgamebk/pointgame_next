@@ -1,0 +1,22 @@
+"use client";
+
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+
+import { IGame } from "@/lib/database/models/game.model";
+
+type GameFormProps = {
+  userId: string;
+  type: "Create" | "Update";
+  game?: IGame;
+  gameId?: string;
+};
+
+const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
+  return <div>GameForm</div>;
+};
+
+export default GameForm;
