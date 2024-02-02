@@ -76,22 +76,6 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
               </FormItem>
             )}
           />
-
-          <FormField
-            control={form.control}
-            name="categoryId"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Dropdown
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
       </form>
     </Form>
