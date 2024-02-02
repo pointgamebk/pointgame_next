@@ -72,7 +72,7 @@ export async function getJoinsByGame({
           createdAt: 1,
           gameTitle: "$game.title",
           gameId: "$game._id",
-          player: {
+          buyer: {
             $concat: ["$player.firstName", " ", "$player.lastName"],
           },
         },
@@ -81,7 +81,7 @@ export async function getJoinsByGame({
         $match: {
           $and: [
             { gameId: gameObjectId },
-            { player: { $regex: RegExp(searchString, "i") } },
+            { buyer: { $regex: RegExp(searchString, "i") } },
           ],
         },
       },
@@ -103,7 +103,7 @@ export async function getJoinsByUser({
     await connectToDatabase();
 
     const skipAmount = (Number(page) - 1) * limit;
-    const conditions = { player: userId };
+    const conditions = { buyer: userId };
 
     const joins = await Join.distinct("game._id")
       .find(conditions)

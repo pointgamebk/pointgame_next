@@ -3,7 +3,6 @@ import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
-import { getJoinsByGame } from "@/lib/actions/join.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
@@ -13,18 +12,12 @@ const GameDetails = async ({
   searchParams,
 }: SearchParamProps) => {
   const game = await getGameById(id);
-  const joins = await getJoinsByGame({
-    gameId: id,
-    searchString: "",
-  });
 
   const relatedGames = await getRelatedGamesByCategory({
     categoryId: game.category._id,
     gameId: game._id,
     page: searchParams.page as string,
   });
-
-  console.log(joins);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">

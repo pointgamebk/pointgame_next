@@ -13,18 +13,13 @@ const GameDetails = async ({
   searchParams,
 }: SearchParamProps) => {
   const game = await getGameById(id);
-  const joins = await getJoinsByGame({
-    gameId: id,
-    searchString: "",
-  });
+  const joins = await getJoinsByGame(id);
 
   const relatedGames = await getRelatedGamesByCategory({
     categoryId: game.category._id,
     gameId: game._id,
     page: searchParams.page as string,
   });
-
-  console.log(joins);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">

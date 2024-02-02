@@ -23,8 +23,6 @@ const GameDetails = async ({
     gameId: game._id,
     page: searchParams.page as string,
   });
-
-  console.log(joins);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
