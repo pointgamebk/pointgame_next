@@ -10,13 +10,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";
-
-  const games = await getAllGames({
-    query: searchText,
-    category,
-    page,
-    limit: 6,
-  });
   return (
     <>
       <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
@@ -58,15 +51,15 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <CategoryFilter /> */}
         </div>
 
-        <Collection
+        {/* <Collection
           data={games?.data}
           emptyTitle="No Events Found"
           emptyStateSubtext="Check again later"
-          collectionType="All_Games"
+          collectionType="All_Events"
           limit={6}
           page={page}
-          totalPages={games?.totalPages}
-        />
+          totalPages={events?.totalPages}
+        /> */}
       </section>
     </>
   );
