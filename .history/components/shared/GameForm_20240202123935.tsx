@@ -53,18 +53,25 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof gameFormSchema>) {
-    const gameData = values;
+    console.log(values);
 
     if (type === "Create") {
       try {
         const newGame = await createGame({
-          game: gameData,
+          game: {
+            title: values.title,
+            description: values.description,
+            location: values.location,
+            startDateTime: values.startDateTime,
+            endDateTime: values.endDateTime,
+            categoryId: values.categoryId,
+          },
           userId,
           path: "/profile",
         });
         if (newGame) {
           form.reset();
-          router.push(`/games/${newGame._id}`);
+          router.push(`/events/${newGame._id}`);
         }
       } catch (error) {
         console.log(error);

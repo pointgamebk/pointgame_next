@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import Dropdown from "./Dropdown";
 
 import { gameDefaultValues } from "@/constants";
@@ -53,18 +54,18 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof gameFormSchema>) {
-    const gameData = values;
+    console.log(values);
 
     if (type === "Create") {
       try {
         const newGame = await createGame({
-          game: gameData,
+          game: { ...values },
           userId,
           path: "/profile",
         });
         if (newGame) {
           form.reset();
-          router.push(`/games/${newGame._id}`);
+          router.push(`/events/${newGame._id}`);
         }
       } catch (error) {
         console.log(error);

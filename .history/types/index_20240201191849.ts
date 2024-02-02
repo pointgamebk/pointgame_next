@@ -91,30 +91,6 @@ export type CreateCategoryParams = {
   categoryName: string;
 };
 
-// ====== ORDER PARAMS
-export type SubmitJoinParams = {
-  gameTitle: string;
-  gameId: string;
-  playerId: string;
-};
-
-export type CreateJoinParams = {
-  gameId: string;
-  playerId: string;
-  createdAt: Date;
-};
-
-export type GetJoinsByGameParams = {
-  gameId: string;
-  searchString: string;
-};
-
-export type GetJoinsByUserParams = {
-  userId: string | null;
-  limit?: number;
-  page: string | number | null;
-};
-
 // ====== URL QUERY PARAMS
 export type UrlQueryParams = {
   params: string;

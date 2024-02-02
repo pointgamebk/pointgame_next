@@ -53,12 +53,12 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof gameFormSchema>) {
-    const gameData = values;
+    console.log(values);
 
     if (type === "Create") {
       try {
         const newGame = await createGame({
-          game: gameData,
+          game: values,
           userId,
           path: "/profile",
         });

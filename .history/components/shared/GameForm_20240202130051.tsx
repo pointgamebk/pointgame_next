@@ -58,7 +58,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
     if (type === "Create") {
       try {
         const newGame = await createGame({
-          game: gameData,
+          game: values,
           userId,
           path: "/profile",
         });
