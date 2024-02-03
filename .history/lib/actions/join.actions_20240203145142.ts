@@ -133,7 +133,7 @@ export async function getJoinsByUser({
   }
 }
 
-export async function deleteJoin(joinId: string) {
+export async function deleteJon(joinId: string) {
   try {
     await connectToDatabase();
 

@@ -9,15 +9,11 @@ import { createJoin } from "@/lib/actions/join.actions";
 import { getJoinsByGame, deleteJoin } from "@/lib/actions/join.actions";
 import { get } from "http";
 import { is } from "date-fns/locale";
-import { IJoin } from "@/lib/database/models/join.model";
-import { set } from "mongoose";
 
 //import Checkout from "./Checkout";
 
 const JoinButton = ({ game }: { game: IGame }) => {
   const [joins, setJoins] = useState([]);
-  const [isJoined, setIsJoined] = useState(false);
-  const [joinId, setJoinId] = useState("");
   const { user } = useUser();
   const userId = user?.publicMetadata.userId as string;
   const hasGameFinished = new Date(game.endDateTime) < new Date();
@@ -30,19 +26,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
           searchString: "",
         });
         setJoins(joins);
-
-        if (joins.length > 0) {
-          const isJoined = joins.some(
-            (join: IJoin) => join.player._id === userId
-          );
-          if (isJoined) {
-            setIsJoined(true);
-            const join = joins.find(
-              (join: IJoin) => join.player._id === userId
-            );
-            setJoinId(join._id);
-          }
-        }
+        console.log(joins);
       } catch (error) {
         console.log(error);
       }
@@ -51,30 +35,18 @@ const JoinButton = ({ game }: { game: IGame }) => {
   }, []);
 
   const onSubmit = async () => {
-    if (!isJoined) {
-      try {
-        const join = await createJoin({
-          gameId: game._id,
-          playerId: userId,
-          createdAt: new Date(),
-        });
-        // if (join) {
-        //   console.log(join);
-        // }
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    try {
+      const join = await createJoin({
+        gameId: game._id,
+        playerId: userId,
+        createdAt: new Date(),
+      });
 
-    if (isJoined) {
-      try {
-        const deletedJoin = await deleteJoin(joinId);
-        // if (join) {
-        //   console.log(deletedJoin);
-        // }
-      } catch (error) {
-        console.log(error);
+      if (join) {
+        console.log(join);
       }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -98,7 +70,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
               size="lg"
               onClick={onSubmit}
             >
-              {isJoined ? "Joined" : "Join Game"}
+              {joins ? "Joined" : "Join Game"}
             </Button>
           </SignedIn>
         </>

@@ -58,9 +58,9 @@ const JoinButton = ({ game }: { game: IGame }) => {
           playerId: userId,
           createdAt: new Date(),
         });
-        // if (join) {
-        //   console.log(join);
-        // }
+        if (join) {
+          console.log(join);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -68,14 +68,26 @@ const JoinButton = ({ game }: { game: IGame }) => {
 
     if (isJoined) {
       try {
-        const deletedJoin = await deleteJoin(joinId);
-        // if (join) {
-        //   console.log(deletedJoin);
-        // }
+        const join = await deleteJoin(joinId);
+        if (join) {
+          console.log(join);
+        }
       } catch (error) {
         console.log(error);
       }
     }
+    // try {
+    // const join = await createJoin({
+    //   gameId: game._id,
+    //   playerId: userId,
+    //   createdAt: new Date(),
+    // });
+    // if (join) {
+    //   console.log(join);
+    // }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   return (
     <div className="flex items-center gap-3">

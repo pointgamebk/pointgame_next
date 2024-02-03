@@ -35,13 +35,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
           const isJoined = joins.some(
             (join: IJoin) => join.player._id === userId
           );
-          if (isJoined) {
-            setIsJoined(true);
-            const join = joins.find(
-              (join: IJoin) => join.player._id === userId
-            );
-            setJoinId(join._id);
-          }
+          console.log(joinId);
         }
       } catch (error) {
         console.log(error);
@@ -51,30 +45,17 @@ const JoinButton = ({ game }: { game: IGame }) => {
   }, []);
 
   const onSubmit = async () => {
-    if (!isJoined) {
-      try {
-        const join = await createJoin({
-          gameId: game._id,
-          playerId: userId,
-          createdAt: new Date(),
-        });
-        // if (join) {
-        //   console.log(join);
-        // }
-      } catch (error) {
-        console.log(error);
+    try {
+      const join = await createJoin({
+        gameId: game._id,
+        playerId: userId,
+        createdAt: new Date(),
+      });
+      if (join) {
+        console.log(join);
       }
-    }
-
-    if (isJoined) {
-      try {
-        const deletedJoin = await deleteJoin(joinId);
-        // if (join) {
-        //   console.log(deletedJoin);
-        // }
-      } catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
