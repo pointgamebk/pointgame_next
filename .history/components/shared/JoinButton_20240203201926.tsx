@@ -61,6 +61,8 @@ const JoinButton = ({ game }: { game: IGame }) => {
           createdAt: new Date(),
         });
         setIsJoined(true);
+        //router.push(`/`);
+        console.log(join);
       } catch (error) {
         console.log(error);
       }
@@ -70,6 +72,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
       try {
         const deletedJoin = await deleteJoin(joinId);
         setIsJoined(false);
+        //router.push(`/`);
       } catch (error) {
         console.log(error);
       }
