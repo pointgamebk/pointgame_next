@@ -49,7 +49,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
       }
     };
     fetchJoins();
-  }, []);
+  }, [game]);
 
   const onSubmit = async () => {
     if (!isJoined) {
@@ -59,8 +59,10 @@ const JoinButton = ({ game }: { game: IGame }) => {
           playerId: userId,
           createdAt: new Date(),
         });
-        router.push(`/`);
-        console.log(join);
+        router.push(`/games/${game._id}`);
+        // if (join) {
+        //   console.log(join);
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -69,7 +71,10 @@ const JoinButton = ({ game }: { game: IGame }) => {
     if (isJoined) {
       try {
         const deletedJoin = await deleteJoin(joinId);
-        router.push(`/`);
+        // if (join) {
+        //   console.log(deletedJoin);
+        // }
+        router.push(`/games/${game._id}`);
       } catch (error) {
         console.log(error);
       }

@@ -21,8 +21,6 @@ const JoinButton = ({ game }: { game: IGame }) => {
   const userId = user?.publicMetadata.userId as string;
   const hasGameFinished = new Date(game.endDateTime) < new Date();
 
-  const router = useRouter();
-
   useEffect(() => {
     const fetchJoins = async () => {
       try {
@@ -59,8 +57,9 @@ const JoinButton = ({ game }: { game: IGame }) => {
           playerId: userId,
           createdAt: new Date(),
         });
-        router.push(`/`);
-        console.log(join);
+        // if (join) {
+        //   console.log(join);
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -69,7 +68,9 @@ const JoinButton = ({ game }: { game: IGame }) => {
     if (isJoined) {
       try {
         const deletedJoin = await deleteJoin(joinId);
-        router.push(`/`);
+        // if (join) {
+        //   console.log(deletedJoin);
+        // }
       } catch (error) {
         console.log(error);
       }

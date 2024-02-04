@@ -59,8 +59,10 @@ const JoinButton = ({ game }: { game: IGame }) => {
           playerId: userId,
           createdAt: new Date(),
         });
-        router.push(`/`);
         console.log(join);
+        // if (join) {
+        //   console.log(join);
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -69,6 +71,9 @@ const JoinButton = ({ game }: { game: IGame }) => {
     if (isJoined) {
       try {
         const deletedJoin = await deleteJoin(joinId);
+        // if (join) {
+        //   console.log(deletedJoin);
+        // }
         router.push(`/`);
       } catch (error) {
         console.log(error);
