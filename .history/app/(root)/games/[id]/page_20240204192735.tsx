@@ -1,6 +1,3 @@
-import { auth } from "@clerk/nextjs";
-import CommentForm from "@/components/shared/CommentForm";
-import Comments from "@/components/shared/Comments";
 import JoinButton from "@/components/shared/JoinButton";
 import {
   getGameById,
@@ -16,20 +13,18 @@ const GameDetails = async ({
   searchParams,
 }: SearchParamProps) => {
   const game = await getGameById(id);
-  // const joins = await getJoinsByGame({
-  //   gameId: id,
-  //   searchString: "",
-  // });
+  const joins = await getJoinsByGame({
+    gameId: id,
+    searchString: "",
+  });
 
-  // const relatedGames = await getRelatedGamesByCategory({
-  //   categoryId: game.category._id,
-  //   gameId: game._id,
-  //   page: searchParams.page as string,
-  // });
+  const relatedGames = await getRelatedGamesByCategory({
+    categoryId: game.category._id,
+    gameId: game._id,
+    page: searchParams.page as string,
+  });
 
-  const { sessionClaims } = auth();
-
-  const userId = sessionClaims?.userId as string;
+  console.log(joins);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
@@ -93,17 +88,9 @@ const GameDetails = async ({
         </div>
       </section>
 
-      <section>
-        {/* <Comments
-          data={comments}
-          emptyTitle="No comments yet"
-          emptyStateSubtext="Check again later"
-          limit={6}
-          page={searchParams.page as string}
-          totalPages={1}
-        /> */}
-        <CommentForm gameId={game.id} userId={userId} />
-      </section>
+      {/* <section>
+        <Comments />
+      </section> */}
     </>
   );
 };

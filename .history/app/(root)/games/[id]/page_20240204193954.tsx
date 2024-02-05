@@ -102,7 +102,7 @@ const GameDetails = async ({
           page={searchParams.page as string}
           totalPages={1}
         /> */}
-        <CommentForm gameId={game.id} userId={userId} />
+        <CommentForm gameId={game.id} userid={userId} />
       </section>
     </>
   );

@@ -135,17 +135,6 @@ export type SearchParamProps = {
 // ====== COMMENT PARAMS
 export type CreateCommentParams = {
   gameId: string;
-  userId: string;
-  body: string;
-};
-
-export type GetCommentsByGameParams = {
-  gameId: string;
-  searchString: string;
-};
-
-export type GetCommentsByUserParams = {
-  userId: string | null;
-  limit?: number;
-  page: string | number | null;
+  playerId: string;
+  createdAt: Date;
 };

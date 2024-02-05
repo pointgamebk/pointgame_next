@@ -9,6 +9,11 @@ import { createJoin } from "@/lib/actions/join.actions";
 import { getJoinsByGame, deleteJoin } from "@/lib/actions/join.actions";
 import { IJoin } from "@/lib/database/models/join.model";
 
+import { useRouter } from "next/navigation";
+import { set } from "mongoose";
+
+//import Checkout from "./Checkout";
+
 const JoinButton = ({ game }: { game: IGame }) => {
   const [joins, setJoins] = useState([]);
   const [isJoined, setIsJoined] = useState(false);
@@ -16,6 +21,8 @@ const JoinButton = ({ game }: { game: IGame }) => {
   const { user } = useUser();
   const userId = user?.publicMetadata.userId as string;
   const hasGameFinished = new Date(game.endDateTime) < new Date();
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchJoins = async () => {
@@ -64,9 +71,7 @@ const JoinButton = ({ game }: { game: IGame }) => {
     if (isJoined) {
       try {
         const deletedJoin = await deleteJoin(joinId);
-        if (deletedJoin) {
-          setIsJoined(false);
-        }
+        console.log(deletedJoin);
       } catch (error) {
         console.log(error);
       }

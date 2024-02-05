@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs";
 import CommentForm from "@/components/shared/CommentForm";
 import Comments from "@/components/shared/Comments";
 import JoinButton from "@/components/shared/JoinButton";
@@ -102,7 +101,7 @@ const GameDetails = async ({
           page={searchParams.page as string}
           totalPages={1}
         /> */}
-        <CommentForm gameId={game.id} userId={userId} />
+        <CommentForm gameId={game.id} />
       </section>
     </>
   );
