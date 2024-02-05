@@ -18,12 +18,9 @@ const CommentCard = ({ comment }: CommentCardProps) => {
   return (
     <div className="group relative flex min-h-[100px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <div className="flex-between w-full">
-        <p className="p-5 md:p-medium-16 text-grey-600">
-          {comment.user.username}
+        <p className="p-medium-14 md:p-medium-16 text-grey-600">
+          {comment.body}
         </p>
-      </div>
-      <div className="flex-between w-full">
-        <p className="p-5 md:p-medium-16 text-grey-600">{comment.body}</p>
       </div>
     </div>
   );

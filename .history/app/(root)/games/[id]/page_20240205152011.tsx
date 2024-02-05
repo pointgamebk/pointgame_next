@@ -101,7 +101,7 @@ const GameDetails = async ({
         </div>
       </section>
 
-      <section>
+      <section className="flex  bg-primary-50 bg-dotted-pattern bg-contain">
         <div className="flex flex-col">
           <CommentForm gameId={id} userId={userId} />
         </div>

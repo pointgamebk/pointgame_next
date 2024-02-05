@@ -34,7 +34,6 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
 
   async function onSubmit(values: z.infer<typeof commentFormSchema>) {
     const commentData = values;
-    console.log(gameId);
 
     try {
       const newComment = await createComment({
@@ -44,7 +43,6 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
       });
 
       if (newComment) {
-        form.reset();
         console.log(newComment);
       }
     } catch (error) {

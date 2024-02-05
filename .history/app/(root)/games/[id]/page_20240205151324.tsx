@@ -101,20 +101,16 @@ const GameDetails = async ({
         </div>
       </section>
 
-      <section>
-        <div className="flex flex-col">
-          <CommentForm gameId={id} userId={userId} />
-        </div>
-        <div className="flex flex-col">
-          <Comments
-            data={comments}
-            emptyTitle="No comments yet"
-            emptyStateSubtext="Check again later"
-            limit={6}
-            page={searchParams.page as string}
-            totalPages={1}
-          />
-        </div>
+      <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
+        <CommentForm gameId={id} userId={userId} />
+        <Comments
+          data={comments}
+          emptyTitle="No comments yet"
+          emptyStateSubtext="Check again later"
+          limit={6}
+          page={searchParams.page as string}
+          totalPages={1}
+        />
       </section>
     </>
   );

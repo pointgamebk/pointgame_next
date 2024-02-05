@@ -44,7 +44,6 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
       });
 
       if (newComment) {
-        form.reset();
         console.log(newComment);
       }
     } catch (error) {
