@@ -11,6 +11,22 @@ const Map = ({ address }: MapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const getCoords = async () => {
+      const loader = new Loader({
+        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
+        version: "weekly",
+      });
+
+      const { Geocoder } = await loader.importLibrary("geocoding");
+
+      const coords = await new Geocoder().geocode({ address });
+      console.log(coords.results);
+    };
+
+    getCoords();
+  }, []);
+
+  useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
@@ -18,21 +34,12 @@ const Map = ({ address }: MapProps) => {
       });
 
       const { Map } = await loader.importLibrary("maps");
+
       const { Marker } = (await loader.importLibrary(
         "marker"
       )) as google.maps.MarkerLibrary;
-      const { Geocoder } = (await loader.importLibrary(
-        "geocoding"
-      )) as google.maps.GeocodingLibrary;
 
-      const geocoder = new Geocoder();
-      const geocoderResponse = await geocoder.geocode({ address });
-      const geocodedLocation = geocoderResponse.results[0];
-
-      const position = {
-        lat: geocodedLocation.geometry.location.lat(),
-        lng: geocodedLocation.geometry.location.lng(),
-      };
+      const position = { lat: 43.03, lng: -76.3 };
 
       const mapOptions: google.maps.MapOptions = {
         center: position,
