@@ -27,7 +27,7 @@ import {
 
 interface IPlacesSearchBoxProps {
   defaultValue: string;
-  onSelectAddress: (address: string) => void;
+  onSelectAddress: (address: string, lat: number, lng: number) => void;
 }
 
 const libraries: Libraries = ["places"];
@@ -66,9 +66,9 @@ function ReadySearchBox({
     clearSuggestions,
   } = usePlacesAutocomplete({ debounce: 300, defaultValue });
 
-  const handleSelect = async (address: string) => {
+  const handleSelect = async (address: string, lat: number, lng: number) => {
     setValue(address, false);
-    onSelectAddress(address);
+    onSelectAddress(address, lat, lng);
     clearSuggestions();
     setOpen(false);
 

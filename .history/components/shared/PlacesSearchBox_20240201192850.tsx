@@ -74,8 +74,8 @@ function ReadySearchBox({
 
     try {
       const results = await getGeocode({ address });
-      const { lat, lng } = getLatLng(results[0]);
-      console.log({ address, lat, lng });
+      const { lat, lng } = await getLatLng(results[0]);
+      // console.log({ address, lat, lng });
     } catch (error) {
       console.error("😱 Error: ", error);
     }

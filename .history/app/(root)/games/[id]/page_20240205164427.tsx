@@ -64,6 +64,8 @@ const GameDetails = async ({
             </div>
           </div>
 
+          {/* <Map address={game.location} /> */}
+
           <JoinButton game={game} />
 
           <div className="flex flex-col gap-5">

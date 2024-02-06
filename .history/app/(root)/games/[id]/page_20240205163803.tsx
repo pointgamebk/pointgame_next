@@ -53,8 +53,6 @@ const GameDetails = async ({
                 </p>
               </div>
 
-              <Map address={game.location} />
-
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                 by{" "}
                 <span className="text-primary-500">
@@ -63,6 +61,8 @@ const GameDetails = async ({
               </p>
             </div>
           </div>
+
+          {/* <Map address={game} /> */}
 
           <JoinButton game={game} />
 

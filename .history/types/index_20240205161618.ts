@@ -22,6 +22,8 @@ export type CreateGameParams = {
     title: string;
     description: string;
     location: string;
+    lat: number;
+    lng: number;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
@@ -36,6 +38,8 @@ export type UpdateGameParams = {
     title: string;
     description: string;
     location: string;
+    lat: number;
+    lng: number;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;

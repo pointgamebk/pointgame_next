@@ -11,7 +11,6 @@ import { getJoinsByGame } from "@/lib/actions/join.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
-import Map from "@/components/shared/Map";
 
 const GameDetails = async ({
   params: { id },
@@ -38,7 +37,7 @@ const GameDetails = async ({
 
   const userId = sessionClaims?.userId as string;
 
-  console.log(game.location);
+  console.log(comments);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
@@ -52,8 +51,6 @@ const GameDetails = async ({
                   {game.category.name}
                 </p>
               </div>
-
-              <Map address={game.location} />
 
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                 by{" "}
