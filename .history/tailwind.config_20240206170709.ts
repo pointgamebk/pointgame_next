@@ -35,7 +35,6 @@ module.exports = withUt({
           400: "#AFAFAF", // Disabled - color name in figma
           50: "#F6F6F6", // White Grey - color name in figma
         },
-        teal: "#17BEBB",
         brown: "#CB793A",
         green: "#14C926",
         blue: "#1B4079",

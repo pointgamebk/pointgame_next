@@ -17,7 +17,7 @@ const Header = () => {
             height={38}
             alt="pointgame logo"
           /> */}
-          <h2 className="text-white">point.game</h2>
+          <h3>point.game</h3>
         </Link>
 
         <SignedIn>

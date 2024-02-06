@@ -48,7 +48,7 @@ const GameDetails = async ({
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
-                <p className="p-medium-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
+                <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
                   {game.category.name}
                 </p>
               </div>
@@ -75,11 +75,11 @@ const GameDetails = async ({
                 height={32}
               />
               <div className="p-medium-16 lg:p-regular-20 flex-wrap items-center">
-                <p className="text-white">
+                <p>
                   {formatDateTime(game.startDateTime).dateOnly} -{" "}
                   {formatDateTime(game.startDateTime).timeOnly}
                 </p>
-                <p className="text-white">
+                <p>
                   {formatDateTime(game.endDateTime).dateOnly} -{" "}
                   {formatDateTime(game.endDateTime).timeOnly}
                 </p>
@@ -93,17 +93,13 @@ const GameDetails = async ({
                 width={32}
                 height={32}
               />
-              <p className="p-medium-16 lg:p-regular-20 text-white">
-                {game.location}
-              </p>
+              <p className="p-medium-16 lg:p-regular-20">{game.location}</p>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="p-bold-20 text-white">Game Details:</p>
-            <p className="p-medium-16 lg:p-regular-18 text-white">
-              {game.description}
-            </p>
+            <p className="p-bold-20 text-grey-600">Game Details:</p>
+            <p className="p-medium-16 lg:p-regular-18">{game.description}</p>
           </div>
         </div>
       </section>

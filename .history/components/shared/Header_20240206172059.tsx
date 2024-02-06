@@ -11,13 +11,12 @@ const Header = () => {
     <header className="w-full border-b bg-blue">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-          {/* <Image
+          <Image
             src="/assets/images/logo.png"
             width={128}
             height={38}
             alt="pointgame logo"
-          /> */}
-          <h2 className="text-white">point.game</h2>
+          />
         </Link>
 
         <SignedIn>

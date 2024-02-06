@@ -58,7 +58,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-5 bg-blue"
       >
-        <div className="flex flex-col gap-5 md:flex-row px-8">
+        <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
             name="body"
@@ -77,16 +77,14 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
           />
         </div>
 
-        <div className="px-20">
-          <Button
-            type="submit"
-            size="lg"
-            disabled={form.formState.isSubmitting}
-            className="button col-span-2 w-full"
-          >
-            {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+          className="button col-span-2 w-full"
+        >
+          {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
+        </Button>
       </form>
     </Form>
   );

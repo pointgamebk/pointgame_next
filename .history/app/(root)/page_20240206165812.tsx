@@ -20,7 +20,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
   return (
     <>
       <section className="bg-blue bg-dotted-pattern bg-contain py-5 md:py-10">
-        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0 bg-blue">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold text-white">
               Post, Connect, Play: Your Games, One Platform
@@ -46,13 +46,13 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
       <section
         id="events"
-        className="wrapper bg-blue my-8 flex flex-col gap-8 md:gap-12"
+        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
       >
-        <h2 className="h2-bold text-white">
+        <h2 className="h2-bold">
           For the <br /> true ballers
         </h2>
 
-        <div className="flex w-full flex-col gap-5 md:flex-row text-white">
+        <div className="flex w-full flex-col gap-5 md:flex-row">
           Search CategoryFilter
           {/* <Search />
           <CategoryFilter /> */}

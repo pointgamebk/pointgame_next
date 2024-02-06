@@ -77,16 +77,14 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
           />
         </div>
 
-        <div className="px-20">
-          <Button
-            type="submit"
-            size="lg"
-            disabled={form.formState.isSubmitting}
-            className="button col-span-2 w-full"
-          >
-            {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+          className="button col-span-2 w-full"
+        >
+          {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
+        </Button>
       </form>
     </Form>
   );

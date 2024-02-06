@@ -48,7 +48,7 @@ const GameDetails = async ({
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
-                <p className="p-medium-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
+                <p className="p-medium-16 rounded-full bg-white/10 px-4 py-2.5 text-grey-500">
                   {game.category.name}
                 </p>
               </div>

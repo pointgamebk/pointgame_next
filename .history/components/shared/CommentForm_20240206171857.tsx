@@ -77,7 +77,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
           />
         </div>
 
-        <div className="px-20">
+        <div className="px-10">
           <Button
             type="submit"
             size="lg"
