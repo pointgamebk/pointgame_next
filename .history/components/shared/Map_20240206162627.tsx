@@ -38,7 +38,7 @@ const Map = ({ address }: MapProps) => {
 
       const mapOptions: google.maps.MapOptions = {
         center: position,
-        zoom: 17,
+        zoom: 13,
         mapId: "GAME_LOCATION",
       };
 
