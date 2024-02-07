@@ -16,8 +16,8 @@ const UpdateGame = async ({ params: { id } }: UpdateGameProps) => {
 
   return (
     <>
-      <section className=" bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left text-white">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <h3 className="wrapper h3-bold text-center sm:text-left">
           Update Game
         </h3>
       </section>
