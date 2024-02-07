@@ -45,7 +45,7 @@ const Comments = ({
           )}
         </div>
       ) : (
-        <div className="flex-center wrapper min-h-[200px] w-full flex-col py-28 text-center">
+        <div className="flex-center wrapper min-h-[200px] w-full flex-col   py-28 text-center">
           <h3 className="p-bold-20 md:h5-bold text-white">{emptyTitle}</h3>
           <p className="p-regular-14 text-white">{emptyStateSubtext}</p>
         </div>
