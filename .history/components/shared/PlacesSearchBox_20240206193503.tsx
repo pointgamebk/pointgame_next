@@ -88,7 +88,7 @@ function ReadySearchBox({
   console.log({ status, data });
 
   return (
-    <div className="w-full p-2 ">
+    <div className="w-full p-2 bg-white">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

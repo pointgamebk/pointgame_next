@@ -88,7 +88,7 @@ function ReadySearchBox({
   console.log({ status, data });
 
   return (
-    <div className="w-full p-2 ">
+    <div className="w-full p-2">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -105,7 +105,7 @@ function ReadySearchBox({
           <Command>
             <CommandInput
               placeholder="Search address..."
-              className="h-9 "
+              className="h-9 bg-white"
               disabled={!ready}
             />
             <CommandEmpty>No address found.</CommandEmpty>

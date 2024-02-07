@@ -20,14 +20,15 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const joinedGames = joins?.data?.map((join: IJoin) => join.game) || [];
   const organizedGames = await getGamesByUser({ userId, page: gamesPage });
 
+  console.log(joinedGames);
+  console.log(organizedGames);
+
   return (
     <>
       {/* My Joins */}
-      <section className=" bg-dotted-pattern bg-cover bg-center py-5">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5">
         <div className="wrapper flex items-center justify-center sm:justify-between">
-          <h3 className="h3-bold text-center sm:text-left text-white">
-            Games Joined
-          </h3>
+          <h3 className="h3-bold text-center sm:text-left">Games Joined</h3>
           <Button asChild size="lg" className="button hidden sm:flex">
             <Link href="/#events">Explore More Games</Link>
           </Button>
@@ -35,7 +36,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper py-8">
-        <Collection
+        {/* <Collection
           data={joinedGames}
           emptyTitle="No games joined yet"
           emptyStateSubtext="No worries - plenty of exciting games to check out!"
@@ -44,14 +45,12 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           page={joinsPage}
           urlParamName="joinsPage"
           totalPages={joins?.totalPages}
-        />
+        /> */}
       </section>
       {/* Games Organized */}
-      <section className="bg-dotted-pattern bg-cover bg-center py-5">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5">
         <div className="wrapper flex items-center justify-center sm:justify-between">
-          <h3 className="h3-bold text-center sm:text-left text-white">
-            Games Organized
-          </h3>
+          <h3 className="h3-bold text-center sm:text-left">Games Organized</h3>
           <Button asChild size="lg" className="button hidden sm:flex">
             <Link href="/games/create">Create New Game</Link>
           </Button>
@@ -59,7 +58,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper py-8">
-        <Collection
+        {/* <Collection
           data={organizedGames?.data}
           emptyTitle="No games created yet"
           emptyStateSubtext="Go start one now!"
@@ -68,7 +67,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           page={gamesPage}
           urlParamName="gamesPage"
           totalPages={organizedGames?.totalPages}
-        />
+        /> */}
       </section>
     </>
   );
