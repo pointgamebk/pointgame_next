@@ -34,7 +34,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         </div>
       </section>
 
-      <section className="wrapper py-8 ">
+      <section className="wrapper py-8 bg-blue/10">
         <Collection
           data={joinedGames}
           emptyTitle="No games joined yet"

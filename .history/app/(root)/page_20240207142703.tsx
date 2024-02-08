@@ -21,7 +21,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
   });
   return (
     <>
-      <GetLocation />
+      {/* <GetLocation /> */}
       <section className="bg-blue bg-dotted-pattern bg-contain py-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0 bg-blue">
           <div className="flex flex-col justify-center gap-8">
@@ -61,7 +61,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
         <Collection
           data={games?.data}
-          emptyTitle="No Games Found"
+          emptyTitle="No Events Found"
           emptyStateSubtext="Check again later"
           collectionType="All_Games"
           limit={6}
