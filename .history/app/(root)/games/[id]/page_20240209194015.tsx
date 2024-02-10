@@ -39,6 +39,8 @@ const GameDetails = async ({
   const userId = sessionClaims?.userId as string;
   const organizerId = game.organizer._id;
 
+  console.log(userId, game.organizer._id);
+
   return (
     <>
       <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">

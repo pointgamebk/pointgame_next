@@ -37,7 +37,8 @@ const GameDetails = async ({
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
-  const organizerId = game.organizer._id;
+
+  console.log(userId);
 
   return (
     <>
@@ -64,7 +65,7 @@ const GameDetails = async ({
             </div>
           </div>
 
-          {userId !== organizerId && <JoinButton game={game} />}
+          <JoinButton game={game} />
 
           <div className="flex flex-col gap-5">
             <div className="flex gap-2 md:gap-3">
