@@ -4,12 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
-type NavItemsProps = {
-  id: string;
-};
+const NavItems = () => {
+  const [userId, setUserId] = useState("");
 
-const NavItems = ({ id }: NavItemsProps) => {
-  //const _id = "65bc0d9b8018717fa2b19c18";
+  const _id = "65bc0d9b8018717fa2b19c18";
   const headerLinks = [
     {
       label: "Home",
@@ -21,7 +19,7 @@ const NavItems = ({ id }: NavItemsProps) => {
     },
     {
       label: "My Profile",
-      route: `/profile/${id}`,
+      route: `/profile/${_id}`,
     },
   ];
   const pathname = usePathname();

@@ -10,8 +10,10 @@ import { auth } from "@clerk/nextjs";
 
 const Header = () => {
   const { sessionClaims } = auth();
-  const userId = sessionClaims?.userId as string;
 
+  //Session user id
+  const sessionUserId = sessionClaims?.userId as string;
+  console.log(sessionUserId);
   return (
     <header className="w-full border-b bg-blue">
       <div className="wrapper flex items-center justify-between">
@@ -27,14 +29,14 @@ const Header = () => {
 
         <SignedIn>
           <nav className="md:flex-between hidden w-full max-w-xs">
-            <NavItems id={userId} />
+            <NavItems id={sessionUserId} />
           </nav>
         </SignedIn>
 
         <div className="flex w-32 justify-end gap-3">
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
-            <MobileNav id={userId} />
+            <MobileNav />
           </SignedIn>
           <SignedOut>
             <Button asChild className="rounded-full" size="lg">

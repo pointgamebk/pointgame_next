@@ -4,11 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
-type NavItemsProps = {
-  id: string;
-};
-
-const NavItems = ({ id }: NavItemsProps) => {
+const NavItems = (id: string) => {
   //const _id = "65bc0d9b8018717fa2b19c18";
   const headerLinks = [
     {

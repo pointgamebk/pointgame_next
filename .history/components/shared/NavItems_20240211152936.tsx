@@ -1,16 +1,12 @@
 "use client";
 
+import { headerLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { use, useEffect } from "react";
 
-type NavItemsProps = {
-  id: string;
-};
-
-const NavItems = ({ id }: NavItemsProps) => {
-  //const _id = "65bc0d9b8018717fa2b19c18";
-  const headerLinks = [
+const NavItems = () => {
+  const _headerLinks = [
     {
       label: "Home",
       route: "/",
@@ -21,14 +17,14 @@ const NavItems = ({ id }: NavItemsProps) => {
     },
     {
       label: "My Profile",
-      route: `/profile/${id}`,
+      route: "/profile/test",
     },
   ];
   const pathname = usePathname();
 
   return (
     <ul className="md:flex-between flex w-full flex-col items-start gap-5 md:flex-row text-white">
-      {headerLinks.map((link) => {
+      {_headerLinks.map((link) => {
         const isActive = pathname === link.route;
 
         return (
@@ -38,7 +34,12 @@ const NavItems = ({ id }: NavItemsProps) => {
               isActive && "text-green"
             } flex-center p-medium-16 whitespace-nowrap`}
           >
-            <Link href={link.route}>{link.label}</Link>
+            {link.label === "profile" ? (
+              <Link href={`/bogus`}>{link.label}</Link>
+            ) : (
+              <Link href={link.route}>{link.label}</Link>
+            )}
+            {/* <Link href={link.route}>{link.label}</Link> */}
           </li>
         );
       })}

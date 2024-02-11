@@ -10,11 +10,7 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";
 
-type MobileNavProps = {
-  id: string;
-};
-
-const MobileNav = ({ id }: MobileNavProps) => {
+const MobileNav = () => {
   return (
     <nav className="md:hidden">
       <Sheet>
@@ -36,7 +32,7 @@ const MobileNav = ({ id }: MobileNavProps) => {
           /> */}
           <h2 className="text-white">point.game</h2>
           <Separator className="border border-gray-50" />
-          <NavItems id={id} />
+          <NavItems />
         </SheetContent>
       </Sheet>
     </nav>
