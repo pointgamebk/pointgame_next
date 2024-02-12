@@ -28,6 +28,8 @@ const ProfilePage = async ({
   const joinedGames = joins?.data?.map((join: IJoin) => join.game) || [];
   const organizedGames = await getGamesByUser({ userId, page: gamesPage });
 
+  console.log(id);
+
   return (
     <>
       {/* My Joins */}

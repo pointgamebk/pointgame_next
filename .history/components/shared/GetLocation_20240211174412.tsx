@@ -18,7 +18,7 @@ const GetLocation = () => {
     const geocoder = new Geocoder();
 
     const geocoderResponse = await geocoder.geocode({ location: { lat, lng } });
-    setLocation(geocoderResponse.results[4].address_components[1].long_name);
+    setLocation(geocoderResponse.results[5].address_components[1].long_name);
     console.log(geocoderResponse.results[4].address_components[1].long_name);
   };
 
@@ -32,7 +32,7 @@ const GetLocation = () => {
     }
   }, []);
 
-  return <div className="text-white">{location}</div>;
+  return <div>{location}</div>;
 };
 
 export default GetLocation;

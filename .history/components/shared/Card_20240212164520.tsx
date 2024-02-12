@@ -41,7 +41,7 @@ const Card = ({ game, hasJoinLink }: CardProps) => {
 
       <div className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
         <div className="flex gap-2">
-          <p className="p-semibold-14  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
+          <p className="p-semibold-12 w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
             {game.category.name}
           </p>
         </div>
