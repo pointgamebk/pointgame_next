@@ -58,7 +58,7 @@ const Map = ({ address }: MapProps) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "50vh",
+        height: "100vh",
         width: "100%",
       }}
       ref={mapRef}

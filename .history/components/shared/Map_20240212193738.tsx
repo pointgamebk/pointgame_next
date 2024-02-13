@@ -53,17 +53,7 @@ const Map = ({ address }: MapProps) => {
 
     initMap();
   }, []);
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "50vh",
-        width: "100%",
-      }}
-      ref={mapRef}
-    />
-  );
+  return <div style={{ height: "400px" }} ref={mapRef} />;
 };
 
 export default Map;

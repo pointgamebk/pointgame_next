@@ -54,6 +54,7 @@ const GameDetails = async ({
               </div>
 
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-green">
+                by{" "}
                 <span className="text-green">
                   {game.organizer.firstName} {game.organizer.lastName}
                 </span>
