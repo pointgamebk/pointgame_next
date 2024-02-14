@@ -31,11 +31,12 @@ const Collection = ({
             {data.map((game) => {
               const hasJoinLink = collectionType === "Games_Organized";
               const hideJoin = collectionType === "My_Joins";
-              return (
-                <li key={game._id} className="flex justify-center">
-                  <Card game={game} hasJoinLink={hasJoinLink} />
-                </li>
-              );
+
+              // return (
+              //   <li key={game._id} className="flex justify-center">
+              //     <Card game={game} hasJoinLink={hasJoinLink} />
+              //   </li>
+              // );
             })}
           </ul>
 

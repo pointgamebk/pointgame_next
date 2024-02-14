@@ -113,7 +113,7 @@ export async function getAllGames({
     await connectToDatabase();
 
     const currentDate = new Date();
-    const pastDay = new Date(currentDate.getTime() - 13 * 60 * 60 * 1000);
+    const pastDay = new Date(currentDate.getTime() - 12 * 60 * 60 * 1000);
 
     const locationCondition = query
       ? { location: { $regex: query, $options: "i" } }
@@ -131,7 +131,7 @@ export async function getAllGames({
 
     const skipAmount = (Number(page) - 1) * limit;
     const gamesQuery = Game.find(conditions)
-      .sort({ startDateTime: "asc" })
+      .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 

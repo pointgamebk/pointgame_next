@@ -31,11 +31,21 @@ const Collection = ({
             {data.map((game) => {
               const hasJoinLink = collectionType === "Games_Organized";
               const hideJoin = collectionType === "My_Joins";
-              return (
-                <li key={game._id} className="flex justify-center">
-                  <Card game={game} hasJoinLink={hasJoinLink} />
-                </li>
-              );
+              const gameDate = new Date(game.startDateTime);
+              if (gameDate.toISOString() < new Date().toISOString()) {
+                return (
+                  <li key={game._id} className="flex justify-center">
+                    <Card game={game} />
+                  </li>
+                );
+              }
+              // const hasJoinLink = collectionType === "Games_Organized";
+              // const hideJoin = collectionType === "My_Joins";
+              // return (
+              //   <li key={game._id} className="flex justify-center">
+              //     <Card game={game} hasJoinLink={hasJoinLink} />
+              //   </li>
+              // );
             })}
           </ul>
 

@@ -131,7 +131,7 @@ export async function getAllGames({
 
     const skipAmount = (Number(page) - 1) * limit;
     const gamesQuery = Game.find(conditions)
-      .sort({ startDateTime: "asc" })
+      .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 

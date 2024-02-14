@@ -16,6 +16,7 @@ import {
   GetGamesByUserParams,
   GetRelatedGamesByCategoryParams,
 } from "@/types";
+import next from "next";
 
 const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
@@ -112,8 +113,14 @@ export async function getAllGames({
   try {
     await connectToDatabase();
 
+    //const currentDate = new Date().toISOString();
+    // Get the current date
     const currentDate = new Date();
-    const pastDay = new Date(currentDate.getTime() - 13 * 60 * 60 * 1000);
+    const cDate = new Date();
+    const nextDay = new Date(cDate.getTime() + 24 * 60 * 60 * 1000);
+    const nextDayString = nextDay.toISOString();
+
+    console.log(nextDayString);
 
     const locationCondition = query
       ? { location: { $regex: query, $options: "i" } }
@@ -125,13 +132,13 @@ export async function getAllGames({
       $and: [
         locationCondition,
         categoryCondition ? { category: categoryCondition._id } : {},
-        { startDateTime: { $gte: pastDay } },
+        //{ startDateTime: { $gte: nextDayString } },
       ],
     };
 
     const skipAmount = (Number(page) - 1) * limit;
     const gamesQuery = Game.find(conditions)
-      .sort({ startDateTime: "asc" })
+      .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 

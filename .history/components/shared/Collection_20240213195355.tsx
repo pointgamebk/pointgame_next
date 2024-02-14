@@ -29,13 +29,21 @@ const Collection = ({
         <div className="flex flex-col items-center gap-10 ">
           <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
             {data.map((game) => {
-              const hasJoinLink = collectionType === "Games_Organized";
-              const hideJoin = collectionType === "My_Joins";
-              return (
-                <li key={game._id} className="flex justify-center">
-                  <Card game={game} hasJoinLink={hasJoinLink} />
-                </li>
-              );
+              const gameDate = new Date(game.startDateTime);
+              if (gameDate.toISOString() < new Date().toISOString()) {
+                return (
+                  <li key={game._id} className="flex justify-center">
+                    <Card game={game} />
+                  </li>
+                );
+              }
+              // const hasJoinLink = collectionType === "Games_Organized";
+              // const hideJoin = collectionType === "My_Joins";
+              // return (
+              //   <li key={game._id} className="flex justify-center">
+              //     <Card game={game} hasJoinLink={hasJoinLink} />
+              //   </li>
+              // );
             })}
           </ul>
 
