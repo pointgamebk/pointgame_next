@@ -3,7 +3,10 @@
 import { ChangeEvent, useState } from "react";
 
 import { useGoogleMapsScript, Libraries } from "use-google-maps-script";
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
@@ -21,6 +24,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { ca } from "date-fns/locale";
 
 interface IPlacesSearchBoxProps {
   defaultValue: string;
@@ -63,7 +67,15 @@ function ReadySearchBox({
     clearSuggestions,
   } = usePlacesAutocomplete({ debounce: 300, defaultValue });
 
+  function capitalizeAddress(address: string) {
+    // Use a regular expression with a callback function to capitalize each word
+    return address.replace(/\b\w/g, function (match) {
+      return match.toUpperCase();
+    });
+  }
+
   const handleSelect = (address: string) => {
+    console.log(capitalizeAddress(address));
     setValue(address, false);
     onSelectAddress(address);
     clearSuggestions();
@@ -73,6 +85,8 @@ function ReadySearchBox({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+
+  console.log({ status, data });
 
   return (
     <div className="w-full p-2 ">
@@ -101,7 +115,7 @@ function ReadySearchBox({
                 <CommandItem
                   key={suggestion.place_id}
                   value={suggestion.description}
-                  onSelect={() => handleSelect(suggestion.description)}
+                  onSelect={handleSelect}
                 >
                   {suggestion.description}
                   <CheckIcon

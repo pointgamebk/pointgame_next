@@ -3,7 +3,10 @@
 import { ChangeEvent, useState } from "react";
 
 import { useGoogleMapsScript, Libraries } from "use-google-maps-script";
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
@@ -64,7 +67,8 @@ function ReadySearchBox({
   } = usePlacesAutocomplete({ debounce: 300, defaultValue });
 
   const handleSelect = (address: string) => {
-    setValue(address, false);
+    console.log({ address });
+    //setValue(address, false);
     onSelectAddress(address);
     clearSuggestions();
     setOpen(false);
@@ -73,6 +77,8 @@ function ReadySearchBox({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+
+  console.log({ status, data });
 
   return (
     <div className="w-full p-2 ">
@@ -83,6 +89,7 @@ function ReadySearchBox({
             role="combobox"
             aria-expanded={open}
             className="w-full justify-between"
+            autoCapitalize="characters"
           >
             {value === "" ? "Search address..." : value}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -101,7 +108,7 @@ function ReadySearchBox({
                 <CommandItem
                   key={suggestion.place_id}
                   value={suggestion.description}
-                  onSelect={() => handleSelect(suggestion.description)}
+                  onSelect={handleSelect}
                 >
                   {suggestion.description}
                   <CheckIcon

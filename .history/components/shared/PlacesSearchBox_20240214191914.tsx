@@ -74,6 +74,8 @@ function ReadySearchBox({
     setValue(e.target.value);
   };
 
+  console.log({ status, data });
+
   return (
     <div className="w-full p-2 ">
       <Popover open={open} onOpenChange={setOpen}>
@@ -88,7 +90,11 @@ function ReadySearchBox({
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0" onChange={handleChange}>
+        <PopoverContent
+          className="w-[200px] p-0"
+          onChange={handleChange}
+          autoCapitalize="word"
+        >
           <Command>
             <CommandInput
               placeholder="Search address..."
@@ -101,7 +107,7 @@ function ReadySearchBox({
                 <CommandItem
                   key={suggestion.place_id}
                   value={suggestion.description}
-                  onSelect={() => handleSelect(suggestion.description)}
+                  onSelect={handleSelect}
                 >
                   {suggestion.description}
                   <CheckIcon

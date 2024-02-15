@@ -142,7 +142,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="Description..."
+                    placeholder="Description"
                     {...field}
                     className="textarea rounded-2xl"
                   />

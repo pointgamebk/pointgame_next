@@ -74,6 +74,8 @@ function ReadySearchBox({
     setValue(e.target.value);
   };
 
+  console.log({ status, data });
+
   return (
     <div className="w-full p-2 ">
       <Popover open={open} onOpenChange={setOpen}>
@@ -101,7 +103,7 @@ function ReadySearchBox({
                 <CommandItem
                   key={suggestion.place_id}
                   value={suggestion.description}
-                  onSelect={() => handleSelect(suggestion.description)}
+                  onSelect={handleSelect}
                 >
                   {suggestion.description}
                   <CheckIcon
