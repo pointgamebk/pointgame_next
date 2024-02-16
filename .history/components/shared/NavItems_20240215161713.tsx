@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React, { useState, useEffect } from "react";
 
 type NavItemsProps = {
   id: string;
 };
 
 const NavItems = ({ id }: NavItemsProps) => {
-  console.log(id);
   const headerLinks = [
     {
       label: "Home",
