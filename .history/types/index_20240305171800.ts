@@ -73,6 +73,8 @@ export type Game = {
   title: string;
   description: string;
   location: string;
+  lat: number;
+  lng: number;
   startDateTime: Date;
   endDateTime: Date;
   organizer: {
@@ -86,12 +88,60 @@ export type Game = {
   };
 };
 
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  name: string;
+  description: string;
+  category: {
+    _id: string;
+    name: string;
+  };
+  administrator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
+export type League = {
+  _id: string;
+  name: string;
+  description: string;
+  adminisreator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+  category: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== TEAM PARAMS
+export type CreateTeamParams = {
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
+export type Team = {
+  _id: string;
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
 };
 
-// ====== ORDER PARAMS
+// ====== JOIN PARAMS
 export type SubmitJoinParams = {
   gameTitle: string;
   gameId: string;
@@ -130,4 +180,22 @@ export type RemoveUrlQueryParams = {
 export type SearchParamProps = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
+};
+
+// ====== COMMENT PARAMS
+export type CreateCommentParams = {
+  gameId: string;
+  userId: string;
+  body: string;
+};
+
+export type GetCommentsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetCommentsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };

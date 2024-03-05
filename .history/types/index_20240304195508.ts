@@ -73,6 +73,8 @@ export type Game = {
   title: string;
   description: string;
   location: string;
+  lat: number;
+  lng: number;
   startDateTime: Date;
   endDateTime: Date;
   organizer: {
@@ -86,9 +88,43 @@ export type Game = {
   };
 };
 
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  userId: string;
+  league: {
+    name: string;
+    description: string;
+    categoryId: string;
+  };
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
+};
+
+// ====== JOIN PARAMS
+export type SubmitJoinParams = {
+  gameTitle: string;
+  gameId: string;
+  playerId: string;
+};
+
+export type CreateJoinParams = {
+  gameId: string;
+  playerId: string;
+  createdAt: Date;
+};
+
+export type GetJoinsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetJoinsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };
 
 // ====== URL QUERY PARAMS
@@ -106,4 +142,22 @@ export type RemoveUrlQueryParams = {
 export type SearchParamProps = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
+};
+
+// ====== COMMENT PARAMS
+export type CreateCommentParams = {
+  gameId: string;
+  userId: string;
+  body: string;
+};
+
+export type GetCommentsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetCommentsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };

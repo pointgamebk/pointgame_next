@@ -15,78 +15,68 @@ export type UpdateUserParams = {
   photo: string;
 };
 
-// ====== EVENT PARAMS
-export type CreateEventParams = {
+// ====== GAME PARAMS
+export type CreateGameParams = {
   userId: string;
-  event: {
+  game: {
     title: string;
     description: string;
     location: string;
-    imageUrl: string;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
-    price: string;
-    isFree: boolean;
-    url: string;
   };
   path: string;
 };
 
-export type UpdateEventParams = {
+export type UpdateGameParams = {
   userId: string;
-  event: {
+  game: {
     _id: string;
     title: string;
-    imageUrl: string;
     description: string;
     location: string;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
-    price: string;
-    isFree: boolean;
-    url: string;
   };
   path: string;
 };
 
-export type DeleteEventParams = {
-  eventId: string;
+export type DeleteGameParams = {
+  gameId: string;
   path: string;
 };
 
-export type GetAllEventsParams = {
+export type GetAllGamesParams = {
   query: string;
   category: string;
   limit: number;
   page: number;
 };
 
-export type GetEventsByUserParams = {
+export type GetGamesByUserParams = {
   userId: string;
   limit?: number;
   page: number;
 };
 
-export type GetRelatedEventsByCategoryParams = {
+export type GetRelatedGamesByCategoryParams = {
   categoryId: string;
-  eventId: string;
+  gameId: string;
   limit?: number;
   page: number | string;
 };
 
-export type Event = {
+export type Game = {
   _id: string;
   title: string;
   description: string;
-  price: string;
-  isFree: boolean;
-  imageUrl: string;
   location: string;
+  lat: number;
+  lng: number;
   startDateTime: Date;
   endDateTime: Date;
-  url: string;
   organizer: {
     _id: string;
     firstName: string;
@@ -98,34 +88,46 @@ export type Event = {
   };
 };
 
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  _id: string;
+  name: string;
+  description: string;
+  category: {
+    _id: string;
+    name: string;
+  };
+  administrator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
 };
 
-// ====== ORDER PARAMS
-export type CheckoutOrderParams = {
-  eventTitle: string;
-  eventId: string;
-  price: string;
-  isFree: boolean;
-  buyerId: string;
+// ====== JOIN PARAMS
+export type SubmitJoinParams = {
+  gameTitle: string;
+  gameId: string;
+  playerId: string;
 };
 
-export type CreateOrderParams = {
-  stripeId: string;
-  eventId: string;
-  buyerId: string;
-  totalAmount: string;
+export type CreateJoinParams = {
+  gameId: string;
+  playerId: string;
   createdAt: Date;
 };
 
-export type GetOrdersByEventParams = {
-  eventId: string;
+export type GetJoinsByGameParams = {
+  gameId: string;
   searchString: string;
 };
 
-export type GetOrdersByUserParams = {
+export type GetJoinsByUserParams = {
   userId: string | null;
   limit?: number;
   page: string | number | null;
@@ -146,4 +148,22 @@ export type RemoveUrlQueryParams = {
 export type SearchParamProps = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
+};
+
+// ====== COMMENT PARAMS
+export type CreateCommentParams = {
+  gameId: string;
+  userId: string;
+  body: string;
+};
+
+export type GetCommentsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetCommentsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };

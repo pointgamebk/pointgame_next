@@ -22,7 +22,6 @@ export type CreateGameParams = {
     title: string;
     description: string;
     location: string;
-    imageUrl: string;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
@@ -32,10 +31,9 @@ export type CreateGameParams = {
 
 export type UpdateGameParams = {
   userId: string;
-  event: {
+  game: {
     _id: string;
     title: string;
-    imageUrl: string;
     description: string;
     location: string;
     startDateTime: Date;
@@ -74,8 +72,9 @@ export type Game = {
   _id: string;
   title: string;
   description: string;
-  imageUrl: string;
   location: string;
+  lat: number;
+  lng: number;
   startDateTime: Date;
   endDateTime: Date;
   organizer: {
@@ -89,9 +88,54 @@ export type Game = {
   };
 };
 
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  name: string;
+  description: string;
+  category: {
+    _id: string;
+    name: string;
+  };
+  administrator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
+// ====== TEAM PARAMS
+export type CreateTeamParams = {
+  name: string;
+  leagueId: string;
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
+};
+
+// ====== JOIN PARAMS
+export type SubmitJoinParams = {
+  gameTitle: string;
+  gameId: string;
+  playerId: string;
+};
+
+export type CreateJoinParams = {
+  gameId: string;
+  playerId: string;
+  createdAt: Date;
+};
+
+export type GetJoinsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetJoinsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };
 
 // ====== URL QUERY PARAMS
@@ -109,4 +153,22 @@ export type RemoveUrlQueryParams = {
 export type SearchParamProps = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
+};
+
+// ====== COMMENT PARAMS
+export type CreateCommentParams = {
+  gameId: string;
+  userId: string;
+  body: string;
+};
+
+export type GetCommentsByGameParams = {
+  gameId: string;
+  searchString: string;
+};
+
+export type GetCommentsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: string | number | null;
 };

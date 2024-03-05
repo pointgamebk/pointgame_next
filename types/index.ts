@@ -88,6 +88,54 @@ export type Game = {
   };
 };
 
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  name: string;
+  description: string;
+  category: {
+    _id: string;
+    name: string;
+  };
+  administrator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
+export type League = {
+  _id: string;
+  name: string;
+  description: string;
+  adminisreator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+  category: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== TEAM PARAMS
+export type CreateTeamParams = {
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
+export type Team = {
+  _id: string;
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
