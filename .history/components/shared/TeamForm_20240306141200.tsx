@@ -75,7 +75,7 @@ const TeamForm = ({ leagueId }: TeamFormProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? "Submitting..." : "Add Team"}
+          {form.formState.isSubmitting ? "Submitting..." : "Create Team"}
         </Button>
       </form>
     </Form>
