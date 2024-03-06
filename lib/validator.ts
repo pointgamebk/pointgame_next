@@ -28,6 +28,11 @@ export const teamFormSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
 });
 
+export const playerFormSchema = z.object({
+  userId: z.string(),
+  teamId: z.string(),
+});
+
 export const commentFormSchema = z.object({
   body: z.string().min(2, "Comment must be at least 2 characters"),
 });

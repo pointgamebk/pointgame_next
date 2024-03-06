@@ -42,7 +42,7 @@ export async function getTeamById(teamId: string) {
     await connectToDatabase();
 
     const team = await Team.findById(teamId);
-    if (!team) throw new Error("Team not found");
+    if (!team) throw new Error("League not found");
 
     console.log(team);
 
@@ -53,18 +53,11 @@ export async function getTeamById(teamId: string) {
 }
 
 // ADD PLAYER TO TEAM
-export async function addPlayerToTeam(teamId: string, userId: string) {
+export async function addPlayerToTeam(teamId: string, playerId: string) {
   try {
     await connectToDatabase();
 
     const team = await Team.findById(teamId);
-    if (!team) throw new Error("Team not found");
-
-    // Push the ID of the user you want to add to the `players` array
-    team.players.push(userId);
-
-    // Save the updated Team document
-    await team.save();
   } catch (error) {
     handleError(error);
   }

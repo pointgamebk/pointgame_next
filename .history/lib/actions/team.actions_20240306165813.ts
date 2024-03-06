@@ -53,7 +53,7 @@ export async function getTeamById(teamId: string) {
 }
 
 // ADD PLAYER TO TEAM
-export async function addPlayerToTeam(teamId: string, userId: string) {
+export async function addPlayerToTeam(teamId: string, playerId: string) {
   try {
     await connectToDatabase();
 
@@ -61,10 +61,12 @@ export async function addPlayerToTeam(teamId: string, userId: string) {
     if (!team) throw new Error("Team not found");
 
     // Push the ID of the user you want to add to the `players` array
-    team.players.push(userId);
+    team.players.push(playerId);
 
     // Save the updated Team document
     await team.save();
+
+    console.log(team);
   } catch (error) {
     handleError(error);
   }

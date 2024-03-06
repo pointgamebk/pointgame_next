@@ -65,6 +65,8 @@ export async function addPlayerToTeam(teamId: string, userId: string) {
 
     // Save the updated Team document
     await team.save();
+
+    console.log(team);
   } catch (error) {
     handleError(error);
   }
