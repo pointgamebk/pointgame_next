@@ -1,7 +1,6 @@
 import { SearchParamProps } from "@/types";
 import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
-import TeamForm from "@/components/shared/TeamForm";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);
@@ -44,11 +43,9 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              {league.administrator._id === userId && (
-                <TeamForm leagueId={id} />
-              )}
-            </div>
+            <h2 className="h2-bold text-white">
+              {userId === league.administrator._id && <div>League Setup</div>}
+            </h2>
           </div>
         </div>
       </section>

@@ -94,7 +94,7 @@ export type CreateLeagueParams = {
   league: {
     name: string;
     description: string;
-    category: string;
+    categoryId: string;
   };
 };
 
@@ -115,9 +115,9 @@ export type League = {
 
 // ====== TEAM PARAMS
 export type CreateTeamParams = {
-  leagueId: string;
   team: {
     name: string;
+    leagueId: string;
   };
 };
 

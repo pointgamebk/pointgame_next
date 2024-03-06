@@ -44,11 +44,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              {league.administrator._id === userId && (
-                <TeamForm leagueId={id} />
-              )}
-            </div>
+            {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
         </div>
       </section>

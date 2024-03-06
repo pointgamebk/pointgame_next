@@ -35,16 +35,12 @@ export const createLeague = async ({ userId, league }: CreateLeagueParams) => {
     });
 
     return JSON.parse(JSON.stringify(newLeague));
-  } catch (error) {
-    handleError(error);
-  }
+  } catch (error) {}
 };
 
 // LEAGUE BY ID
 export async function getLeagueById(leagueId: string) {
   try {
-    await connectToDatabase();
-
     const league = await populateLeague(League.findById(leagueId));
     if (!league) throw new Error("League not found");
 

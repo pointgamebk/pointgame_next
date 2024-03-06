@@ -29,6 +29,11 @@ export const leagueDefaultValues = {
   administrator: "",
 };
 
+export const teamDefaultValues = {
+  name: "",
+  leagueId: "",
+};
+
 export const commentDefaultValues = {
   body: "",
 };

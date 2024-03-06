@@ -7,6 +7,7 @@ export interface ILeague extends Document {
   createdAt: Date;
   category: { _id: string; name: string };
   administrator: { _id: string; firstName: string; lastName: string };
+  teams: [{ _id: string; name: string }];
 }
 
 const LeagueSchema = new Schema({
@@ -15,6 +16,7 @@ const LeagueSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   administrator: { type: Schema.Types.ObjectId, ref: "User" },
+  teams: [{ type: Schema.Types.ObjectId, ref: "Team" }],
 });
 
 const League = models.League || model("League", LeagueSchema);

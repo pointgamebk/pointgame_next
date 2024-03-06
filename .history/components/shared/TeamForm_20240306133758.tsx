@@ -12,34 +12,33 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Dropdown from "./Dropdown";
 
 import { leagueDefaultValues } from "@/constants";
-import { Textarea } from "@/components/ui/textarea";
 
 import { useRouter } from "next/navigation";
+import { createTeam } from "@/lib/actions/team.actions";
+import { ITeam } from "@/lib/database/models/team.model";
+import { teamFormSchema } from "@/lib/validator";
 
-import { createLeague } from "@/lib/actions/league.action";
-import { leagueFormSchema } from "@/lib/validator";
-
-type LeagueFormProps = {
-  userId: string;
+type TeamFormProps = {
+  leagueId: string;
+  team?: ITeam;
 };
 
-const LeagueForm = ({ userId }: LeagueFormProps) => {
+const TeamForm = ({ leagueId, team }: TeamFormProps) => {
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof leagueFormSchema>>({
-    resolver: zodResolver(leagueFormSchema),
+  const form = useForm<z.infer<typeof teamFormSchema>>({
+    resolver: zodResolver(teamFormSchema),
     defaultValues: leagueDefaultValues,
   });
 
-  async function onSubmit(values: z.infer<typeof leagueFormSchema>) {
-    const leagueData = values;
-    console.log(leagueData);
+  async function onSubmit(values: z.infer<typeof teamFormSchema>) {
+    const teamData = values;
+    console.log(teamData);
 
     try {
-      const newLeague = await createLeague({
+      const newTeam = await createTeam({
         league: leagueData,
         userId,
       });
@@ -121,5 +120,3 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
     </Form>
   );
 };
-
-export default LeagueForm;

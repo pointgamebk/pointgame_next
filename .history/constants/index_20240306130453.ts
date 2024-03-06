@@ -22,6 +22,18 @@ export const gameDefaultValues = {
   categoryId: "",
 };
 
+export const leagueDefaultValues = {
+  name: "",
+  description: "",
+  categoryId: "",
+  administrator: "",
+};
+
+export const teamDefaultValues = {
+  name: "",
+  leagueId: "",
+};
+
 export const commentDefaultValues = {
   body: "",
 };
