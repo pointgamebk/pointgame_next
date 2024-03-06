@@ -4,8 +4,8 @@ export const headerLinks = [
     route: "/",
   },
   {
-    label: "Create Event",
-    route: "/events/create",
+    label: "Create Game",
+    route: "/games/create",
   },
   {
     label: "My Profile",
@@ -13,19 +13,22 @@ export const headerLinks = [
   },
 ];
 
-export const eventDefaultValues = {
+export const gameDefaultValues = {
   title: "",
   description: "",
   location: "",
-  imageUrl: "",
   startDateTime: new Date(),
   endDateTime: new Date(),
   categoryId: "",
-  price: "",
-  isFree: false,
-  url: "",
 };
 
-export const placesDefaultValues = {
-  location: "",
+export const leagueDefaultValues = {
+  name: "",
+  description: "",
+  categoryId: "",
+  administrator: "",
+};
+
+export const commentDefaultValues = {
+  body: "",
 };

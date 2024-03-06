@@ -21,3 +21,14 @@ export const gameDefaultValues = {
   endDateTime: new Date(),
   categoryId: "",
 };
+
+export const leagueDefaultValues = {
+  name: "",
+  description: "",
+  category: "",
+  administrator: "",
+};
+
+export const commentDefaultValues = {
+  body: "",
+};

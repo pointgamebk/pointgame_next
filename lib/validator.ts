@@ -15,6 +15,15 @@ export const gameFormSchema = z.object({
   categoryId: z.string(),
 });
 
+export const leagueFormSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  description: z
+    .string()
+    .min(3, "Description must be at least 3 characters")
+    .max(400, "Description must be less than 400 characters"),
+  category: z.string(),
+});
+
 export const commentFormSchema = z.object({
   body: z.string().min(2, "Comment must be at least 2 characters"),
 });

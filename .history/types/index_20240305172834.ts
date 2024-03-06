@@ -94,7 +94,7 @@ export type CreateLeagueParams = {
   league: {
     name: string;
     description: string;
-    category: string;
+    categoryId: string;
   };
 };
 
