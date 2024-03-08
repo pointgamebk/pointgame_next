@@ -5,13 +5,10 @@ import UserSearch from "@/components/shared/UserSearch";
 
 const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const team = await getTeamById(id);
-  const players = team?.players;
 
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
-
-  console.log(team.players);
 
   type IPlayer = {
     _id: string;
@@ -35,17 +32,18 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
               <th className="min-w-[250px] py-3 text-left text-tan">
-                Player ID
+                Order ID
               </th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
-                Username
+                Event Title
               </th>
-              <th className="min-w-[150px] py-3 text-left text-tan">First</th>
-              <th className="min-w-[100px] py-3 text-left text-tan">Last</th>
+              <th className="min-w-[150px] py-3 text-left text-tan">Buyer</th>
+              <th className="min-w-[100px] py-3 text-left text-tan">Created</th>
+              <th className="min-w-[100px] py-3 text-right text-tan">Amount</th>
             </tr>
           </thead>
           <tbody>
-            {team && players.length === 0 ? (
+            {team && team.players.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No players joined.
@@ -54,10 +52,10 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
             ) : (
               <>
                 {team &&
-                  players.map((row: IPlayer) => (
+                  team.players.map((row: IPlayer) => (
                     <tr
                       key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b text-white"
+                      className="p-regular-14 lg:p-regular-16 border-b "
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
@@ -76,7 +74,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         </table>
       </section>
 
-      <section className="wrapper overflow-x-auto text-tan">
+      <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <UserSearch teamId={id} />

@@ -60,9 +60,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[250px] py-4 text-green">
-                        {row._id}
-                      </td>
+                      <td className="min-w-[250px] py-4 text-green">{row}</td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
                         {row.username}
                       </td>

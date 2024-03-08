@@ -61,7 +61,7 @@ export async function addPlayerToTeam(teamId: string, userId: string) {
     if (!user) throw new Error("User not found");
 
     // Push the ID of the user you want to add to the `players` array
-    team.players.push({ _id: user._id, username: user.username });
+    team.players.push(user);
 
     // Save the updated Team document
     await team.save();

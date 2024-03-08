@@ -5,7 +5,6 @@ import UserSearch from "@/components/shared/UserSearch";
 
 const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const team = await getTeamById(id);
-  const players = team?.players;
 
   const { sessionClaims } = auth();
 
@@ -45,7 +44,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
             </tr>
           </thead>
           <tbody>
-            {team && players.length === 0 ? (
+            {team && team.players.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No players joined.
@@ -54,7 +53,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
             ) : (
               <>
                 {team &&
-                  players.map((row: IPlayer) => (
+                  team.players.map((row: IPlayer) => (
                     <tr
                       key={row._id}
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
