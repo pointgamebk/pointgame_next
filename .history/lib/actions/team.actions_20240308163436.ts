@@ -10,9 +10,9 @@ import User from "../database/models/user.model";
 
 const populateTeam = (query: any) => {
   return query.populate({
-    path: "players",
-    model: User,
-    select: "_id username firstName lastName",
+    path: "league",
+    model: League,
+    select: "_id name",
   });
 };
 
@@ -29,12 +29,6 @@ export const createTeam = async ({ leagueId, team }: CreateTeamParams) => {
       league: leagueId,
     });
 
-    if (!newTeam) throw new Error("Team not created");
-
-    league.teams.push(newTeam._id);
-
-    await league.save();
-
     return JSON.parse(JSON.stringify(newTeam));
   } catch (error) {
     handleError(error);
@@ -46,8 +40,7 @@ export async function getTeamById(teamId: string) {
   try {
     await connectToDatabase();
 
-    const team = await populateTeam(Team.findById(teamId));
-
+    const team = await Team.findById(teamId);
     if (!team) throw new Error("Team not found");
 
     return JSON.parse(JSON.stringify(team));

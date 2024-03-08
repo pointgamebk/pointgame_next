@@ -29,12 +29,6 @@ export const createTeam = async ({ leagueId, team }: CreateTeamParams) => {
       league: leagueId,
     });
 
-    if (!newTeam) throw new Error("Team not created");
-
-    league.teams.push(newTeam._id);
-
-    await league.save();
-
     return JSON.parse(JSON.stringify(newTeam));
   } catch (error) {
     handleError(error);
@@ -47,8 +41,11 @@ export async function getTeamById(teamId: string) {
     await connectToDatabase();
 
     const team = await populateTeam(Team.findById(teamId));
+    //const players = await populatePlayers(team);
 
     if (!team) throw new Error("Team not found");
+
+    console.log(team);
 
     return JSON.parse(JSON.stringify(team));
   } catch (error) {

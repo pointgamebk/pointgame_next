@@ -25,10 +25,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{team.name}</h2>
-            <Link
-              className="text-green text-bold"
-              href={`/leagues/${team.league}`}
-            >
+            <Link className="text-white" href={`/leagues/${team.league._id}`}>
               Back to League
             </Link>
           </div>

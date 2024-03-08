@@ -1,22 +1,18 @@
 import { SearchParamProps } from "@/types";
-import { getTeamById } from "@/lib/actions/team.actions";
+import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
-import UserSearch from "@/components/shared/UserSearch";
-import Link from "next/link";
+import TeamForm from "@/components/shared/TeamForm";
 
-const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
-  const team = await getTeamById(id);
-  const players = team?.players;
+const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
+  const league = await getLeagueById(id);
 
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
 
-  type IPlayer = {
+  type ITeam = {
     _id: string;
-    username: string;
-    firstName: string;
-    lastName: string;
+    name: string;
   };
 
   return (
@@ -24,13 +20,32 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
       <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6">
-            <h2 className="h2-bold text-white">{team.name}</h2>
-            <Link
-              className="text-green text-bold"
-              href={`/leagues/${team.league}`}
-            >
-              Back to League
-            </Link>
+            <h2 className="h2-bold text-white">{league.name}</h2>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex gap-3">
+                <p className="p-medium-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
+                  {league.category.name}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-white">Admin:</p>
+              <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-green">
+                <span className="text-green">
+                  {league.administrator.firstName}{" "}
+                  {league.administrator.lastName}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <p className="p-bold-20 text-white">League Details:</p>
+            <p className="p-medium-16 lg:p-regular-18 text-white">
+              {league.description}
+            </p>
           </div>
         </div>
       </section>
@@ -39,27 +54,23 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[250px] py-3 text-left text-tan">
-                Player ID
-              </th>
+              <th className="min-w-[250px] py-3 text-left text-tan">Team ID</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
-                Username
+                Team Name
               </th>
-              <th className="min-w-[150px] py-3 text-left text-tan">First</th>
-              <th className="min-w-[100px] py-3 text-left text-tan">Last</th>
             </tr>
           </thead>
           <tbody>
-            {team && players.length === 0 ? (
+            {league && league.teams.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No players joined.
+                  No teams currently.
                 </td>
               </tr>
             ) : (
               <>
-                {team &&
-                  players.map((row: IPlayer) => (
+                {league &&
+                  league.teams.map((row: ITeam) => (
                     <tr
                       key={row._id}
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
@@ -69,10 +80,8 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                         {row._id}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.username}
+                        {row.name}
                       </td>
-                      <td className="min-w-[150px] py-4">{row.firstName}</td>
-                      <td className="min-w-[150px] py-4">{row.lastName}</td>
                     </tr>
                   ))}
               </>
@@ -84,7 +93,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
       <section className="wrapper overflow-x-auto text-tan">
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <UserSearch teamId={id} />
+            {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
         </div>
       </section>
@@ -92,4 +101,4 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   );
 };
 
-export default TeamDetails;
+export default LeagueDetails;

@@ -2,7 +2,6 @@ import { SearchParamProps } from "@/types";
 import { getTeamById } from "@/lib/actions/team.actions";
 import { auth } from "@clerk/nextjs";
 import UserSearch from "@/components/shared/UserSearch";
-import Link from "next/link";
 
 const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const team = await getTeamById(id);
@@ -11,6 +10,8 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
+
+  console.log(team.players);
 
   type IPlayer = {
     _id: string;
@@ -25,12 +26,6 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{team.name}</h2>
-            <Link
-              className="text-green text-bold"
-              href={`/leagues/${team.league}`}
-            >
-              Back to League
-            </Link>
           </div>
         </div>
       </section>

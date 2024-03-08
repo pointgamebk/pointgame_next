@@ -37,8 +37,6 @@ const TeamForm = ({ leagueId }: TeamFormProps) => {
         team: teamData,
         leagueId,
       });
-
-      form.reset();
     } catch (error) {
       console.error(error);
     }

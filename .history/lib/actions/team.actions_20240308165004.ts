@@ -29,12 +29,6 @@ export const createTeam = async ({ leagueId, team }: CreateTeamParams) => {
       league: leagueId,
     });
 
-    if (!newTeam) throw new Error("Team not created");
-
-    league.teams.push(newTeam._id);
-
-    await league.save();
-
     return JSON.parse(JSON.stringify(newTeam));
   } catch (error) {
     handleError(error);
