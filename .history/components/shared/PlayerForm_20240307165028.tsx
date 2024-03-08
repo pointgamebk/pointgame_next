@@ -20,14 +20,15 @@ import { getUserByUserName } from "@/lib/actions/user.actions";
 import { addPlayerToTeam } from "@/lib/actions/team.actions";
 
 import { playerFormSchema } from "@/lib/validator";
-import { set } from "mongoose";
 
 type PlayerFormProps = {
   teamId: string;
-  setUser: (user: any) => void;
+  setUsers: (users: any) => void;
 };
 
-const PlayerForm = ({ teamId, setUser }: PlayerFormProps) => {
+const PlayerForm = ({ teamId, setUsers }: PlayerFormProps) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof playerFormSchema>>({
     resolver: zodResolver(playerFormSchema),
     defaultValues: playerDefaultValues,
@@ -38,8 +39,7 @@ const PlayerForm = ({ teamId, setUser }: PlayerFormProps) => {
       const user = await getUserByUserName(values.username);
       if (!user) throw new Error("User not found");
 
-      setUser(user);
-      form.reset();
+      console.log("User:", user);
     } catch (error) {
       console.error(error);
     }

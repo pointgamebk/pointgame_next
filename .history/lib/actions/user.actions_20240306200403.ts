@@ -90,15 +90,15 @@ export async function getUserByUserName(username: string) {
   try {
     await connectToDatabase();
 
-    const user = await User.findOne({
-      username,
+    const users = await User.find({
+      username: /john/i,
     });
 
-    if (!user) throw new Error("User not found");
+    if (!users) throw new Error("User not found");
 
-    console.log(user);
+    console.log(users);
 
-    return JSON.parse(JSON.stringify(user));
+    return JSON.parse(JSON.stringify(users));
   } catch (error) {
     handleError(error);
   }

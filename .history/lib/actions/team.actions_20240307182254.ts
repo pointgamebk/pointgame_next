@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import { connectToDatabase } from "@/lib/database";
 import League from "../database/models/league.model";
 import { handleError } from "@/lib/utils";
@@ -49,7 +51,11 @@ export async function getTeamById(teamId: string) {
 }
 
 // ADD PLAYER TO TEAM
-export async function addPlayerToTeam(teamId: string, userId: string) {
+export async function addPlayerToTeam(
+  teamId: string,
+  userId: string,
+  path: string
+) {
   try {
     await connectToDatabase();
 

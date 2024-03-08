@@ -28,6 +28,8 @@ type PlayerFormProps = {
 };
 
 const PlayerForm = ({ teamId, setUser }: PlayerFormProps) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof playerFormSchema>>({
     resolver: zodResolver(playerFormSchema),
     defaultValues: playerDefaultValues,
@@ -39,7 +41,7 @@ const PlayerForm = ({ teamId, setUser }: PlayerFormProps) => {
       if (!user) throw new Error("User not found");
 
       setUser(user);
-      form.reset();
+      console.log("User:", user);
     } catch (error) {
       console.error(error);
     }

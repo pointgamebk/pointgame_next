@@ -1,7 +1,9 @@
 import { SearchParamProps } from "@/types";
 import { getTeamById } from "@/lib/actions/team.actions";
 import { auth } from "@clerk/nextjs";
-import UserSearch from "@/components/shared/UserSearch";
+
+import PlayerForm from "@/components/shared/PlayerForm";
+import UserSearchBox from "@/components/shared/UserSearchBox";
 
 const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const team = await getTeamById(id);
@@ -10,6 +12,11 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const userId = sessionClaims?.userId as string;
 
+  const onSelectUser = (user: any) => {
+    console.log("Selected user:", user);
+  };
+
+  const otherUserId = "65c3d90aaef201acd0ab2ecf";
   return (
     <>
       <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
@@ -20,7 +27,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
 
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <UserSearch teamId={id} />
+              <PlayerForm userId={otherUserId} teamId={team._id} />
             </div>
           </div>
         </div>

@@ -90,7 +90,7 @@ export async function getUserByUserName(username: string) {
   try {
     await connectToDatabase();
 
-    const user = await User.findOne({
+    const user = await User.find({
       username,
     });
 

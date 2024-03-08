@@ -1,6 +1,8 @@
 import { SearchParamProps } from "@/types";
 import { getTeamById } from "@/lib/actions/team.actions";
 import { auth } from "@clerk/nextjs";
+
+import PlayerForm from "@/components/shared/PlayerForm";
 import UserSearch from "@/components/shared/UserSearch";
 
 const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
@@ -20,6 +22,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
 
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              {/* <PlayerForm userId={otherUserId} teamId={team._id} /> */}
               <UserSearch teamId={id} />
             </div>
           </div>
