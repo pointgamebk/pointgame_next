@@ -61,6 +61,8 @@ export async function getLeagues() {
 
     const leagues = await populateLeague(League.find());
 
+    console.log(leagues, "leagues");
+
     if (!leagues) throw new Error("Leagues not found");
 
     return JSON.parse(JSON.stringify(leagues));

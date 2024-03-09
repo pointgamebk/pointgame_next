@@ -60,9 +60,6 @@ export async function getLeagues() {
     await connectToDatabase();
 
     const leagues = await populateLeague(League.find());
-
-    if (!leagues) throw new Error("Leagues not found");
-
     return JSON.parse(JSON.stringify(leagues));
   } catch (error) {
     handleError(error);

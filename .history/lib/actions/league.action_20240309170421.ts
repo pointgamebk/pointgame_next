@@ -59,7 +59,9 @@ export async function getLeagues() {
   try {
     await connectToDatabase();
 
-    const leagues = await populateLeague(League.find());
+    const leagues = await League.find();
+
+    //console.log(leagues, "leagues");
 
     if (!leagues) throw new Error("Leagues not found");
 

@@ -1,11 +1,31 @@
 "use client";
 
-import { headerLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
-const NavItems = () => {
+type NavItemsProps = {
+  id: string;
+};
+
+const NavItems = ({ id }: NavItemsProps) => {
+  const headerLinks = [
+    {
+      label: "Home",
+      route: "/",
+    },
+    {
+      label: "Create Game",
+      route: "/games/create",
+    },
+    {
+      label: "My Profile",
+      route: `/profile/${id}`,
+    },
+    {
+      label: "Leagues",
+      route: `/leagues`,
+    },
+  ];
   const pathname = usePathname();
 
   return (

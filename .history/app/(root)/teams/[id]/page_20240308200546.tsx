@@ -96,15 +96,13 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         </table>
       </section>
 
-      {isAdmin && (
-        <section className="wrapper overflow-x-auto text-tan">
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <UserSearch teamId={id} />
-            </div>
+      <section className="wrapper overflow-x-auto text-tan">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <UserSearch teamId={id} />
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </>
   );
 };

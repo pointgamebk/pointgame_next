@@ -21,6 +21,10 @@ const NavItems = ({ id }: NavItemsProps) => {
       label: "My Profile",
       route: `/profile/${id}`,
     },
+    {
+      label: "Leagues",
+      route: `/leagues`,
+    },
   ];
   const pathname = usePathname();
 
