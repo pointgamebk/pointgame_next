@@ -9,13 +9,11 @@ import Team from "../database/models/team.model";
 import User from "../database/models/user.model";
 
 const populateTeam = (query: any) => {
-  return query
-    .populate({
-      path: "players",
-      model: User,
-      select: "_id username firstName lastName",
-    })
-    .populate({ path: "league", model: League, select: "_id administrator" });
+  return query.populate({
+    path: "players",
+    model: User,
+    select: "_id username firstName lastName",
+  });
 };
 
 // CREATE
@@ -105,7 +103,7 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
     // REMOVE PLAYER FROM TEAM
     team.players = team.players.filter((p: string) => p.toString() !== userId);
     await team.save();
+    
   } catch (error) {
     handleError(error);
   }
-};

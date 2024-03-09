@@ -52,11 +52,6 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
               </th>
               <th className="min-w-[150px] py-3 text-left text-tan">First</th>
               <th className="min-w-[100px] py-3 text-left text-tan">Last</th>
-              {isAdmin && (
-                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
-                  Edit
-                </th>
-              )}
             </tr>
           </thead>
           <tbody>
@@ -80,14 +75,6 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                       </td>
                       <td className="min-w-[150px] py-4">{row.firstName}</td>
                       <td className="min-w-[150px] py-4">{row.lastName}</td>
-                      {isAdmin && (
-                        <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
-                          <DeletePlayerConfirmation
-                            teamId={id}
-                            userId={row._id}
-                          />
-                        </td>
-                      )}
                     </tr>
                   ))}
               </>

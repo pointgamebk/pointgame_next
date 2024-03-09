@@ -15,7 +15,7 @@ const populateTeam = (query: any) => {
       model: User,
       select: "_id username firstName lastName",
     })
-    .populate({ path: "league", model: League, select: "_id administrator" });
+    .populate({ path: "league", model: League, select: "_id name" });
 };
 
 // CREATE

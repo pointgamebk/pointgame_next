@@ -11,11 +11,15 @@ import User from "../database/models/user.model";
 const populateTeam = (query: any) => {
   return query
     .populate({
+      path: "league",
+      model: League,
+      select: "administrator",
+    })
+    .populate({
       path: "players",
       model: User,
       select: "_id username firstName lastName",
-    })
-    .populate({ path: "league", model: League, select: "_id administrator" });
+    });
 };
 
 // CREATE
