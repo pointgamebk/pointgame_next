@@ -44,6 +44,9 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
+              <th className="min-w-[250px] py-3 text-left text-tan">
+                Player ID
+              </th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Username
               </th>
@@ -67,6 +70,9 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
+                      <td className="min-w-[250px] py-4 text-green">
+                        {row._id}
+                      </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
                         {row.username}
                       </td>

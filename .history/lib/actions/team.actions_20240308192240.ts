@@ -82,12 +82,11 @@ export const deleteTeam = async (teamId: string, leagueId: string) => {
     const league = await League.findById(leagueId);
     if (!league) throw new Error("League not found");
 
-    // DELETE TEAM INSTANCE
-    await Team.findByIdAndDelete(teamId);
+    const team = await Team.findById(teamId);
+    if (!team) throw new Error("Team not found");
 
-    // REMOVE TEAM FROM LEAGUE
-    league.teams = league.teams.filter((t: ITeam) => t.toString() !== teamId);
-    await league.save();
+    await Team.findByIdAndDelete(teamId);
+    league.teams = league.teams.filter((t: ITeam) => t.toString() === teamId);
   } catch (error) {
     handleError(error);
   }

@@ -97,10 +97,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       </td>
                       {isAdmin && (
                         <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
-                          <DeleteTeamConfirmation
-                            teamId={row._id}
-                            leagueId={id}
-                          />
+                          <DeleteTeamConfirmation teamId={row._id} />
                         </td>
                       )}
                     </tr>

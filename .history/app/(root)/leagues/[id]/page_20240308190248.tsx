@@ -3,7 +3,6 @@ import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 import TeamForm from "@/components/shared/TeamForm";
 import Link from "next/link";
-import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);
@@ -97,10 +96,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       </td>
                       {isAdmin && (
                         <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
-                          <DeleteTeamConfirmation
-                            teamId={row._id}
-                            leagueId={id}
-                          />
+                          Delete
                         </td>
                       )}
                     </tr>

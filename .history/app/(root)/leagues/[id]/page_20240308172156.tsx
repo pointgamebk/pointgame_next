@@ -3,7 +3,6 @@ import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 import TeamForm from "@/components/shared/TeamForm";
 import Link from "next/link";
-import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);
@@ -11,8 +10,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
-
-  const isAdmin = league.administrator._id === userId;
 
   type ITeam = {
     _id: string;
@@ -55,10 +52,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
-        <div className="mb-5">
-          <h2 className="h2-bold text-white">Teams</h2>
-        </div>
-
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
@@ -66,11 +59,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Team Name
               </th>
-              {isAdmin && (
-                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
-                  Edit
-                </th>
-              )}
             </tr>
           </thead>
           <tbody>
@@ -95,14 +83,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
                         {row.name}
                       </td>
-                      {isAdmin && (
-                        <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
-                          <DeleteTeamConfirmation
-                            teamId={row._id}
-                            leagueId={id}
-                          />
-                        </td>
-                      )}
                     </tr>
                   ))}
               </>
