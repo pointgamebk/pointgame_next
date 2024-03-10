@@ -22,10 +22,10 @@ const Leagues = async () => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[250px] py-3 text-left text-grey-400">
+              <th className="min-w-[250px] py-3 text-left text-tan">
                 League Name
               </th>
-              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Sport
               </th>
             </tr>

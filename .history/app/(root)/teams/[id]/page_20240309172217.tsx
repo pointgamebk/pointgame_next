@@ -47,17 +47,13 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Username
               </th>
-              <th className="min-w-[150px] py-3 text-left text-grey-400">
-                First
-              </th>
-              <th className="min-w-[100px] py-3 text-left text-grey-400">
-                Last
-              </th>
+              <th className="min-w-[150px] py-3 text-left text-tan">First</th>
+              <th className="min-w-[100px] py-3 text-left text-tan">Last</th>
               {isAdmin && (
-                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
+                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                   Edit
                 </th>
               )}
