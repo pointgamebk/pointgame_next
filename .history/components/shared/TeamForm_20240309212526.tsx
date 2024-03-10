@@ -39,7 +39,7 @@ const TeamForm = ({ leagueId }: TeamFormProps) => {
       });
 
       form.reset();
-      router.push(`/teams/${newTeam._id}`);
+      router.push(`/teams/${newTeam.id}`);
     } catch (error) {
       console.error(error);
     }
