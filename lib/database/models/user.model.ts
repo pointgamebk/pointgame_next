@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   photo: { type: String, required: true },
+  teamsJoined: [{ type: Schema.Types.ObjectId, ref: "Team" }],
 });
 
 const User = models.User || model("User", UserSchema);
