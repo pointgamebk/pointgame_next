@@ -57,7 +57,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                 Last
               </th>
               {isAdmin && (
-                <th className="min-w-[50px] flex-1 py-3 pr-4 text-left text-grey-400">
+                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                   Edit
                 </th>
               )}

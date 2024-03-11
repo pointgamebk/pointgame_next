@@ -43,7 +43,7 @@ export const AddConfirmation = ({
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
           <AlertDialogTitle>Add this user to the team?</AlertDialogTitle>
-          <AlertDialogDescription className="text-xl text-black">
+          <AlertDialogDescription className="p-regular-16 text-grey-600">
             {username}
           </AlertDialogDescription>
         </AlertDialogHeader>

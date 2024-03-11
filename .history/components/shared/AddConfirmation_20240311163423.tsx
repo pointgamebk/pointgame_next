@@ -37,13 +37,13 @@ export const AddConfirmation = ({
           width={20}
           height={20}
         /> */}
-        <div className="text-green">Click to confirm</div>
+        Click to add user
       </AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
           <AlertDialogTitle>Add this user to the team?</AlertDialogTitle>
-          <AlertDialogDescription className="text-xl text-black">
+          <AlertDialogDescription className="p-regular-16 text-grey-600">
             {username}
           </AlertDialogDescription>
         </AlertDialogHeader>
