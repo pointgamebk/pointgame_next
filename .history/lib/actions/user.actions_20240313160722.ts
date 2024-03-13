@@ -66,10 +66,16 @@ export async function deleteUser(clerkId: string) {
     // Unlink relationships
     await Promise.all([
       // Update the 'games' collection to remove references to the user
-      Game.deleteMany({ organizer: userToDelete._id }),
+      Game.updateMany(
+        { _id: { $in: userToDelete.games } },
+        { $pull: { organizer: userToDelete._id } }
+      ),
 
       // Update the 'joins' collection to remove references to the user
-      Join.deleteMany({ player: userToDelete._id }),
+      Join.updateMany(
+        { _id: { $in: userToDelete.joins } },
+        { $unset: { player: 1 } }
+      ),
 
       // Update the 'teams' collection to remove references to the user
       Team.updateMany(
