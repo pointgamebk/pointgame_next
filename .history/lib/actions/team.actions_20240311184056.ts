@@ -72,7 +72,7 @@ export async function addPlayerToTeam(teamId: string, userId: string) {
     // Push the ID of the user you want to add to the `players` array
     await team.players.push(userId);
 
-    //await user.teamsJoined.push(teamId);
+    await user.teamsJoined.push(teamId);
 
     console.log(user, teamId);
 

@@ -5,6 +5,8 @@ import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "@/lib/database";
 import User from "@/lib/database/models/user.model";
 import Game from "@/lib/database/models/game.model";
+import Team from "../database/models/team.model";
+import League from "../database/models/league.model";
 import { handleError } from "@/lib/utils";
 
 import { CreateUserParams, UpdateUserParams } from "@/types";
@@ -26,7 +28,6 @@ export async function getUserById(userId: string) {
     await connectToDatabase();
 
     const user = await User.findById(userId);
-    console.log(user);
 
     if (!user) throw new Error("User not found");
     return JSON.parse(JSON.stringify(user));
@@ -63,13 +64,13 @@ export async function deleteUser(clerkId: string) {
 
     // Unlink relationships
     await Promise.all([
-      // Update the 'events' collection to remove references to the user
+      // Update the 'games' collection to remove references to the user
       Game.updateMany(
         { _id: { $in: userToDelete.games } },
         { $pull: { organizer: userToDelete._id } }
       ),
 
-      // Update the 'orders' collection to remove references to the user
+      // Update the 'joins' collection to remove references to the user
       Join.updateMany(
         { _id: { $in: userToDelete.joins } },
         { $unset: { player: 1 } }
@@ -81,6 +82,37 @@ export async function deleteUser(clerkId: string) {
     revalidatePath("/");
 
     return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function getUserByUserName(username: string) {
+  try {
+    await connectToDatabase();
+
+    const user = await User.findOne({
+      username,
+    });
+
+    if (!user) throw new Error("User not found");
+
+    return JSON.parse(JSON.stringify(user));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function addTeam(userId: string, teamId: string) {
+  try {
+    await connectToDatabase();
+
+    const user = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+
+    user.teamsJoined.push(teamId);
+
+    await user.save();
   } catch (error) {
     handleError(error);
   }

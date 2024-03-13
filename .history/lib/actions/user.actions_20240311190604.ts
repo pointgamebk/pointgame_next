@@ -75,10 +75,6 @@ export async function deleteUser(clerkId: string) {
         { _id: { $in: userToDelete.joins } },
         { $unset: { player: 1 } }
       ),
-      Team.updateMany(
-        { players: userToDelete._id },
-        { $pull: { players: userToDelete._id } }
-      ),
     ]);
 
     // Delete user

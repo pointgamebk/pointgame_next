@@ -75,10 +75,6 @@ export async function deleteUser(clerkId: string) {
         { _id: { $in: userToDelete.joins } },
         { $unset: { player: 1 } }
       ),
-      Team.updateMany(
-        { players: userToDelete._id },
-        { $pull: { players: userToDelete._id } }
-      ),
     ]);
 
     // Delete user
@@ -102,6 +98,21 @@ export async function getUserByUserName(username: string) {
     if (!user) throw new Error("User not found");
 
     return JSON.parse(JSON.stringify(user));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function addTeam(userId: string, teamId: string) {
+  try {
+    await connectToDatabase();
+
+    const user = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+
+    console.log(user.teamsJoined.length);
+
+    await user.save();
   } catch (error) {
     handleError(error);
   }
