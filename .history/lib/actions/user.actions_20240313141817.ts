@@ -10,7 +10,6 @@ import { handleError } from "@/lib/utils";
 
 import { CreateUserParams, UpdateUserParams } from "@/types";
 import Join from "../database/models/join.model";
-import League from "../database/models/league.model";
 
 export async function createUser(user: CreateUserParams) {
   try {
@@ -52,7 +51,6 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
 }
 
 export async function deleteUser(clerkId: string) {
-  const commish_id = "65f1efa92e11aa0ffaa64068";
   try {
     await connectToDatabase();
 
@@ -81,11 +79,6 @@ export async function deleteUser(clerkId: string) {
       Team.updateMany(
         { players: userToDelete._id },
         { $pull: { players: userToDelete._id } }
-      ),
-      // Update the 'leagues' collection to remove references to the user and set the commish as the admin
-      League.updateMany(
-        { administrator: userToDelete._id },
-        { administrator: commish_id }
       ),
     ]);
 

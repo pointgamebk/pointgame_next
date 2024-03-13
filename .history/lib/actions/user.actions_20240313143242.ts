@@ -82,11 +82,7 @@ export async function deleteUser(clerkId: string) {
         { players: userToDelete._id },
         { $pull: { players: userToDelete._id } }
       ),
-      // Update the 'leagues' collection to remove references to the user and set the commish as the admin
-      League.updateMany(
-        { administrator: userToDelete._id },
-        { administrator: commish_id }
-      ),
+      League.updateMany(),
     ]);
 
     // Delete user
