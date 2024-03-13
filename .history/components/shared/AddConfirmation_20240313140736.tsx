@@ -55,6 +55,7 @@ export const AddConfirmation = ({
             onClick={() =>
               startTransition(async () => {
                 await addPlayerToTeam(teamId, userId);
+                await addTeam(userId, teamId);
                 setUser(null);
               })
             }
