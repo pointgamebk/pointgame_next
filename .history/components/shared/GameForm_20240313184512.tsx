@@ -142,7 +142,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="Description"
+                    placeholder="Description..."
                     {...field}
                     className="textarea rounded-2xl"
                   />
@@ -169,9 +169,8 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                     />
                     <PlacesSearchBox
                       defaultValue=""
-                      onSelectAddress={(address, lat, lng) => {
+                      onSelectAddress={(address) => {
                         form.setValue("location", address);
-                        console.log(address);
                       }}
                     />
                   </div>
@@ -207,6 +206,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                       timeInputLabel="Time:"
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      minDate={new Date()}
                     />
                   </div>
                 </FormControl>
