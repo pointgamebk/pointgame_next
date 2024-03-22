@@ -64,7 +64,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
 
       <section className="wrapper overflow-x-auto text-tan">
         <div className="mb-5">
-          <h2 className="h2-bold text-white">Schedules</h2>
+          <h2 className="h2-bold text-white">Schedule</h2>
         </div>
 
         <table className="w-full border-collapse border-t">
@@ -97,7 +97,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
-                        <Link href={`/schedules/${row._id}`}>{row.name}</Link>
+                        <Link href={`/teams/${row._id}`}>{row.name}</Link>
                       </td>
 
                       {isAdmin && (

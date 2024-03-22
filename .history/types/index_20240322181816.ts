@@ -22,8 +22,6 @@ export type CreateGameParams = {
     title: string;
     description: string;
     location: string;
-    lat: number;
-    lng: number;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
@@ -38,8 +36,6 @@ export type UpdateGameParams = {
     title: string;
     description: string;
     location: string;
-    lat: number;
-    lng: number;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
@@ -87,6 +83,65 @@ export type Game = {
     lastName: string;
   };
   category: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== LEAGUE PARAMS
+export type CreateLeagueParams = {
+  userId: string;
+  league: {
+    name: string;
+    description: string;
+    category: string;
+  };
+};
+
+export type League = {
+  _id: string;
+  name: string;
+  description: string;
+  adminisreator: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+  category: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== TEAM PARAMS
+export type CreateTeamParams = {
+  leagueId: string;
+  team: {
+    name: string;
+  };
+};
+
+export type Team = {
+  _id: string;
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== SCHEDULE PARAMS
+export type CreateScheduleParams = {
+  leagueId: string;
+  schedule: {
+    name: string;
+  };
+};
+
+export type Schedule = {
+  _id: string;
+  name: string;
+  league: {
     _id: string;
     name: string;
   };

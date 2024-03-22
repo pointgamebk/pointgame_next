@@ -4,8 +4,6 @@ import { auth } from "@clerk/nextjs";
 import TeamForm from "@/components/shared/TeamForm";
 import Link from "next/link";
 import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
-import ScheduleForm from "@/components/shared/ScheduleForm";
-import { ISchedule } from "@/lib/database/models/schedule";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);
@@ -64,14 +62,14 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
 
       <section className="wrapper overflow-x-auto text-tan">
         <div className="mb-5">
-          <h2 className="h2-bold text-white">Schedules</h2>
+          <h2 className="h2-bold text-white">Schedule</h2>
         </div>
 
-        <table className="w-full border-collapse border-t">
+        {/* <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
-                Schedule Name
+                Team Name
               </th>
               {isAdmin && (
                 <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
@@ -81,23 +79,23 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             </tr>
           </thead>
           <tbody>
-            {league && league.schedules.length === 0 ? (
+            {league && league.teams.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No schedules currently.
+                  No teams currently.
                 </td>
               </tr>
             ) : (
               <>
                 {league &&
-                  league.schedules.map((row: ISchedule) => (
+                  league.teams.map((row: ITeam) => (
                     <tr
                       key={row._id}
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
-                        <Link href={`/schedules/${row._id}`}>{row.name}</Link>
+                        <Link href={`/teams/${row._id}`}>{row.name}</Link>
                       </td>
 
                       {isAdmin && (
@@ -113,7 +111,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               </>
             )}
           </tbody>
-        </table>
+        </table> */}
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
@@ -174,16 +172,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && <TeamForm leagueId={id} />}
-          </div>
-        </div>
-      </section>
-
-      <section className="wrapper overflow-x-auto text-tan">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            {league.administrator._id === userId && (
-              <ScheduleForm leagueId={id} />
-            )}
           </div>
         </div>
       </section>

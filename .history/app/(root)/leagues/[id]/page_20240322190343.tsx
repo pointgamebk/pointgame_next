@@ -97,7 +97,9 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
-                        <Link href={`/schedules/${row._id}`}>{row.name}</Link>
+                        <Link href={`/leagues/${id}/schedules`}>
+                          {row.name}
+                        </Link>
                       </td>
 
                       {isAdmin && (

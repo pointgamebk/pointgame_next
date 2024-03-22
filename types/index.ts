@@ -130,6 +130,23 @@ export type Team = {
   };
 };
 
+// ====== SCHEDULE PARAMS
+export type CreateScheduleParams = {
+  leagueId: string;
+  schedule: {
+    name: string;
+  };
+};
+
+export type Schedule = {
+  _id: string;
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string;
