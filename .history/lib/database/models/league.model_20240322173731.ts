@@ -18,7 +18,7 @@ const LeagueSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   administrator: { type: Schema.Types.ObjectId, ref: "User" },
   teams: [{ type: Schema.Types.ObjectId, ref: "Team" }],
-  schedule: { type: Schema.Types.ObjectId, ref: "Schedule", default: null },
+  schedule: { type: Schema.Types.ObjectId, ref: "Schedule" },
 });
 
 const League = models.League || model("League", LeagueSchema);
