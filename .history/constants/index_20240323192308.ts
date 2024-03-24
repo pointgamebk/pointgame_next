@@ -23,7 +23,6 @@ export const gameDefaultValues = {
 };
 
 export const matchDefaultValues = {
-  startDateTime: new Date(),
   teamOneId: "",
   teamTwoId: "",
 };

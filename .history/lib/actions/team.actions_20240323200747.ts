@@ -126,16 +126,3 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
     handleError(error);
   }
 };
-
-export async function getTeamsByLeagueId(leagueId: string) {
-  try {
-    await connectToDatabase();
-
-    const teams = await Team.find({ league: leagueId });
-    if (!teams) throw new Error("Teams not found");
-
-    return JSON.parse(JSON.stringify(teams));
-  } catch (error) {
-    handleError(error);
-  }
-}

@@ -16,7 +16,6 @@ export const gameFormSchema = z.object({
 });
 
 export const matchFormSchema = z.object({
-  startDateTime: z.date(),
   teamOneId: z.string(),
   teamTwoId: z.string(),
 });
