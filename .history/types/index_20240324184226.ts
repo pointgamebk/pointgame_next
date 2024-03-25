@@ -152,8 +152,8 @@ export type CreateMatchParams = {
   scheduleId: string;
   match: {
     startDateTime: Date;
-    teamOne: string;
-    teamTwo: string;
+    teamOneId: string;
+    teamTwoId: string;
   };
 };
 

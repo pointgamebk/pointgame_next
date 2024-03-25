@@ -17,7 +17,7 @@ import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 
-import { IMatch } from "@/lib/database/models/match.model.";
+import { IMatch } from "@/lib/database/models/match";
 import { matchFormSchema } from "@/lib/validator";
 import { createMatch } from "@/lib/actions/match.actions";
 
@@ -42,16 +42,18 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
   async function onSubmit(values: z.infer<typeof matchFormSchema>) {
     const matchData = values;
 
+    console.log("Match Data", matchData);
+
     try {
       const newMatch = await createMatch({
         match: matchData,
         scheduleId,
         //path: "/schedule",
       });
-
-      if (newMatch) {
-        form.reset();
-      }
+      //   if (newMatch) {
+      //     console.log("Match created successfully", newMatch);
+      //     form.reset();
+      //   }
     } catch (error) {
       console.log(error);
     }

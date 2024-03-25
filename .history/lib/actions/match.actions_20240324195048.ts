@@ -35,17 +35,3 @@ export async function createMatch({ scheduleId, match }: CreateMatchParams) {
     handleError(error);
   }
 }
-
-// MATCH BY SCHEDULE ID
-export async function getMatchesByScheduleId(scheduleId: string) {
-  try {
-    await connectToDatabase();
-
-    const matches = await Match.find({ schedule: scheduleId });
-    if (!matches) throw new Error("Matches not found");
-
-    return JSON.parse(JSON.stringify(matches));
-  } catch (error) {
-    handleError(error);
-  }
-}

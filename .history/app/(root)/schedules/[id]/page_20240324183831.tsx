@@ -1,6 +1,5 @@
 import { getScheduleById } from "@/lib/actions/schedule.actions";
-import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
-import { IMatch } from "@/lib/database/models/match.model.";
+import { IMatch } from "@/lib/database/models/match";
 import MatchForm from "@/components/shared/MatchForm";
 
 type ScheduleDetailsProps = {
@@ -12,9 +11,9 @@ type ScheduleDetailsProps = {
 const ScheduleDetails = async ({ params: { id } }: ScheduleDetailsProps) => {
   const schedule = await getScheduleById(id);
   const leagueId = schedule.league;
-  const matches = await getMatchesByScheduleId(id);
+  const matches = schedule.matches;
 
-  console.log(matches);
+  console.log(id);
 
   return (
     <>
@@ -42,7 +41,7 @@ const ScheduleDetails = async ({ params: { id } }: ScheduleDetailsProps) => {
             </tr>
           </thead>
           <tbody>
-            {matches.length === 0 ? (
+            {schedule && schedule.matches.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No scheduled matches.
@@ -58,7 +57,7 @@ const ScheduleDetails = async ({ params: { id } }: ScheduleDetailsProps) => {
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
-                        {row.teamOne._id}
+                        {row.teamOne.name}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
                         {row.teamTwo.name}

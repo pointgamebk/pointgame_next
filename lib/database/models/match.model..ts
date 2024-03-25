@@ -3,6 +3,7 @@ import { Document, Schema, model, models } from "mongoose";
 export interface IMatch extends Document {
   _id: string;
   startDateTime: Date;
+  schedule: { _id: string; name: string };
   teamOne: { _id: string; name: string };
   teamTwo: { _id: string; name: string };
   winner?: { _id: string; name: string };

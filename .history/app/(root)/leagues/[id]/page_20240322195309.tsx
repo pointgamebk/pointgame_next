@@ -5,7 +5,7 @@ import TeamForm from "@/components/shared/TeamForm";
 import Link from "next/link";
 import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
 import ScheduleForm from "@/components/shared/ScheduleForm";
-import { ISchedule } from "@/lib/database/models/schedule.model";
+import { ISchedule } from "@/lib/database/models/schedule";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);

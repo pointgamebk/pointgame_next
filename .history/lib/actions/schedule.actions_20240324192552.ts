@@ -47,6 +47,8 @@ export async function getScheduleById(scheduleId: string) {
     const schedule = await populateSchedule(Schedule.findById(scheduleId));
     if (!schedule) throw new Error("Schedule not found");
 
+    console.log("Schedule", schedule);
+
     return JSON.parse(JSON.stringify(schedule));
   } catch (error) {
     handleError(error);

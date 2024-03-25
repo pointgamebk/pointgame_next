@@ -28,6 +28,8 @@ const MatchDropdown = ({
     const getTeams = async () => {
       const teamList = await getTeamsByLeague(leagueId);
 
+      console.log(teamList);
+
       teamList && setTeams(teamList as ITeam[]);
     };
 

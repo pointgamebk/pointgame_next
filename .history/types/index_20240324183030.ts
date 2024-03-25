@@ -149,11 +149,11 @@ export type Schedule = {
 
 // ====== MATCH PARAMS
 export type CreateMatchParams = {
-  scheduleId: string;
+  schedule: string;
   match: {
     startDateTime: Date;
-    teamOne: string;
-    teamTwo: string;
+    teamOneId: string;
+    teamTwoId: string;
   };
 };
 

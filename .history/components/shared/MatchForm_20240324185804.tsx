@@ -17,7 +17,7 @@ import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 
-import { IMatch } from "@/lib/database/models/match.model.";
+import { IMatch } from "@/lib/database/models/match";
 import { matchFormSchema } from "@/lib/validator";
 import { createMatch } from "@/lib/actions/match.actions";
 
@@ -48,8 +48,8 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         scheduleId,
         //path: "/schedule",
       });
-
       if (newMatch) {
+        console.log("Match created successfully", newMatch);
         form.reset();
       }
     } catch (error) {

@@ -48,7 +48,6 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         scheduleId,
         //path: "/schedule",
       });
-
       if (newMatch) {
         form.reset();
       }

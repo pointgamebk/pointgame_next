@@ -48,8 +48,8 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         scheduleId,
         //path: "/schedule",
       });
-
       if (newMatch) {
+        console.log("Match created successfully", newMatch);
         form.reset();
       }
     } catch (error) {

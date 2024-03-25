@@ -33,26 +33,4 @@ const MatchDropdown = ({
 
     getTeams();
   }, []);
-
-  return (
-    <Select onValueChange={onChangeHandler} defaultValue={value}>
-      <SelectTrigger className="select-field">
-        <SelectValue placeholder="Team List" />
-      </SelectTrigger>
-      <SelectContent>
-        {teams.length > 0 &&
-          teams.map((team) => (
-            <SelectItem
-              key={team._id}
-              value={team._id}
-              className="select-item p-regular-14"
-            >
-              {team.name}
-            </SelectItem>
-          ))}
-      </SelectContent>
-    </Select>
-  );
 };
-
-export default MatchDropdown;

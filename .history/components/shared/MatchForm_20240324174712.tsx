@@ -11,13 +11,15 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import Dropdown from "./Dropdown";
+
 import { matchDefaultValues } from "@/constants";
 
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 
-import { IMatch } from "@/lib/database/models/match.model.";
+import { IMatch } from "@/lib/database/models/match";
 import { matchFormSchema } from "@/lib/validator";
 import { createMatch } from "@/lib/actions/match.actions";
 
@@ -48,7 +50,6 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         scheduleId,
         //path: "/schedule",
       });
-
       if (newMatch) {
         form.reset();
       }
@@ -66,31 +67,11 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="teamOne"
+            name="teamOneId"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <MatchDropdown
-                    leagueId={leagueId}
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="flex flex-col gap-5 md:flex-row">
-          <FormField
-            control={form.control}
-            name="teamTwo"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <MatchDropdown
-                    leagueId={leagueId}
+                  <Dropdown
                     onChangeHandler={field.onChange}
                     value={field.value}
                   />

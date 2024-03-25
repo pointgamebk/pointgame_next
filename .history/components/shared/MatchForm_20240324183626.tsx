@@ -17,7 +17,7 @@ import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 
-import { IMatch } from "@/lib/database/models/match.model.";
+import { IMatch } from "@/lib/database/models/match";
 import { matchFormSchema } from "@/lib/validator";
 import { createMatch } from "@/lib/actions/match.actions";
 
@@ -42,19 +42,21 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
   async function onSubmit(values: z.infer<typeof matchFormSchema>) {
     const matchData = values;
 
-    try {
-      const newMatch = await createMatch({
-        match: matchData,
-        scheduleId,
-        //path: "/schedule",
-      });
+    console.log("Match Data", matchData, scheduleId);
 
-      if (newMatch) {
-        form.reset();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const newMatch = await createMatch({
+    //     match: matchData,
+    //     schedule: scheduleId,
+    //     //path: "/schedule",
+    //   });
+    //   if (newMatch) {
+    //     console.log("Match created successfully", newMatch);
+    //     form.reset();
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (
@@ -66,7 +68,7 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="teamOne"
+            name="teamOneId"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
@@ -85,7 +87,7 @@ const MatchForm = ({ scheduleId, leagueId }: MatchFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="teamTwo"
+            name="teamTwoId"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>

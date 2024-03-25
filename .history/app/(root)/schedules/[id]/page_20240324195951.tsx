@@ -42,7 +42,7 @@ const ScheduleDetails = async ({ params: { id } }: ScheduleDetailsProps) => {
             </tr>
           </thead>
           <tbody>
-            {matches.length === 0 ? (
+            {schedule && schedule.matches.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No scheduled matches.
@@ -58,7 +58,7 @@ const ScheduleDetails = async ({ params: { id } }: ScheduleDetailsProps) => {
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-green">
-                        {row.teamOne._id}
+                        {row.teamOne.name}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
                         {row.teamTwo.name}

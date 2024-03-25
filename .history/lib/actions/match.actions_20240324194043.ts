@@ -16,13 +16,17 @@ export async function createMatch({ scheduleId, match }: CreateMatchParams) {
     await connectToDatabase();
 
     const schedule = await getScheduleById(scheduleId);
-    if (!schedule) throw new Error("Schedule not found");
 
     const newMatch = await Match.create({
       ...match,
       schedule: scheduleId,
     });
+
     if (!newMatch) throw new Error("Match not created");
+
+    console.log(newMatch);
+
+    console.log(schedule);
 
     schedule.matches.push(newMatch._id);
 
@@ -31,20 +35,6 @@ export async function createMatch({ scheduleId, match }: CreateMatchParams) {
     //revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newMatch));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// MATCH BY SCHEDULE ID
-export async function getMatchesByScheduleId(scheduleId: string) {
-  try {
-    await connectToDatabase();
-
-    const matches = await Match.find({ schedule: scheduleId });
-    if (!matches) throw new Error("Matches not found");
-
-    return JSON.parse(JSON.stringify(matches));
   } catch (error) {
     handleError(error);
   }

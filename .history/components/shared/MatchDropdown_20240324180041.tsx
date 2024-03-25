@@ -28,6 +28,8 @@ const MatchDropdown = ({
     const getTeams = async () => {
       const teamList = await getTeamsByLeague(leagueId);
 
+      console.log(leagueId);
+
       teamList && setTeams(teamList as ITeam[]);
     };
 
@@ -37,7 +39,7 @@ const MatchDropdown = ({
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field">
-        <SelectValue placeholder="Team List" />
+        <SelectValue placeholder="Team" />
       </SelectTrigger>
       <SelectContent>
         {teams.length > 0 &&
