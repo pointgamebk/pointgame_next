@@ -158,7 +158,6 @@ export type CreateMatchParams = {
     teamOne: string;
     teamTwo: string;
   };
-  path: string;
 };
 
 export type Match = {

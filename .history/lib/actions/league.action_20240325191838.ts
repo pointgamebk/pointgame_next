@@ -40,7 +40,6 @@ export const createLeague = async ({
       category: league.category,
       administrator: userId,
     });
-    revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newLeague));
   } catch (error) {

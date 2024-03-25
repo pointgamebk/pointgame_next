@@ -120,7 +120,6 @@ export type CreateTeamParams = {
   team: {
     name: string;
   };
-  path: string;
 };
 
 export type Team = {
@@ -138,7 +137,6 @@ export type CreateScheduleParams = {
   schedule: {
     name: string;
   };
-  path: string;
 };
 
 export type Schedule = {
@@ -158,7 +156,6 @@ export type CreateMatchParams = {
     teamOne: string;
     teamTwo: string;
   };
-  path: string;
 };
 
 export type Match = {

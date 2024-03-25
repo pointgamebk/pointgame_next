@@ -20,12 +20,10 @@ export const AddConfirmation = ({
   username,
   teamId,
   setUser,
-  path,
 }: {
   userId: string;
   username: string;
   teamId: string;
-  path: string;
   setUser: (user: any) => void;
 }) => {
   let [isPending, startTransition] = useTransition();
@@ -56,7 +54,7 @@ export const AddConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await addPlayerToTeam(teamId, userId, path);
+                await addPlayerToTeam(teamId, userId, path: `/teams/${teamId}`);
                 setUser(null);
               })
             }

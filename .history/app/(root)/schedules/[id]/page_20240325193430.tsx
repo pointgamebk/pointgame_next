@@ -25,15 +25,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{schedule.name}</h2>
           </div>
-
-          <div>
-            <Link
-              className="text-green text-bold"
-              href={`/leagues/${leagueId}`}
-            >
-              Back to League
-            </Link>
-          </div>
         </div>
       </section>
 

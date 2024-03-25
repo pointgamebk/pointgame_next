@@ -3,7 +3,6 @@ import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
 import { IMatch } from "@/lib/database/models/match.model.";
 import MatchForm from "@/components/shared/MatchForm";
 import { formatDateTime } from "@/lib/utils";
-import Link from "next/link";
 
 type ScheduleDetailsProps = {
   params: {
@@ -24,15 +23,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{schedule.name}</h2>
-          </div>
-
-          <div>
-            <Link
-              className="text-green text-bold"
-              href={`/leagues/${leagueId}`}
-            >
-              Back to League
-            </Link>
           </div>
         </div>
       </section>

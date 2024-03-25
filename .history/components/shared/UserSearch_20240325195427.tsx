@@ -33,7 +33,6 @@ const UserSearchBox = ({ teamId }: UserSearchBoxProps) => {
             username={user.username}
             teamId={teamId}
             setUser={setUser}
-            path={`/teams/${teamId}`}
           />
         </div>
       )}

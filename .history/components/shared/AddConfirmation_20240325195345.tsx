@@ -56,7 +56,7 @@ export const AddConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await addPlayerToTeam(teamId, userId, path);
+                await addPlayerToTeam(teamId, userId);
                 setUser(null);
               })
             }

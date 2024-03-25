@@ -66,11 +66,7 @@ export async function getTeamById(teamId: string) {
 }
 
 // ADD PLAYER TO TEAM
-export async function addPlayerToTeam(
-  teamId: string,
-  userId: string,
-  path: string
-) {
+export async function addPlayerToTeam(teamId: string, userId: string) {
   try {
     await connectToDatabase();
 
@@ -80,7 +76,7 @@ export async function addPlayerToTeam(
     const user = await User.findById(userId);
     if (!user) throw new Error("User not found");
 
-    revalidatePath(path);
+    //revalidatePath(path);
 
     // Push the ID of the user you want to add to the `players` array
     await team.players.push(userId);
