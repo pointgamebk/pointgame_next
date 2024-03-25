@@ -16,12 +16,12 @@ const populateMatch = (query: any) => {
     .populate({
       path: "teamOne",
       model: Team,
-      select: "_id name",
+      select: "_id uname",
     })
     .populate({
       path: "teamTwo",
       model: Team,
-      select: "_id name",
+      select: "_id uname",
     });
 };
 
@@ -56,7 +56,7 @@ export async function getMatchesByScheduleId(scheduleId: string) {
   try {
     await connectToDatabase();
 
-    const matches = await populateMatch(Match.find({ schedule: scheduleId }));
+    const matches = await Match.find({ schedule: scheduleId });
     if (!matches) throw new Error("Matches not found");
 
     return JSON.parse(JSON.stringify(matches));

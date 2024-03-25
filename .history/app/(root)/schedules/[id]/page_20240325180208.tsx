@@ -2,7 +2,7 @@ import { getScheduleById } from "@/lib/actions/schedule.actions";
 import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
 import { IMatch } from "@/lib/database/models/match.model.";
 import MatchForm from "@/components/shared/MatchForm";
-import { formatDateTime } from "@/lib/utils";
+import { ISchedule } from "@/lib/database/models/schedule.model";
 
 type ScheduleDetailsProps = {
   params: {
@@ -15,7 +15,10 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
 }) => {
   const schedule = await getScheduleById(id);
   const leagueId = schedule.league;
+  //const matches = schedule.matches;
   const matches = await getMatchesByScheduleId(id);
+
+  console.log(matches);
 
   return (
     <>
@@ -39,9 +42,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Team 2
               </th>
-              <th className="min-w-[150px] py-3 text-left text-tan">
-                Game Date
-              </th>
+              <th className="min-w-[150px] py-3 text-left text-tan">Winner</th>
             </tr>
           </thead>
           <tbody>
@@ -66,9 +67,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
                         {row.teamTwo.name}
                       </td>
-                      <td className="min-w-[150px] py-4 text-green">
-                        {formatDateTime(row.startDateTime).dateTime}
-                      </td>
+                      <td className="min-w-[150px] py-4">{row.winner?.name}</td>
                     </tr>
                   ))}
               </>

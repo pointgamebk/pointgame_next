@@ -16,12 +16,12 @@ const populateMatch = (query: any) => {
     .populate({
       path: "teamOne",
       model: Team,
-      select: "_id name",
+      select: "_id uname",
     })
     .populate({
       path: "teamTwo",
       model: Team,
-      select: "_id name",
+      select: "_id uname",
     });
 };
 

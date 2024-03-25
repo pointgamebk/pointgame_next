@@ -7,23 +7,9 @@ import { connectToDatabase } from "@/lib/database";
 import Match from "../database/models/match.model.";
 import { CreateMatchParams } from "@/types";
 import { handleError } from "../utils";
-
+import test from "node:test";
+import { getScheduleById } from "./schedule.actions";
 import Schedule from "../database/models/schedule.model";
-import Team from "../database/models/team.model";
-
-const populateMatch = (query: any) => {
-  return query
-    .populate({
-      path: "teamOne",
-      model: Team,
-      select: "_id name",
-    })
-    .populate({
-      path: "teamTwo",
-      model: Team,
-      select: "_id name",
-    });
-};
 
 // CREATE
 export async function createMatch({ scheduleId, match }: CreateMatchParams) {
@@ -56,7 +42,7 @@ export async function getMatchesByScheduleId(scheduleId: string) {
   try {
     await connectToDatabase();
 
-    const matches = await populateMatch(Match.find({ schedule: scheduleId }));
+    const matches = await Match.find({ schedule: scheduleId });
     if (!matches) throw new Error("Matches not found");
 
     return JSON.parse(JSON.stringify(matches));

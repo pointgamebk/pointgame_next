@@ -16,6 +16,8 @@ import { matchDefaultValues } from "@/constants";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
+
+import { IMatch } from "@/lib/database/models/match.model.";
 import { matchFormSchema } from "@/lib/validator";
 import { createMatch } from "@/lib/actions/match.actions";
 

@@ -2,7 +2,7 @@ import { getScheduleById } from "@/lib/actions/schedule.actions";
 import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
 import { IMatch } from "@/lib/database/models/match.model.";
 import MatchForm from "@/components/shared/MatchForm";
-import { formatDateTime } from "@/lib/utils";
+import { ISchedule } from "@/lib/database/models/schedule.model";
 
 type ScheduleDetailsProps = {
   params: {
@@ -15,7 +15,9 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
 }) => {
   const schedule = await getScheduleById(id);
   const leagueId = schedule.league;
-  const matches = await getMatchesByScheduleId(id);
+  const matches = schedule.matches;
+
+  console.log(matches);
 
   return (
     <>
@@ -39,9 +41,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
                 Team 2
               </th>
-              <th className="min-w-[150px] py-3 text-left text-tan">
-                Game Date
-              </th>
+              <th className="min-w-[150px] py-3 text-left text-tan">Winner</th>
             </tr>
           </thead>
           <tbody>
@@ -54,21 +54,20 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
             ) : (
               <>
                 {matches &&
-                  matches.map((row: IMatch) => (
+                  matches.map((row: ISchedule) => (
                     <tr
                       key={row._id}
                       className="p-regular-14 lg:p-regular-16 border-b "
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {row.teamOne.name}
+                      <td className="min-w-[250px] py-4 text-green">
+                        {row._id}
                       </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {row.teamTwo.name}
+                      <td className="min-w-[200px] flex-1 py-4 pr-4">
+                        {row.matches[0].teamOne.name} vs{" "}
+                        {row.matches[0].teamTwo.name}
                       </td>
-                      <td className="min-w-[150px] py-4 text-green">
-                        {formatDateTime(row.startDateTime).dateTime}
-                      </td>
+                      {/* <td className="min-w-[150px] py-4">{row.winner?.name}</td> */}
                     </tr>
                   ))}
               </>

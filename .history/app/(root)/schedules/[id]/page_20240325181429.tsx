@@ -66,9 +66,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
                         {row.teamTwo.name}
                       </td>
-                      <td className="min-w-[150px] py-4 text-green">
-                        {formatDateTime(row.startDateTime).dateTime}
-                      </td>
+                      <td className="min-w-[150px] py-4">{row._id}</td>
                     </tr>
                   ))}
               </>

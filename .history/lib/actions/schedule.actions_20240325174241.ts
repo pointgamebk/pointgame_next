@@ -5,6 +5,15 @@ import League from "../database/models/league.model";
 import { handleError } from "@/lib/utils";
 import { CreateScheduleParams } from "@/types";
 import Schedule from "../database/models/schedule.model";
+import Match from "../database/models/match.model.";
+
+const populateSchedule = (query: any) => {
+  return query.populate({
+    path: "matches",
+    model: Match,
+    select: "_id teamOne teamTwo winner startDateTime",
+  });
+};
 
 // CREATE
 export const createSchedule = async ({
@@ -39,7 +48,7 @@ export async function getScheduleById(scheduleId: string) {
   try {
     await connectToDatabase();
 
-    const schedule = await Schedule.findById(scheduleId);
+    const schedule = await populateSchedule(Schedule.findById(scheduleId));
     if (!schedule) throw new Error("Schedule not found");
 
     return JSON.parse(JSON.stringify(schedule));
