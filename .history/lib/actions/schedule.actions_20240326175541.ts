@@ -54,7 +54,7 @@ export async function getScheduleById(scheduleId: string) {
 }
 
 // DELETE SCHEDULE
-export async function deleteSchedule(scheduleId: string, path: string) {
+export async function deleteSchedule(scheduleId: string) {
   try {
     await connectToDatabase();
 
@@ -64,13 +64,15 @@ export async function deleteSchedule(scheduleId: string, path: string) {
     //Unlink relationships
     await Promise.all([
       // Update the 'matches' collection to remove references to the schedule
+      // Match.updateMany(
+      //   { _id: { $in: scheduleToDelete.matches } },
+      //   { $pull: { schedule: scheduleToDelete._id } }
+      // ),
       Match.deleteMany({ schedule: scheduleToDelete._id }),
     ]);
 
     // Delete the schedule
     const deletedSchedule = await Schedule.findByIdAndDelete(scheduleId);
-
-    revalidatePath(path);
 
     return deletedSchedule ? JSON.parse(JSON.stringify(deletedSchedule)) : null;
   } catch (error) {

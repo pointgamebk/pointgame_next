@@ -3,7 +3,6 @@ import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 import TeamForm from "@/components/shared/TeamForm";
 import Link from "next/link";
-import { DeleteScheduleConfirmation } from "@/components/shared/DeleteScheduleConfirmation";
 import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
 import ScheduleForm from "@/components/shared/ScheduleForm";
 import { ISchedule } from "@/lib/database/models/schedule.model";
@@ -103,9 +102,9 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
 
                       {isAdmin && (
                         <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
-                          <DeleteScheduleConfirmation
-                            scheduleId={row._id}
-                            path={`/leagues/${id}`}
+                          <DeleteTeamConfirmation
+                            teamId={row._id}
+                            leagueId={id}
                           />
                         </td>
                       )}

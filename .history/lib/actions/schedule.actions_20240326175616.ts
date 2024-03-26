@@ -54,7 +54,7 @@ export async function getScheduleById(scheduleId: string) {
 }
 
 // DELETE SCHEDULE
-export async function deleteSchedule(scheduleId: string, path: string) {
+export async function deleteSchedule(scheduleId: string) {
   try {
     await connectToDatabase();
 
@@ -69,8 +69,6 @@ export async function deleteSchedule(scheduleId: string, path: string) {
 
     // Delete the schedule
     const deletedSchedule = await Schedule.findByIdAndDelete(scheduleId);
-
-    revalidatePath(path);
 
     return deletedSchedule ? JSON.parse(JSON.stringify(deletedSchedule)) : null;
   } catch (error) {

@@ -40,24 +40,21 @@ const MatchForm: React.FC<MatchFormProps> = ({ scheduleId, leagueId }) => {
   async function onSubmit(values: z.infer<typeof matchFormSchema>) {
     const matchData = values;
 
-    if (matchData.teamOne === matchData.teamTwo) {
-      alert("Teams cannot be the same. Please select two different teams.");
-      return;
-    }
+    console.log(matchData.teamOne, matchData.teamTwo);
 
-    try {
-      const newMatch = await createMatch({
-        match: matchData,
-        scheduleId,
-        path: `/schedules/${scheduleId}`,
-      });
+    // try {
+    //   const newMatch = await createMatch({
+    //     match: matchData,
+    //     scheduleId,
+    //     path: `/schedules/${scheduleId}`,
+    //   });
 
-      if (newMatch) {
-        form.reset();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   if (newMatch) {
+    //     form.reset();
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (

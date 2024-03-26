@@ -5,7 +5,6 @@ import League from "../database/models/league.model";
 import { handleError } from "@/lib/utils";
 import { CreateScheduleParams } from "@/types";
 import Schedule from "../database/models/schedule.model";
-import Match from "../database/models/match.model.";
 import { revalidatePath } from "next/cache";
 
 // CREATE
@@ -54,25 +53,13 @@ export async function getScheduleById(scheduleId: string) {
 }
 
 // DELETE SCHEDULE
-export async function deleteSchedule(scheduleId: string, path: string) {
+export async function deleteSchedule(scheduleId: string, leagueId: string) {
   try {
     await connectToDatabase();
 
     const scheduleToDelete = await Schedule.findOne({ _id: scheduleId });
+    console.log(scheduleToDelete);
     if (!scheduleToDelete) throw new Error("Schedule not found");
-
-    //Unlink relationships
-    await Promise.all([
-      // Update the 'matches' collection to remove references to the schedule
-      Match.deleteMany({ schedule: scheduleToDelete._id }),
-    ]);
-
-    // Delete the schedule
-    const deletedSchedule = await Schedule.findByIdAndDelete(scheduleId);
-
-    revalidatePath(path);
-
-    return deletedSchedule ? JSON.parse(JSON.stringify(deletedSchedule)) : null;
   } catch (error) {
     handleError(error);
   }

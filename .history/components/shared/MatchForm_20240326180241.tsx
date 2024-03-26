@@ -40,8 +40,10 @@ const MatchForm: React.FC<MatchFormProps> = ({ scheduleId, leagueId }) => {
   async function onSubmit(values: z.infer<typeof matchFormSchema>) {
     const matchData = values;
 
+    console.log(matchData.teamOne, matchData.teamTwo);
+
     if (matchData.teamOne === matchData.teamTwo) {
-      alert("Teams cannot be the same. Please select two different teams.");
+      alert("Teams cannot be the same");
       return;
     }
 
