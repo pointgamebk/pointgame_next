@@ -66,6 +66,11 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[150px] py-3 text-left text-grey-400">
                 Winner
               </th>
+              {isAdmin && (
+                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
+                  Select Winner
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -85,28 +90,25 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {/* {row.teamOne.name} */}
-                        <SelectWinner
-                          matchId={row._id}
-                          name={row.teamOne.name}
-                          teamId={row.teamOne._id}
-                        />
+                        {row.teamOne.name}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {/* {row.teamTwo.name} */}
-                        <SelectWinner
-                          matchId={row._id}
-                          name={row.teamTwo.name}
-                          teamId={row.teamTwo._id}
-                        />
+                        {row.teamTwo.name}
                       </td>
                       <td className="min-w-[150px] py-4 text-green">
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
                       <td className="min-w-[150px] py-4 text-green">
-                        {/* {row.winner?.name ? row.winner.name : "TBD"} */}
-                        {row.winner?.name}
+                        {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
+                      {isAdmin && (
+                        <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
+                          <SelectWinner
+                            matchId={row._id}
+                            path={`/schedules/${id}`}
+                          />
+                        </td>
+                      )}
                     </tr>
                   ))}
               </>

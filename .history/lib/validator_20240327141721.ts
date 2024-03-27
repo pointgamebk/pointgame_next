@@ -22,7 +22,7 @@ export const matchFormSchema = z.object({
 });
 
 export const winnerFormSchema = z.object({
-  winner: z.string(),
+  winner: z.string() || z.null(),
 });
 
 export const leagueFormSchema = z.object({

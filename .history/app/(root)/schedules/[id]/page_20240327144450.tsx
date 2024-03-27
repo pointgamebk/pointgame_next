@@ -104,8 +104,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
                       <td className="min-w-[150px] py-4 text-green">
-                        {/* {row.winner?.name ? row.winner.name : "TBD"} */}
-                        {row.winner?.name}
+                        {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
                     </tr>
                   ))}
