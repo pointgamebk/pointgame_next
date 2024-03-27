@@ -92,7 +92,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                           matchId={row._id}
                           name={row.teamOne.name}
                           teamId={row.teamOne._id}
-                          path={`/schedules/${id}`}
                         />
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
@@ -101,7 +100,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                           matchId={row._id}
                           name={row.teamTwo.name}
                           teamId={row.teamTwo._id}
-                          path={`/schedules/${id}`}
                         />
                       </td>
                       <td className="min-w-[150px] py-4 text-green">

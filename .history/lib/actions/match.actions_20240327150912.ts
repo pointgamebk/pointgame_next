@@ -71,11 +71,7 @@ export async function getMatchesByScheduleId(scheduleId: string) {
 }
 
 // SELECT MATCH WINNER
-export async function selectMatchWinner(
-  matchId: string,
-  winner: string,
-  path: string
-) {
+export async function selectMatchWinner(matchId: string, winner: string) {
   try {
     await connectToDatabase();
 
@@ -85,8 +81,6 @@ export async function selectMatchWinner(
     match.winner = winner;
 
     await match.save();
-
-    revalidatePath(path);
   } catch (error) {
     handleError(error);
   }
