@@ -75,23 +75,4 @@ export async function getLeagues() {
   }
 }
 
-// UPDATE LEAGUE DESCRIPTION
-export async function updateLeagueDescription(
-  leagueId: string,
-  description: string,
-  path: string
-) {
-  try {
-    await connectToDatabase();
-
-    const league = await League.findByIdAndUpdate(leagueId, { description });
-
-    if (!league) throw new Error("League not found");
-
-    revalidatePath(path);
-
-    return JSON.parse(JSON.stringify(league));
-  } catch (error) {
-    handleError(error);
-  }
-}
+// UPDATE LEAGUE DETAILS

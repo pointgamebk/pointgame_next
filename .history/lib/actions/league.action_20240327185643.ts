@@ -78,8 +78,7 @@ export async function getLeagues() {
 // UPDATE LEAGUE DESCRIPTION
 export async function updateLeagueDescription(
   leagueId: string,
-  description: string,
-  path: string
+  description: string
 ) {
   try {
     await connectToDatabase();
@@ -87,8 +86,6 @@ export async function updateLeagueDescription(
     const league = await League.findByIdAndUpdate(leagueId, { description });
 
     if (!league) throw new Error("League not found");
-
-    revalidatePath(path);
 
     return JSON.parse(JSON.stringify(league));
   } catch (error) {

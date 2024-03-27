@@ -49,11 +49,9 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
         </div>
       </section>
 
-      {isAdmin && (
-        <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
-          <MatchForm scheduleId={id} leagueId={leagueId} />
-        </section>
-      )}
+      <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
+        <MatchForm scheduleId={id} leagueId={leagueId} />
+      </section>
 
       <section className="wrapper overflow-x-auto text-tan">
         <table className="w-full border-collapse border-t">
@@ -120,7 +118,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                         {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
                       {isAdmin && (
-                        <td className="min-w-[150px] py-4 text-red-600">
+                        <td className="min-w-[150px] py-4 text-green">
                           <DeleteMatchConfirmation
                             matchId={row._id}
                             path={`/schedules/${id}`}

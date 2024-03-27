@@ -21,17 +21,19 @@ import { useRouter } from "next/navigation";
 
 import { createLeague } from "@/lib/actions/league.action";
 import { leagueFormSchema } from "@/lib/validator";
+import { ILeague } from "@/lib/database/models/league.model";
 
-type LeagueFormProps = {
-  userId: string;
+type LeagueUpdateFormProps = {
+  leagueId: string;
+  league: ILeague;
 };
 
-const LeagueForm = ({ userId }: LeagueFormProps) => {
+const LeagueUpdateForm = ({ league, leagueId }: LeagueUpdateFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof leagueFormSchema>>({
     resolver: zodResolver(leagueFormSchema),
-    defaultValues: leagueDefaultValues,
+    defaultValues: { ...league },
   });
 
   async function onSubmit(values: z.infer<typeof leagueFormSchema>) {
@@ -123,4 +125,4 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
   );
 };
 
-export default LeagueForm;
+export default LeagueUpdateForm;

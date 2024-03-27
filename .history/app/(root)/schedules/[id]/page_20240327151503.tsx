@@ -7,7 +7,6 @@ import MatchForm from "@/components/shared/MatchForm";
 import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";
 import { SelectWinner } from "@/components/shared/SelectWinner";
-import { DeleteMatchConfirmation } from "@/components/shared/DeleteMatchConfirmation";
 
 type ScheduleDetailsProps = {
   params: {
@@ -49,11 +48,9 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
         </div>
       </section>
 
-      {isAdmin && (
-        <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
-          <MatchForm scheduleId={id} leagueId={leagueId} />
-        </section>
-      )}
+      <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
+        <MatchForm scheduleId={id} leagueId={leagueId} />
+      </section>
 
       <section className="wrapper overflow-x-auto text-tan">
         <table className="w-full border-collapse border-t">
@@ -90,43 +87,30 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {isAdmin ? (
-                          <SelectWinner
-                            matchId={row._id}
-                            name={row.teamOne.name}
-                            teamId={row.teamOne._id}
-                            path={`/schedules/${id}`}
-                          />
-                        ) : (
-                          row.teamOne.name
-                        )}
+                        {/* {row.teamOne.name} */}
+                        <SelectWinner
+                          matchId={row._id}
+                          name={row.teamOne.name}
+                          teamId={row.teamOne._id}
+                          path={`/schedules/${id}`}
+                        />
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
-                        {isAdmin ? (
-                          <SelectWinner
-                            matchId={row._id}
-                            name={row.teamTwo.name}
-                            teamId={row.teamTwo._id}
-                            path={`/schedules/${id}`}
-                          />
-                        ) : (
-                          row.teamTwo.name
-                        )}
+                        {/* {row.teamTwo.name} */}
+                        <SelectWinner
+                          matchId={row._id}
+                          name={row.teamTwo.name}
+                          teamId={row.teamTwo._id}
+                          path={`/schedules/${id}`}
+                        />
                       </td>
                       <td className="min-w-[150px] py-4 text-green">
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
                       <td className="min-w-[150px] py-4 text-green">
                         {row.winner?.name ? row.winner.name : "TBD"}
+                        {/* {row.winner?.name} */}
                       </td>
-                      {isAdmin && (
-                        <td className="min-w-[150px] py-4 text-red-600">
-                          <DeleteMatchConfirmation
-                            matchId={row._id}
-                            path={`/schedules/${id}`}
-                          />
-                        </td>
-                      )}
                     </tr>
                   ))}
               </>

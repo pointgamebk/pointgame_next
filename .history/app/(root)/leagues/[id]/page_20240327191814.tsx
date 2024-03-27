@@ -59,16 +59,11 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             <p className="p-medium-16 lg:p-regular-18 text-white">
               {league.description}
             </p>
-            {isAdmin && (
-              <div>
-                <Link
-                  className="text-green text-bold"
-                  href={`/leagues/${id}/update`}
-                >
-                  Edit League Details
-                </Link>
-              </div>
-            )}
+            <div>
+              <Link className="text-green text-bold" href={`/leagues`}>
+                Edit League Details
+              </Link>
+            </div>
           </div>
         </div>
       </section>

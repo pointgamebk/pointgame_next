@@ -26,7 +26,7 @@ type LeagueFormProps = {
   userId: string;
 };
 
-const LeagueForm = ({ userId }: LeagueFormProps) => {
+const LeagueUpdateForm = ({ userId }: LeagueFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof leagueFormSchema>>({
@@ -123,4 +123,4 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
   );
 };
 
-export default LeagueForm;
+export default LeagueUpdateForm;

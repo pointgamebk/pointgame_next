@@ -1,0 +1,72 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+
+import { Textarea } from "@/components/ui/textarea";
+
+import Image from "next/image";
+
+import { useRouter } from "next/navigation";
+import {
+  updateLeagueDescription,
+  getLeagueById,
+} from "@/lib/actions/league.action";
+
+import { updateLeagueDescriptionFormSchema } from "@/lib/validator";
+
+type LeagueUpdateFormProps = {
+  leagueId: string;
+};
+
+const LeagueUpdateForm = async ({ leagueId }: LeagueUpdateFormProps) => {
+  const league = await getLeagueById(leagueId);
+
+  const router = useRouter();
+
+  const form = useForm<z.infer<typeof updateLeagueDescriptionFormSchema>>({
+    resolver: zodResolver(updateLeagueDescriptionFormSchema),
+    defaultValues: league.description,
+  });
+
+  async function onSubmit(
+    values: z.infer<typeof updateLeagueDescriptionFormSchema>
+  ) {
+    try {
+      await updateLeagueDescription(leagueId, values.description);
+      router.push(`/leagues/${leagueId}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-5"
+      >
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            label="Description"
+            name="description"
+            control={Textarea}
+            placeholder="Enter description"
+          />
+        </div>
+
+        <Button type="submit">Update Description</Button>
+      </form>
+    </Form>
+  );
+};

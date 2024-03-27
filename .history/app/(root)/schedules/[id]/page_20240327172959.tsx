@@ -1,13 +1,15 @@
 import { auth } from "@clerk/nextjs";
 import { getScheduleById } from "@/lib/actions/schedule.actions";
-import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
+import {
+  getMatchesByScheduleId,
+  deleteMatch,
+} from "@/lib/actions/match.actions";
 import { getLeagueById } from "@/lib/actions/league.action";
 import { IMatch } from "@/lib/database/models/match.model.";
 import MatchForm from "@/components/shared/MatchForm";
 import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";
 import { SelectWinner } from "@/components/shared/SelectWinner";
-import { DeleteMatchConfirmation } from "@/components/shared/DeleteMatchConfirmation";
 
 type ScheduleDetailsProps = {
   params: {
@@ -49,11 +51,9 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
         </div>
       </section>
 
-      {isAdmin && (
-        <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
-          <MatchForm scheduleId={id} leagueId={leagueId} />
-        </section>
-      )}
+      <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
+        <MatchForm scheduleId={id} leagueId={leagueId} />
+      </section>
 
       <section className="wrapper overflow-x-auto text-tan">
         <table className="w-full border-collapse border-t">
@@ -120,11 +120,8 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                         {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
                       {isAdmin && (
-                        <td className="min-w-[150px] py-4 text-red-600">
-                          <DeleteMatchConfirmation
-                            matchId={row._id}
-                            path={`/schedules/${id}`}
-                          />
+                        <td className="min-w-[150px] py-4 text-green">
+                          Delete
                         </td>
                       )}
                     </tr>
