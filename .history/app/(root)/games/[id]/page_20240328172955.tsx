@@ -63,9 +63,7 @@ const GameDetails = async ({
 
           <Map address={game.location} />
 
-          {/* {userId !== organizerId && (
-            <JoinButton game={game} path={`games/${id}`} />
-          )} */}
+          {userId !== organizerId && <JoinButton game={game} />}
 
           <div className="flex flex-col gap-5">
             <div className="flex gap-2 md:gap-3">

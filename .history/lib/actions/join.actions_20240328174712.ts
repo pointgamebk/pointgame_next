@@ -135,13 +135,11 @@ export async function getJoinsByUser({
   }
 }
 
-export async function deleteJoin(joinId: string, path: string) {
+export async function deleteJoin(joinId: string) {
   try {
     await connectToDatabase();
 
     const join = await Join.findByIdAndDelete(joinId);
-
-    revalidatePath(path);
 
     return JSON.parse(JSON.stringify(join));
   } catch (error) {

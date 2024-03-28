@@ -209,23 +209,3 @@ export async function getRelatedGamesByCategory({
 }
 
 // ADD JOIN
-export async function addJoin({
-  gameId,
-  userId,
-}: {
-  gameId: string;
-  userId: string;
-}) {
-  try {
-    await connectToDatabase();
-
-    const game = await Game.findById(gameId);
-
-    if (!game) throw new Error("Game not found");
-
-    game.joins.push(userId);
-    await game.save();
-  } catch (error) {
-    handleError(error);
-  }
-}

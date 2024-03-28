@@ -53,7 +53,7 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
           join: {
             playerId: userId,
             createdAt: new Date(),
-            path,
+            path: path,
           },
         });
         if (join) {
@@ -67,7 +67,7 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
 
     if (isJoined) {
       try {
-        const deletedJoin = await deleteJoin(joinId, path);
+        const deletedJoin = await deleteJoin(joinId);
         if (deletedJoin) {
           setIsJoined(false);
         }

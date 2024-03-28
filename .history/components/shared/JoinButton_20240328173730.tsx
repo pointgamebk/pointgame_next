@@ -48,13 +48,10 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
   const onSubmit = async () => {
     if (!isJoined) {
       try {
-        const join = await createJoin({
-          gameId: game._id,
-          join: {
-            playerId: userId,
-            createdAt: new Date(),
-            path,
-          },
+        const join = await createJoin(game._id, {
+          playerId: userId,
+          createdAt: new Date(),
+          path: path,
         });
         if (join) {
           setIsJoined(true);
@@ -67,7 +64,7 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
 
     if (isJoined) {
       try {
-        const deletedJoin = await deleteJoin(joinId, path);
+        const deletedJoin = await deleteJoin(joinId);
         if (deletedJoin) {
           setIsJoined(false);
         }

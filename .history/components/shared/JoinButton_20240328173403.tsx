@@ -9,7 +9,7 @@ import { createJoin } from "@/lib/actions/join.actions";
 import { getJoinsByGame, deleteJoin } from "@/lib/actions/join.actions";
 import { IJoin } from "@/lib/database/models/join.model";
 
-const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
+const JoinButton = ({ game: IGame, path: string }) => {
   const [joins, setJoins] = useState([]);
   const [isJoined, setIsJoined] = useState(false);
   const [joinId, setJoinId] = useState("");
@@ -50,11 +50,8 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
       try {
         const join = await createJoin({
           gameId: game._id,
-          join: {
-            playerId: userId,
-            createdAt: new Date(),
-            path,
-          },
+          playerId: userId,
+          createdAt: new Date(),
         });
         if (join) {
           setIsJoined(true);
@@ -67,7 +64,7 @@ const JoinButton = ({ game, path }: { game: IGame; path: string }) => {
 
     if (isJoined) {
       try {
-        const deletedJoin = await deleteJoin(joinId, path);
+        const deletedJoin = await deleteJoin(joinId);
         if (deletedJoin) {
           setIsJoined(false);
         }

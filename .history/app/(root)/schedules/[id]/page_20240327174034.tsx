@@ -26,6 +26,8 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
   const league = await getLeagueById(leagueId);
   const matches = await getMatchesByScheduleId(id);
 
+  console.log(matches);
+
   const isAdmin = league.administrator._id === userId;
 
   return (

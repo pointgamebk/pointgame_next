@@ -1,7 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
 import {
   CreateJoinParams,
   GetJoinsByGameParams,
@@ -16,16 +14,15 @@ import { ObjectId } from "mongodb";
 import User from "../database/models/user.model";
 
 // CREATE JOIN
-export const createJoin = async ({ gameId, join }: CreateJoinParams) => {
+export const createJoin = async (join: CreateJoinParams) => {
   try {
     await connectToDatabase();
 
     const newJoin = await Join.create({
       ...join,
-      game: gameId,
+      game: join.gameId,
+      player: join.playerId,
     });
-
-    revalidatePath(join.path);
 
     return JSON.parse(JSON.stringify(newJoin));
   } catch (error) {
@@ -135,13 +132,11 @@ export async function getJoinsByUser({
   }
 }
 
-export async function deleteJoin(joinId: string, path: string) {
+export async function deleteJoin(joinId: string) {
   try {
     await connectToDatabase();
 
     const join = await Join.findByIdAndDelete(joinId);
-
-    revalidatePath(path);
 
     return JSON.parse(JSON.stringify(join));
   } catch (error) {

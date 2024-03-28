@@ -196,11 +196,9 @@ export type SubmitJoinParams = {
 
 export type CreateJoinParams = {
   gameId: string;
-  join: {
-    playerId: string;
-    createdAt: Date;
-    path: string;
-  };
+  playerId: string;
+  createdAt: Date;
+  path: string;
 };
 
 export type GetJoinsByGameParams = {
