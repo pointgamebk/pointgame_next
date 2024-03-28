@@ -12,7 +12,6 @@ import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Map from "@/components/shared/Map";
-import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 
 const GameDetails = async ({
   params: { id },
@@ -63,8 +62,6 @@ const GameDetails = async ({
           </div>
 
           <Map address={game.location} />
-
-          <JoinConfirmation gameId={id} userId={userId} />
 
           {/* {userId !== organizerId && (
             <JoinButton game={game} path={`games/${id}`} />
