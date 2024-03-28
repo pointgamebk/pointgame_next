@@ -221,10 +221,11 @@ export async function addJoin({
 
     const game = await Game.findById(gameId);
 
+    console.log(game);
+
     if (!game) throw new Error("Game not found");
 
     game.joins.push(userId);
-
     await game.save();
   } catch (error) {
     handleError(error);
@@ -246,10 +247,7 @@ export async function removeJoin({
 
     if (!game) throw new Error("Game not found");
 
-    game.joins = game.joins.filter(
-      (join: string) => join.toString() !== userId
-    );
-
+    game.joins = game.joins.filter((join: string) => join !== userId);
     await game.save();
   } catch (error) {
     handleError(error);

@@ -221,10 +221,11 @@ export async function addJoin({
 
     const game = await Game.findById(gameId);
 
+    console.log(game);
+
     if (!game) throw new Error("Game not found");
 
     game.joins.push(userId);
-
     await game.save();
   } catch (error) {
     handleError(error);

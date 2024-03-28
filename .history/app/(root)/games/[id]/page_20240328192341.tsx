@@ -13,7 +13,6 @@ import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
-import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 
 const GameDetails = async ({
   params: { id },
@@ -21,26 +20,37 @@ const GameDetails = async ({
 }: SearchParamProps) => {
   const game = await getGameById(id);
 
-  const { sessionClaims } = auth();
-
-  const userId = sessionClaims?.userId as string;
-  const organizerId = game.organizer._id;
-
-  const isOrganizer = userId === organizerId;
+  console.log(game);
 
   const joins = game.joins;
-  const join = joins.find((join: any) => join === userId);
+
+  const joined = joins.some((join: any) => join.user._id === userId);
+
+  console.log(joins);
+
+  if (joined) {
+    console.log("User has joined this game");
+  }
 
   const comments = await getCommentsByGame({
     gameId: id,
     searchString: "",
   });
+  // const joins = await getJoinsByGame({
+  //   gameId: id,
+  //   searchString: "",
+  // });
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
   //   gameId: game._id,
   //   page: searchParams.page as string,
   // });
+
+  const { sessionClaims } = auth();
+
+  const userId = sessionClaims?.userId as string;
+  const organizerId = game.organizer._id;
 
   return (
     <>
@@ -66,15 +76,13 @@ const GameDetails = async ({
 
           <Map address={game.location} />
 
-          {!isOrganizer && (
-            <div>
-              {join ? (
-                <UnjoinConfirmation gameId={id} userId={userId} />
-              ) : (
-                <JoinConfirmation gameId={id} userId={userId} />
-              )}
-            </div>
-          )}
+          <div className="text-green">
+            <JoinConfirmation gameId={id} userId={userId} />
+          </div>
+
+          {/* {userId !== organizerId && (
+            <JoinButton game={game} path={`games/${id}`} />
+          )} */}
 
           <div className="flex flex-col gap-5">
             <div className="flex gap-2 md:gap-3">

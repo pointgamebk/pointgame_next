@@ -31,7 +31,7 @@ export const UnjoinConfirmation = ({
 
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
-          <AlertDialogTitle>Unjoin this game?</AlertDialogTitle>
+          <AlertDialogTitle>Join this game?</AlertDialogTitle>
           {/* <AlertDialogDescription className="p-regular-16 text-grey-600">
             This will permanently delete this player from the team and all their
             team data. This action is irreversible.
@@ -48,7 +48,7 @@ export const UnjoinConfirmation = ({
               })
             }
           >
-            {isPending ? "Unjoining..." : "Unjoin"}
+            {isPending ? "Joining..." : "Join"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

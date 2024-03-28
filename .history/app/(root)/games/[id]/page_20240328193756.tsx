@@ -26,15 +26,19 @@ const GameDetails = async ({
   const userId = sessionClaims?.userId as string;
   const organizerId = game.organizer._id;
 
-  const isOrganizer = userId === organizerId;
-
   const joins = game.joins;
   const join = joins.find((join: any) => join === userId);
+
+  console.log(join);
 
   const comments = await getCommentsByGame({
     gameId: id,
     searchString: "",
   });
+  // const joins = await getJoinsByGame({
+  //   gameId: id,
+  //   searchString: "",
+  // });
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
@@ -66,15 +70,21 @@ const GameDetails = async ({
 
           <Map address={game.location} />
 
-          {!isOrganizer && (
-            <div>
-              {join ? (
-                <UnjoinConfirmation gameId={id} userId={userId} />
-              ) : (
-                <JoinConfirmation gameId={id} userId={userId} />
-              )}
-            </div>
-          )}
+          <div>
+            {join ? (
+              <UnjoinConfirmation gameId={id} userId={userId} />
+            ) : (
+              <JoinConfirmation gameId={id} userId={userId} />
+            )}
+          </div>
+
+          <div className="text-green">
+            <JoinConfirmation gameId={id} userId={userId} />
+          </div>
+
+          {/* {userId !== organizerId && (
+            <JoinButton game={game} path={`games/${id}`} />
+          )} */}
 
           <div className="flex flex-col gap-5">
             <div className="flex gap-2 md:gap-3">

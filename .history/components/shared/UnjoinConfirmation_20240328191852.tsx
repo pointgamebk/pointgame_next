@@ -14,7 +14,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { removeJoin } from "@/lib/actions/game.actions";
+import { addJoin } from "@/lib/actions/game.actions";
 
 export const UnjoinConfirmation = ({
   gameId,
@@ -27,11 +27,11 @@ export const UnjoinConfirmation = ({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="text-green">Unjoin</AlertDialogTrigger>
+      <AlertDialogTrigger className="text-green">Join</AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
-          <AlertDialogTitle>Unjoin this game?</AlertDialogTitle>
+          <AlertDialogTitle>Join this game?</AlertDialogTitle>
           {/* <AlertDialogDescription className="p-regular-16 text-grey-600">
             This will permanently delete this player from the team and all their
             team data. This action is irreversible.
@@ -44,11 +44,11 @@ export const UnjoinConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await removeJoin({ gameId, userId });
+                await addJoin({ gameId, userId });
               })
             }
           >
-            {isPending ? "Unjoining..." : "Unjoin"}
+            {isPending ? "Joining..." : "Join"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
