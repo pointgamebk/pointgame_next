@@ -6,7 +6,6 @@ import { connectToDatabase } from "@/lib/database";
 import Game from "../database/models/game.model";
 import User from "../database/models/user.model";
 import Category from "../database/models/category.model";
-import Comment from "../database/models/comment.model";
 import { handleError } from "@/lib/utils";
 
 import {
@@ -96,8 +95,8 @@ export async function deleteGame({ gameId, path }: DeleteGameParams) {
   try {
     await connectToDatabase();
 
-    // Update the 'comments' collection to remove references to the game
-    await Comment.deleteMany({ game: gameId });
+    //Update the 'comments' collection to remove references to the game
+    await Promise.all([]);
 
     const deletedGame = await Game.findByIdAndDelete(gameId);
     if (deletedGame) revalidatePath(path);

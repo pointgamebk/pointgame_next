@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { getScheduleById } from "@/lib/actions/schedule.actions";
 import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
 import { getLeagueById } from "@/lib/actions/league.action";
-import { IMatch } from "@/lib/database/models/match.model";
+import { IMatch } from "@/lib/database/models/match.model.";
 import MatchForm from "@/components/shared/MatchForm";
 import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";

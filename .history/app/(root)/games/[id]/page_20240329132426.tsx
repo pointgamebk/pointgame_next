@@ -1,11 +1,13 @@
 import { auth } from "@clerk/nextjs";
 import CommentForm from "@/components/shared/CommentForm";
 import Comments from "@/components/shared/Comments";
+import JoinButton from "@/components/shared/JoinButton";
 import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
 import { getCommentsByGame } from "@/lib/actions/comment.actions";
+import { getJoinsByGame } from "@/lib/actions/join.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";

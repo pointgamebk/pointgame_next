@@ -97,7 +97,6 @@ export async function deleteGame({ gameId, path }: DeleteGameParams) {
     await connectToDatabase();
 
     // Update the 'comments' collection to remove references to the game
-    await Comment.deleteMany({ game: gameId });
 
     const deletedGame = await Game.findByIdAndDelete(gameId);
     if (deletedGame) revalidatePath(path);

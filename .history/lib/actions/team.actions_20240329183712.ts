@@ -8,7 +8,7 @@ import { CreateTeamParams } from "@/types";
 import Team from "../database/models/team.model";
 import User from "../database/models/user.model";
 import { revalidatePath } from "next/cache";
-import Match from "../database/models/match.model";
+import Match from "../database/models/match.model.";
 
 const populateTeam = (query: any) => {
   return query
@@ -110,11 +110,7 @@ export async function addPlayerToTeam(
 }
 
 //DELETE TEAM
-export const deleteTeam = async (
-  teamId: string,
-  leagueId: string,
-  path: string
-) => {
+export const deleteTeam = async (teamId: string, leagueId: string) => {
   try {
     await connectToDatabase();
 
@@ -130,8 +126,6 @@ export const deleteTeam = async (
     // Remove the team from the league
     league.teams = league.teams.filter((t: ITeam) => t.toString() !== teamId);
     await league.save();
-
-    revalidatePath(path);
   } catch (error) {
     handleError(error);
   }

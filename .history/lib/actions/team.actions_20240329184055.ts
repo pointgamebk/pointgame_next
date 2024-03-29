@@ -8,7 +8,7 @@ import { CreateTeamParams } from "@/types";
 import Team from "../database/models/team.model";
 import User from "../database/models/user.model";
 import { revalidatePath } from "next/cache";
-import Match from "../database/models/match.model";
+import Match from "../database/models/match.model.";
 
 const populateTeam = (query: any) => {
   return query
