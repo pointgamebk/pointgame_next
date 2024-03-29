@@ -108,7 +108,6 @@ export async function addPlayerToTeam(
   }
 }
 
-//DELETE TEAM
 export const deleteTeam = async (teamId: string, leagueId: string) => {
   try {
     await connectToDatabase();
@@ -127,7 +126,6 @@ export const deleteTeam = async (teamId: string, leagueId: string) => {
   }
 };
 
-// REMOVE PLAYER FROM TEAM
 export const removePlayerFromTeam = async (teamId: string, userId: string) => {
   try {
     await connectToDatabase();
@@ -151,7 +149,6 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
   }
 };
 
-// TEAMS BY LEAGUE
 export async function getTeamsByLeague(leagueId: string) {
   try {
     await connectToDatabase();

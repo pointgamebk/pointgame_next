@@ -104,7 +104,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <section className="wrapper overflow-x-auto text-tan">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <UserSearch teamId={id} leagueId={team.league._id} />
+              <UserSearch teamId={id} />
             </div>
           </div>
         </section>

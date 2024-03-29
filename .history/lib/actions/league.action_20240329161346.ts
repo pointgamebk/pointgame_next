@@ -45,8 +45,6 @@ export const createLeague = async ({
 
     administrator.leaguesJoined.push(newLeague._id);
 
-    await administrator.save();
-
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newLeague));

@@ -82,14 +82,14 @@ export async function addPlayerToTeam(
     if (!user) throw new Error("User not found");
 
     // Push the ID of the user you want to add to the `players` array
+    //team.players.push(userId);
     if (!team.players.includes(userId)) {
-      // If not, push the userId into the players array
       team.players.push(userId);
     } else {
       return;
     }
 
-    // Push the ID of the league you want to add to the `leaguesJoined` array
+    // Push the ID of the team you want to add to the `leaguesJoined` array
     if (!user.leaguesJoined.includes(leagueId)) {
       // If not, push the leagueId into the leaguesJoined array
       user.leaguesJoined.push(leagueId);
@@ -108,7 +108,6 @@ export async function addPlayerToTeam(
   }
 }
 
-//DELETE TEAM
 export const deleteTeam = async (teamId: string, leagueId: string) => {
   try {
     await connectToDatabase();
@@ -127,7 +126,6 @@ export const deleteTeam = async (teamId: string, leagueId: string) => {
   }
 };
 
-// REMOVE PLAYER FROM TEAM
 export const removePlayerFromTeam = async (teamId: string, userId: string) => {
   try {
     await connectToDatabase();
@@ -151,7 +149,6 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
   }
 };
 
-// TEAMS BY LEAGUE
 export async function getTeamsByLeague(leagueId: string) {
   try {
     await connectToDatabase();

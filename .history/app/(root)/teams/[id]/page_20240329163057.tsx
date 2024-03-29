@@ -9,6 +9,8 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
   const team = await getTeamById(id);
   const players = team?.players;
 
+  console.log(team);
+
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;

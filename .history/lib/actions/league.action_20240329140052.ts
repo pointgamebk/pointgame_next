@@ -43,9 +43,7 @@ export const createLeague = async ({
 
     if (!newLeague) throw new Error("League not created");
 
-    administrator.leaguesJoined.push(newLeague._id);
-
-    await administrator.save();
+    administrator.leagues.push(newLeague._id);
 
     revalidatePath(path);
 

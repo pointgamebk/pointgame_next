@@ -222,12 +222,15 @@ export async function addJoin({
     await connectToDatabase();
 
     const game = await Game.findById(gameId);
+
     if (!game) throw new Error("Game not found");
 
     const user = await User.findById(userId);
+
     if (!user) throw new Error("User not found");
 
     game.joins.push(userId);
+
     user.gamesJoined.push(gameId);
 
     await game.save();
@@ -264,12 +267,7 @@ export async function removeJoin({
       (join: string) => join.toString() !== userId
     );
 
-    user.gamesJoined = user.gamesJoined.filter(
-      (game: string) => game.toString() !== gameId
-    );
-
     await game.save();
-    await user.save();
 
     revalidatePath(path);
   } catch (error) {

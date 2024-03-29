@@ -265,7 +265,7 @@ export async function removeJoin({
     );
 
     user.gamesJoined = user.gamesJoined.filter(
-      (game: string) => game.toString() !== gameId
+      (gameId: string) => gameId.toString() !== gameId
     );
 
     await game.save();
