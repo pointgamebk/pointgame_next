@@ -69,11 +69,7 @@ const GameDetails = async ({
           {!isOrganizer && (
             <div>
               {join ? (
-                <UnjoinConfirmation
-                  gameId={id}
-                  userId={userId}
-                  path={`/games/${id}`}
-                />
+                <UnjoinConfirmation gameId={id} userId={userId} />
               ) : (
                 <JoinConfirmation
                   gameId={id}

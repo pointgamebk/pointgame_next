@@ -239,11 +239,9 @@ export async function addJoin({
 export async function removeJoin({
   gameId,
   userId,
-  path,
 }: {
   gameId: string;
   userId: string;
-  path: string;
 }) {
   try {
     await connectToDatabase();
@@ -257,8 +255,6 @@ export async function removeJoin({
     );
 
     await game.save();
-
-    revalidatePath(path);
   } catch (error) {
     handleError(error);
   }
