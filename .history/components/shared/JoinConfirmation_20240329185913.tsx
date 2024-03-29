@@ -14,9 +14,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { removeJoin } from "@/lib/actions/game.actions";
+import { addJoin } from "@/lib/actions/game.actions";
 
-export const UnjoinConfirmation = ({
+export const JoinConfirmation = ({
   gameId,
   userId,
   path,
@@ -31,15 +31,15 @@ export const UnjoinConfirmation = ({
     <AlertDialog>
       <AlertDialogTrigger className="text-green">
         <div className="flex gap-3">
-          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-red-200">
-            Unjoin Game
+          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-white">
+            Join Game
           </p>
         </div>
       </AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
-          <AlertDialogTitle>Unjoin this game?</AlertDialogTitle>
+          <AlertDialogTitle>Join this game?</AlertDialogTitle>
         </AlertDialogHeader>
 
         <AlertDialogFooter>
@@ -48,11 +48,11 @@ export const UnjoinConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await removeJoin({ gameId, userId, path });
+                await addJoin({ gameId, userId, path });
               })
             }
           >
-            {isPending ? "Unjoining..." : "Unjoin"}
+            {isPending ? "Joining..." : "Join"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

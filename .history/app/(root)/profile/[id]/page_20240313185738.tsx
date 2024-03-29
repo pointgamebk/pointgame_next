@@ -1,6 +1,8 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getGamesByUser } from "@/lib/actions/game.actions";
+import { getJoinsByUser } from "@/lib/actions/join.actions";
+import { IJoin } from "@/lib/database/models/join.model";
 import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -18,8 +20,12 @@ const ProfilePage = async ({
   //Profile user id
   const userId = id;
 
+  const joinsPage = Number(searchParams?.ordersPage) || 1;
   const gamesPage = Number(searchParams?.eventsPage) || 1;
 
+  const joins = await getJoinsByUser({ userId, page: joinsPage });
+
+  const joinedGames = joins?.data?.map((join: IJoin) => join.game) || [];
   const organizedGames = await getGamesByUser({ userId, page: gamesPage });
 
   return (
@@ -35,6 +41,21 @@ const ProfilePage = async ({
               <Link href="/#events">Explore More Games</Link>
             </Button>
           </div>
+        </section>
+      )}
+
+      {sessionUserId === userId && (
+        <section className="wrapper py-8 ">
+          <Collection
+            data={joinedGames}
+            emptyTitle="No games joined yet"
+            emptyStateSubtext="No worries - plenty of exciting games to check out!"
+            collectionType="My_Joins"
+            limit={3}
+            page={joinsPage}
+            urlParamName="joinsPage"
+            totalPages={joins?.totalPages}
+          />
         </section>
       )}
 

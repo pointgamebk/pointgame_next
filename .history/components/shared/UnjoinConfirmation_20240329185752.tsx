@@ -31,7 +31,7 @@ export const UnjoinConfirmation = ({
     <AlertDialog>
       <AlertDialogTrigger className="text-green">
         <div className="flex gap-3">
-          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-red-200">
+          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-red-600">
             Unjoin Game
           </p>
         </div>

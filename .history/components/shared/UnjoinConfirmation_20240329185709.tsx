@@ -29,9 +29,9 @@ export const UnjoinConfirmation = ({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="text-green">
+      <AlertDialogTrigger className="text-red-600">
         <div className="flex gap-3">
-          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-red-200">
+          <p className="p-medium-18 rounded-full bg-white/30 px-4 py-2.5 text-white">
             Unjoin Game
           </p>
         </div>
