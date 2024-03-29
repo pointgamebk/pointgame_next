@@ -68,11 +68,8 @@ export async function deleteUser(clerkId: string) {
       // Update the 'games' collection to remove references to the user
       Game.deleteMany({ organizer: userToDelete._id }),
 
-      // Update Game 'joins' array to remove references to the user
-      Game.updateMany(
-        { joins: userToDelete._id },
-        { $pull: { joins: userToDelete._id } }
-      ),
+      // Update the 'joins' collection to remove references to the user
+      //Join.deleteMany({ player: userToDelete._id }),
 
       // Update the 'teams' collection to remove references to the user
       Team.updateMany(
