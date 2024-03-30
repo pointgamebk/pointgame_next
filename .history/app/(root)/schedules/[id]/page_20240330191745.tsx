@@ -69,11 +69,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[100px] py-3 text-left text-grey-400">
                 Winner
               </th>
-              {isAdmin && (
-                <th className="min-w-[100px] py-3 text-left text-grey-400">
-                  Edit
-                </th>
-              )}
             </tr>
           </thead>
           <tbody>

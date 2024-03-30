@@ -135,11 +135,11 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Team Name
               </th>
               {isAdmin && (
-                <th className="min-w-[75px] flex-1 py-3 pr-4 text-left text-grey-400">
+                <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                   Edit
                 </th>
               )}
@@ -161,12 +161,12 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[100px] py-4 text-green">
+                      <td className="min-w-[250px] py-4 text-green">
                         <Link href={`/teams/${row._id}`}>{row.name}</Link>
                       </td>
 
                       {isAdmin && (
-                        <td className="min-w-[75px] flex-1 py-4 pr-4 text-red-600">
+                        <td className="min-w-[200px] flex-1 py-4 pr-4 text-red-600">
                           <DeleteTeamConfirmation
                             teamId={row._id}
                             leagueId={id}

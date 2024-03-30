@@ -69,11 +69,6 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[100px] py-3 text-left text-grey-400">
                 Winner
               </th>
-              {isAdmin && (
-                <th className="min-w-[100px] py-3 text-left text-grey-400">
-                  Edit
-                </th>
-              )}
             </tr>
           </thead>
           <tbody>
@@ -123,7 +118,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                         {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
                       {isAdmin && (
-                        <td className="min-w-[100px] py-4 text-red-600">
+                        <td className="min-w-[150px] py-4 text-red-600">
                           <DeleteMatchConfirmation
                             matchId={row._id}
                             path={`/schedules/${id}`}

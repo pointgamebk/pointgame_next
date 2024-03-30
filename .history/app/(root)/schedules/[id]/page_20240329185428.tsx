@@ -57,23 +57,18 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[100px] py-3 text-left text-grey-400">
+              <th className="min-w-[250px] py-3 text-left text-grey-400">
                 Team 1
               </th>
-              <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Team 2
               </th>
-              <th className="min-w-[100px] py-3 text-left text-grey-400">
+              <th className="min-w-[150px] py-3 text-left text-grey-400">
                 Game Date
               </th>
-              <th className="min-w-[100px] py-3 text-left text-grey-400">
+              <th className="min-w-[150px] py-3 text-left text-grey-400">
                 Winner
               </th>
-              {isAdmin && (
-                <th className="min-w-[100px] py-3 text-left text-grey-400">
-                  Edit
-                </th>
-              )}
             </tr>
           </thead>
           <tbody>
@@ -92,7 +87,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       className="p-regular-14 lg:p-regular-16 border-b "
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[100px] flex-1 py-4 pr-4 text-green">
+                      <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
                         {isAdmin ? (
                           <SelectWinner
                             matchId={row._id}
@@ -104,7 +99,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                           row.teamOne.name
                         )}
                       </td>
-                      <td className="min-w-[100px] flex-1 py-4 pr-4 text-green">
+                      <td className="min-w-[200px] flex-1 py-4 pr-4 text-green">
                         {isAdmin ? (
                           <SelectWinner
                             matchId={row._id}
@@ -116,14 +111,14 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                           row.teamTwo.name
                         )}
                       </td>
-                      <td className="min-w-[100px] py-4 text-green">
+                      <td className="min-w-[150px] py-4 text-green">
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
-                      <td className="min-w-[100px] py-4 text-green">
+                      <td className="min-w-[150px] py-4 text-green">
                         {row.winner?.name ? row.winner.name : "TBD"}
                       </td>
                       {isAdmin && (
-                        <td className="min-w-[100px] py-4 text-red-600">
+                        <td className="min-w-[150px] py-4 text-red-600">
                           <DeleteMatchConfirmation
                             matchId={row._id}
                             path={`/schedules/${id}`}

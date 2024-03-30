@@ -36,13 +36,13 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             <table className="w-full border-collapse border-t">
               <thead>
                 <tr className="p-medium-14 border-b text-grey-500">
-                  <th className="min-w-[100px] py-3 text-left text-grey-400">
+                  <th className="min-w-[250px] py-3 text-left text-grey-400">
                     Game Title
                   </th>
-                  <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+                  <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                     Game Date
                   </th>
-                  <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+                  <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                     Game Location
                   </th>
                 </tr>
@@ -62,10 +62,10 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                         className="p-regular-14 lg:p-regular-16 border-b text-white"
                         style={{ boxSizing: "border-box" }}
                       >
-                        <td className="min-w-[100px] py-4 text-green">
+                        <td className="min-w-[250px] py-4 text-green">
                           <Link href={`/games/${row._id}`}>{row.title}</Link>
                         </td>
-                        <td className="min-w-[100px] flex-1 py-4 pr-4">
+                        <td className="min-w-[200px] flex-1 py-4 pr-4">
                           {formatDateTime(row.startDateTime).dateTime}
                         </td>
                         <td className="min-w-[200px] flex-1 py-4 pr-4">
@@ -97,13 +97,13 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[100px] py-3 text-left text-grey-400">
+              <th className="min-w-[250px] py-3 text-left text-grey-400">
                 Game Title
               </th>
-              <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Game Date
               </th>
-              <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Game Location
               </th>
             </tr>
@@ -123,13 +123,13 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                     className="p-regular-14 lg:p-regular-16 border-b text-white"
                     style={{ boxSizing: "border-box" }}
                   >
-                    <td className="min-w-[100px] py-4 text-green">
+                    <td className="min-w-[250px] py-4 text-green">
                       <Link href={`/games/${row._id}`}>{row.title}</Link>
                     </td>
-                    <td className="min-w-[100px] flex-1 py-4 pr-4">
+                    <td className="min-w-[200px] flex-1 py-4 pr-4">
                       {formatDateTime(row.startDateTime).dateTime}
                     </td>
-                    <td className="min-w-[100px] flex-1 py-4 pr-4">
+                    <td className="min-w-[200px] flex-1 py-4 pr-4">
                       {row.location}
                     </td>
                   </tr>
