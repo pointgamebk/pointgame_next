@@ -45,10 +45,6 @@ export async function createGame({ userId, game, path }: CreateGameParams) {
       category: game.categoryId,
       organizer: userId,
     });
-
-    organizer.gamesOrganized.push(newGame._id);
-    await organizer.save();
-
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newGame));
@@ -102,12 +98,6 @@ export async function deleteGame({ gameId, userId, path }: DeleteGameParams) {
 
     const user = await User.findById(userId);
     if (!user) throw new Error("User not found");
-
-    // Remove the game from the 'gamesOrganized' array in the user document
-    user.gamesOrganized = user.gamesOrganized.filter(
-      (game: string) => game.toString() !== gameId
-    );
-    await user.save();
 
     // Update the 'comments' collection to remove references to the game
     await Comment.deleteMany({ game: gameId });

@@ -1,7 +1,6 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getGamesByUser } from "@/lib/actions/game.actions";
-import { getUserById } from "@/lib/actions/user.actions";
 import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";

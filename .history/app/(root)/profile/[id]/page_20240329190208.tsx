@@ -1,7 +1,6 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getGamesByUser } from "@/lib/actions/game.actions";
-import { getUserById } from "@/lib/actions/user.actions";
 import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -52,7 +51,7 @@ const ProfilePage = async ({
       </section>
 
       <section className="wrapper py-8">
-        {/* <Collection
+        <Collection
           data={organizedGames?.data}
           emptyTitle="No games created yet"
           emptyStateSubtext="Go start one now!"
@@ -61,7 +60,7 @@ const ProfilePage = async ({
           page={gamesPage}
           urlParamName="gamesPage"
           totalPages={organizedGames?.totalPages}
-        /> */}
+        />
       </section>
     </>
   );
