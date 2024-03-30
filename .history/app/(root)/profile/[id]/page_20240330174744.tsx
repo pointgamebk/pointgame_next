@@ -13,10 +13,13 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   const sessionUserId = sessionClaims?.userId as string;
 
   //Profile user id
+  //const userId = id;
   const user = await getUserById(id);
 
   const gamesJoined = user.gamesJoined;
   const gamesOrganized = user.gamesOrganized;
+
+  console.log(gamesJoined, gamesOrganized);
 
   return (
     <>

@@ -13,15 +13,18 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   const sessionUserId = sessionClaims?.userId as string;
 
   //Profile user id
-  const user = await getUserById(id);
+  const userId = id;
+  const user = await getUserById(userId);
 
   const gamesJoined = user.gamesJoined;
   const gamesOrganized = user.gamesOrganized;
 
+  console.log(gamesJoined, gamesOrganized);
+
   return (
     <>
       {/* My Joins */}
-      {sessionUserId === id && (
+      {sessionUserId === userId && (
         <section className=" bg-dotted-pattern bg-cover bg-center py-5">
           <div className="wrapper flex items-center justify-center sm:justify-between">
             <h3 className="h3-bold text-center sm:text-left text-white">
@@ -32,7 +35,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             </Button>
           </div>
 
-          <div className="wrapper py-8">
+          <div>
             <table className="w-full border-collapse border-t">
               <thead>
                 <tr className="p-medium-14 border-b text-grey-500">
@@ -109,7 +112,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             </tr>
           </thead>
           <tbody>
-            {gamesOrganized.length === 0 ? (
+            {gamesJoined.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No games organized currently.

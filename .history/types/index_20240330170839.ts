@@ -215,11 +215,6 @@ export type GetJoinsByUserParams = {
   page: string | number | null;
 };
 
-// ====== PROFILE PARAMS
-export type ProfileProps = {
-  params: { id: string };
-};
-
 // ====== URL QUERY PARAMS
 export type UrlQueryParams = {
   params: string;
@@ -232,9 +227,8 @@ export type RemoveUrlQueryParams = {
   keysToRemove: string[];
 };
 
-export type SearchParamProps = {
+export type ProfileProps = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 // ====== COMMENT PARAMS

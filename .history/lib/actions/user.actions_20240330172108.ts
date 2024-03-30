@@ -18,7 +18,7 @@ const populateUser = (query: any) => {
     .populate({
       path: "gamesJoined",
       model: Game,
-      select: "_id title startDateTime location",
+      select: "_id title startDateTime location category",
     })
     .populate({
       path: "gamesOrganized",
@@ -67,7 +67,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
 }
 
 export async function deleteUser(clerkId: string) {
-  const commish_id = "660886ceb8db48e3e294acc3";
+  const commish_id = "65f1efa92e11aa0ffaa64068";
   try {
     await connectToDatabase();
 

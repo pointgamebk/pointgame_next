@@ -13,10 +13,13 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   const sessionUserId = sessionClaims?.userId as string;
 
   //Profile user id
+  //const userId = id;
   const user = await getUserById(id);
 
   const gamesJoined = user.gamesJoined;
   const gamesOrganized = user.gamesOrganized;
+
+  console.log(gamesJoined, gamesOrganized);
 
   return (
     <>
@@ -109,7 +112,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             </tr>
           </thead>
           <tbody>
-            {gamesOrganized.length === 0 ? (
+            {gamesJoined.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No games organized currently.

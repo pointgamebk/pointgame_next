@@ -18,6 +18,8 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   const gamesJoined = user.gamesJoined;
   const gamesOrganized = user.gamesOrganized;
 
+  console.log(gamesJoined, gamesOrganized);
+
   return (
     <>
       {/* My Joins */}

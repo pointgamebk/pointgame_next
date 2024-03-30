@@ -14,17 +14,12 @@ import League from "../database/models/league.model";
 import Comment from "../database/models/comment.model";
 
 const populateUser = (query: any) => {
-  return query
-    .populate({
-      path: "gamesJoined",
-      model: Game,
-      select: "_id title startDateTime location",
-    })
-    .populate({
-      path: "gamesOrganized",
-      model: Game,
-      select: "_id title startDateTime location",
-    });
+  return query.populate({
+    path: "gamesJoined",
+    model: Game,
+    select: "_id title startDateTime location",
+  });
+  // .populate({ path: "category", model: Category, select: "_id name" });
 };
 
 export async function createUser(user: CreateUserParams) {
@@ -42,7 +37,7 @@ export async function getUserById(userId: string) {
   try {
     await connectToDatabase();
 
-    const user = await populateUser(User.findById(userId));
+    const user = await User.findById(userId);
 
     if (!user) throw new Error("User not found");
     return JSON.parse(JSON.stringify(user));
@@ -67,7 +62,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
 }
 
 export async function deleteUser(clerkId: string) {
-  const commish_id = "660886ceb8db48e3e294acc3";
+  const commish_id = "65f1efa92e11aa0ffaa64068";
   try {
     await connectToDatabase();
 

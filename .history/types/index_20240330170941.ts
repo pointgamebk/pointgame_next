@@ -216,9 +216,6 @@ export type GetJoinsByUserParams = {
 };
 
 // ====== PROFILE PARAMS
-export type ProfileProps = {
-  params: { id: string };
-};
 
 // ====== URL QUERY PARAMS
 export type UrlQueryParams = {
