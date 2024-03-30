@@ -3,6 +3,7 @@ import { formatDateTime } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { DeleteGameConfirmation } from "./DeleteGameConfirmation";
 import { Separator } from "../ui/separator";
 
 type CommentCardProps = {
