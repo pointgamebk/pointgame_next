@@ -31,10 +31,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
               <Link href="/#events">Explore More Games</Link>
             </Button>
           </div>
-        </section>
-      )}
-      {sessionUserId === id && (
-        <section className="wrapper py-8">
+
           <div className="wrapper py-8">
             <table className="w-full border-collapse border-t">
               <thead>
