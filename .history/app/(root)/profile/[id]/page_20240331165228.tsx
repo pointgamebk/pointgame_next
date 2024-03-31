@@ -71,7 +71,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                         <td className="min-w-[100px] flex-1 py-4 pr-4">
                           {formatDateTime(row.startDateTime).dateTime}
                         </td>
-                        <td className="min-w-[100px] flex-1 py-4 pr-4">
+                        <td className="min-w-[200px] flex-1 py-4 pr-4">
                           {row.location}
                         </td>
                       </tr>
