@@ -5,6 +5,7 @@ import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
+import { getCommentsByGame } from "@/lib/actions/comment.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
@@ -12,7 +13,10 @@ import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 
-const GameDetails = async ({ params: { id } }: SearchParamProps) => {
+const GameDetails = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
   const game = await getGameById(id);
 
   const { sessionClaims } = auth();
@@ -25,7 +29,14 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const joins = game.joins;
   const join = joins.find((join: any) => join === userId);
 
-  const comments = game.comments;
+  const comments = await getCommentsByGame({
+    gameId: id,
+    searchString: "",
+  });
+
+  const _comments = game.comments;
+
+  console.log(_comments);
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
@@ -124,6 +135,9 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
               data={comments}
               emptyTitle="No comments yet"
               emptyStateSubtext="Check again later"
+              limit={6}
+              page={searchParams.page as string}
+              totalPages={1}
             />
           </div>
         </div>

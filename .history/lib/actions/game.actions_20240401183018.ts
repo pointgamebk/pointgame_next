@@ -30,16 +30,7 @@ const populateGame = (query: any) => {
       select: "_id firstName lastName",
     })
     .populate({ path: "category", model: Category, select: "_id name" })
-    .populate({
-      path: "comments",
-      model: Comment,
-      select: "_id body createdAt",
-      populate: {
-        path: "user",
-        model: User,
-        select: "username", // Add any other user properties you need
-      },
-    });
+    .populate({ path: "comments", model: Comment, select: "_id body user" });
 };
 
 // CREATE
@@ -173,6 +164,35 @@ export async function getAllGames({
     handleError(error);
   }
 }
+
+// GET GAMES BY ORGANIZER
+// export async function getGamesByUser({
+//   userId,
+//   limit = 6,
+//   page,
+// }: GetGamesByUserParams) {
+//   try {
+//     await connectToDatabase();
+
+//     const conditions = { organizer: userId };
+//     const skipAmount = (page - 1) * limit;
+
+//     const gamesQuery = Game.find(conditions)
+//       .sort({ createdAt: "desc" })
+//       .skip(skipAmount)
+//       .limit(limit);
+
+//     const games = await populateGame(gamesQuery);
+//     const gamesCount = await Game.countDocuments(conditions);
+
+//     return {
+//       data: JSON.parse(JSON.stringify(games)),
+//       totalPages: Math.ceil(gamesCount / limit),
+//     };
+//   } catch (error) {
+//     handleError(error);
+//   }
+// }
 
 // GET RELATED GAMES: GAMES WITH SAME CATEGORY
 export async function getRelatedGamesByCategory({

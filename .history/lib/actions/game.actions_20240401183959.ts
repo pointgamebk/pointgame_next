@@ -22,6 +22,17 @@ const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
 };
 
+// const populateGame = (query: any) => {
+//   return query
+//     .populate({
+//       path: "organizer",
+//       model: User,
+//       select: "_id firstName lastName",
+//     })
+//     .populate({ path: "category", model: Category, select: "_id name" })
+//     .populate({ path: "comments", model: Comment, select: "_id body" });
+// };
+
 const populateGame = (query: any) => {
   return query
     .populate({
@@ -33,7 +44,7 @@ const populateGame = (query: any) => {
     .populate({
       path: "comments",
       model: Comment,
-      select: "_id body createdAt",
+      select: "_id body",
       populate: {
         path: "user",
         model: User,
@@ -173,6 +184,35 @@ export async function getAllGames({
     handleError(error);
   }
 }
+
+// GET GAMES BY ORGANIZER
+// export async function getGamesByUser({
+//   userId,
+//   limit = 6,
+//   page,
+// }: GetGamesByUserParams) {
+//   try {
+//     await connectToDatabase();
+
+//     const conditions = { organizer: userId };
+//     const skipAmount = (page - 1) * limit;
+
+//     const gamesQuery = Game.find(conditions)
+//       .sort({ createdAt: "desc" })
+//       .skip(skipAmount)
+//       .limit(limit);
+
+//     const games = await populateGame(gamesQuery);
+//     const gamesCount = await Game.countDocuments(conditions);
+
+//     return {
+//       data: JSON.parse(JSON.stringify(games)),
+//       totalPages: Math.ceil(gamesCount / limit),
+//     };
+//   } catch (error) {
+//     handleError(error);
+//   }
+// }
 
 // GET RELATED GAMES: GAMES WITH SAME CATEGORY
 export async function getRelatedGamesByCategory({

@@ -1,13 +1,26 @@
 import { IComment } from "@/lib/database/models/comment.model";
 import CommentCard from "./CommentCard";
+import Pagination from "./Pagination";
 
 type CommentsProps = {
   data: IComment[];
   emptyTitle: string;
   emptyStateSubtext: string;
+  // limit: number;
+  // page: number | string;
+  // totalPages?: number;
+  // urlParamName?: string;
 };
 
-const Comments = ({ data, emptyTitle, emptyStateSubtext }: CommentsProps) => {
+const Comments = ({
+  data,
+  emptyTitle,
+  emptyStateSubtext,
+}: // limit,
+// page,
+// totalPages = 0,
+// urlParamName,
+CommentsProps) => {
   return (
     <>
       {data.length > 0 ? (
@@ -21,6 +34,14 @@ const Comments = ({ data, emptyTitle, emptyStateSubtext }: CommentsProps) => {
               );
             })}
           </ul>
+
+          {/* {totalPages > 1 && (
+            <Pagination
+              urlParamName={urlParamName}
+              page={page}
+              totalPages={totalPages}
+            />
+          )} */}
         </div>
       ) : (
         <div className="flex-center wrapper min-h-[200px] w-full flex-col py-28 text-center">

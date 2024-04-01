@@ -5,6 +5,7 @@ import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
+//import { getCommentsByGame } from "@/lib/actions/comment.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
@@ -12,7 +13,10 @@ import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 
-const GameDetails = async ({ params: { id } }: SearchParamProps) => {
+const GameDetails = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
   const game = await getGameById(id);
 
   const { sessionClaims } = auth();

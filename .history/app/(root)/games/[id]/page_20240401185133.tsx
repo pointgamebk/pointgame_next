@@ -12,7 +12,10 @@ import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 
-const GameDetails = async ({ params: { id } }: SearchParamProps) => {
+const GameDetails = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
   const game = await getGameById(id);
 
   const { sessionClaims } = auth();
