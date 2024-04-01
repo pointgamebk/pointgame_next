@@ -11,13 +11,7 @@ export interface IGame extends Document {
   category: { _id: string; name: string };
   organizer: { _id: string; firstName: string; lastName: string };
   joins: [{ _id: string; firstName: string }];
-  comments: [
-    {
-      _id: string;
-      body: string;
-      user: { _id: string; username: string; lastName: string };
-    }
-  ];
+  comments: [{ _id: string; content: string }];
 }
 
 const GameSchema = new Schema({

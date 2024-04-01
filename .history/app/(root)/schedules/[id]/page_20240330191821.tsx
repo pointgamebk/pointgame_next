@@ -8,7 +8,6 @@ import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";
 import { SelectWinner } from "@/components/shared/SelectWinner";
 import { DeleteMatchConfirmation } from "@/components/shared/DeleteMatchConfirmation";
-import { UnsetWinner } from "@/components/shared/UnsetWinner";
 
 type ScheduleDetailsProps = {
   params: {
@@ -120,19 +119,9 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       <td className="min-w-[100px] py-4 text-green">
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
-                      {isAdmin ? (
-                        <td className="min-w-[100px] py-4 text-green">
-                          <UnsetWinner
-                            matchId={row._id}
-                            name={row.winner?.name ? row.winner.name : "TBD"}
-                            path={`/schedules/${id}`}
-                          />
-                        </td>
-                      ) : (
-                        <td className="min-w-[100px] py-4 text-green">
-                          {row.winner?.name ? row.winner.name : "TBD"}
-                        </td>
-                      )}
+                      <td className="min-w-[100px] py-4 text-green">
+                        {row.winner?.name ? row.winner.name : "TBD"}
+                      </td>
                       {isAdmin && (
                         <td className="min-w-[100px] py-4 text-red-600">
                           <DeleteMatchConfirmation

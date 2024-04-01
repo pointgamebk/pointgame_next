@@ -14,17 +14,27 @@ import Game from "../database/models/game.model";
 import User from "../database/models/user.model";
 
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 
 // CREATE COMMENT
 export const createComment = async (comment: CreateCommentParams) => {
   try {
     await connectToDatabase();
 
+    const game = await Game.findById(comment.gameId);
+    if (!game) throw new Error("Game not found");
+
     const newComment = await Comment.create({
       ...comment,
       game: comment.gameId,
       user: comment.userId,
     });
+
+    game.comments.push(newComment._id);
+
+    await game.save();
+
+    revalidatePath(comment.path);
 
     return JSON.parse(JSON.stringify(newComment));
   } catch (error) {

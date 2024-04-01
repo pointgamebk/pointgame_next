@@ -41,6 +41,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
         body: commentData.body,
         userId: userId,
         gameId: gameId,
+        path: `/game/${gameId}`,
       });
 
       if (newComment) {
@@ -58,7 +59,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-5 bg-blue"
       >
-        <div className="flex flex-col gap-5 md:flex-row px-10">
+        <div className="flex flex-col gap-5 md:flex-row px-8">
           <FormField
             control={form.control}
             name="body"
@@ -68,7 +69,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
                   <Input
                     placeholder="Enter a comment..."
                     {...field}
-                    className="input-field"
+                    className="input-field max-w-[600px]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -77,14 +78,16 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
           />
         </div>
 
-        <Button
-          type="submit"
-          size="lg"
-          disabled={form.formState.isSubmitting}
-          className="button col-span-2 w-full"
-        >
-          {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
-        </Button>
+        <div className="px-20">
+          <Button
+            type="submit"
+            size="lg"
+            disabled={form.formState.isSubmitting}
+            className="button col-span-2 w-full max-w-[400px]"
+          >
+            {form.formState.isSubmitting ? "Submitting..." : `Submit Comment `}
+          </Button>
+        </div>
       </form>
     </Form>
   );

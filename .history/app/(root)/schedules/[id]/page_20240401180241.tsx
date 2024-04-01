@@ -120,8 +120,12 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                       <td className="min-w-[100px] py-4 text-green">
                         {formatDateTime(row.startDateTime).dateTime}
                       </td>
+                      {/* <td className="min-w-[100px] py-4 text-green">
+                        {row.winner?.name ? row.winner.name : "TBD"}
+                      </td> */}
                       {isAdmin ? (
                         <td className="min-w-[100px] py-4 text-green">
+                          {/* {row.winner?.name ? row.winner.name : "TBD"} */}
                           <UnsetWinner
                             matchId={row._id}
                             name={row.winner?.name ? row.winner.name : "TBD"}

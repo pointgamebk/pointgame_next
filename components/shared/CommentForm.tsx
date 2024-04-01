@@ -41,6 +41,7 @@ const CommentForm = ({ userId, gameId }: CommentFormProps) => {
         body: commentData.body,
         userId: userId,
         gameId: gameId,
+        path: `/game/${gameId}`,
       });
 
       if (newComment) {

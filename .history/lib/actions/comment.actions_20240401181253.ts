@@ -20,11 +20,18 @@ export const createComment = async (comment: CreateCommentParams) => {
   try {
     await connectToDatabase();
 
+    const game = await Game.findById(comment.gameId);
+    if (!game) throw new Error("Game not found");
+
     const newComment = await Comment.create({
       ...comment,
       game: comment.gameId,
       user: comment.userId,
     });
+
+    game.comments.push(newComment._id);
+
+    await game.save();
 
     return JSON.parse(JSON.stringify(newComment));
   } catch (error) {
