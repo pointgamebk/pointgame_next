@@ -27,8 +27,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const comments = game.comments;
 
-  console.log(game.startDateTime);
-
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
   //   gameId: game._id,
@@ -130,6 +128,19 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
         </div>
       </section>
+
+      {/* <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
+        <CommentForm gameId={id} userId={userId} />
+
+        <Comments
+          data={comments}
+          emptyTitle="No comments yet"
+          emptyStateSubtext="Check again later"
+          limit={6}
+          page={searchParams.page as string}
+          totalPages={1}
+        />
+      </section> */}
     </>
   );
 };

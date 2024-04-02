@@ -126,6 +126,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
               data={comments}
               emptyTitle="No comments yet"
               emptyStateSubtext="Check again later"
+              gameId={id}
             />
           </div>
         </div>

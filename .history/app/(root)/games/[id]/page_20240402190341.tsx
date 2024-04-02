@@ -126,10 +126,24 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
               data={comments}
               emptyTitle="No comments yet"
               emptyStateSubtext="Check again later"
+              gameId={id}
             />
           </div>
         </div>
       </section>
+
+      {/* <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
+        <CommentForm gameId={id} userId={userId} />
+
+        <Comments
+          data={comments}
+          emptyTitle="No comments yet"
+          emptyStateSubtext="Check again later"
+          limit={6}
+          page={searchParams.page as string}
+          totalPages={1}
+        />
+      </section> */}
     </>
   );
 };

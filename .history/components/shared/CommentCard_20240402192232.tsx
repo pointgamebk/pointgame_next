@@ -6,9 +6,10 @@ import { DeleteCommentConfirmation } from "./DeleteCommentConfirmation";
 
 type CommentCardProps = {
   comment: IComment;
+  gameId: string;
 };
 
-const CommentCard = ({ comment }: CommentCardProps) => {
+const CommentCard = ({ comment, gameId }: CommentCardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 

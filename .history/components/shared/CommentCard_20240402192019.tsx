@@ -6,9 +6,10 @@ import { DeleteCommentConfirmation } from "./DeleteCommentConfirmation";
 
 type CommentCardProps = {
   comment: IComment;
+  gameId: string;
 };
 
-const CommentCard = ({ comment }: CommentCardProps) => {
+const CommentCard = ({ comment, gameId }: CommentCardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -26,7 +27,10 @@ const CommentCard = ({ comment }: CommentCardProps) => {
         </p>
         {isCommentCreator && (
           <div className="pr-5">
-            <DeleteCommentConfirmation commentId={comment._id} />
+            <DeleteCommentConfirmation
+              commentId={comment._id}
+              gameId={gameId}
+            />
           </div>
         )}
       </div>

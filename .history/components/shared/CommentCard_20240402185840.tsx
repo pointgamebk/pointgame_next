@@ -1,8 +1,10 @@
 import { IComment } from "@/lib/database/models/comment.model";
 import { formatDateTime } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
 import { Separator } from "../ui/separator";
-import { DeleteCommentConfirmation } from "./DeleteCommentConfirmation";
+import 
 
 type CommentCardProps = {
   comment: IComment;
@@ -24,11 +26,6 @@ const CommentCard = ({ comment }: CommentCardProps) => {
           {formatDateTime(comment.createdAt).dateOnly}{" "}
           {formatDateTime(comment.createdAt).timeOnly}{" "}
         </p>
-        {isCommentCreator && (
-          <div className="pr-5">
-            <DeleteCommentConfirmation commentId={comment._id} />
-          </div>
-        )}
       </div>
 
       <div className="px-2">
