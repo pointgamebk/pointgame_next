@@ -47,9 +47,9 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[75px] flex-1 py-3 pr-4 text-left text-grey-400">
+              {/* <th className="min-w-[75px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Username
-              </th>
+              </th> */}
               <th className="min-w-[75px] py-3 text-left text-grey-400">
                 Name
               </th>
@@ -77,11 +77,11 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[75px] flex-1 py-4 pr-4">
+                      {/* <td className="min-w-[75px] flex-1 py-4 pr-4">
                         {row.username}
-                      </td>
+                      </td> */}
                       <td className="min-w-[75px] py-4">
-                        {row.firstName} {row.lastName.charAt(0)}.
+                        {row.firstName} {row.lastName.charAt(1)}.
                       </td>
                       {isAdmin && (
                         <td className="min-w-[50px] flex-1 py-4 pr-4 text-red-600">

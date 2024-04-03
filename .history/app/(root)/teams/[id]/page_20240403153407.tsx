@@ -51,7 +51,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                 Username
               </th>
               <th className="min-w-[75px] py-3 text-left text-grey-400">
-                Name
+                First
               </th>
 
               {isAdmin && (
@@ -80,9 +80,7 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                       <td className="min-w-[75px] flex-1 py-4 pr-4">
                         {row.username}
                       </td>
-                      <td className="min-w-[75px] py-4">
-                        {row.firstName} {row.lastName.charAt(0)}.
-                      </td>
+                      <td className="min-w-[75px] py-4">{row.firstName}</td>
                       {isAdmin && (
                         <td className="min-w-[50px] flex-1 py-4 pr-4 text-red-600">
                           <DeletePlayerConfirmation
