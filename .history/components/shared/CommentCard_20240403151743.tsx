@@ -18,15 +18,15 @@ const CommentCard = ({ comment, gameId }: CommentCardProps) => {
   return (
     <div className="w-full max-w-[400px] overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg">
       <div className="flex-between w-full py-3">
-        <p className="font-semibold pl-5 p-medium-16 text-black">
+        <p className="font-semibold pl-5 md:p-medium-12 text-black">
           {comment.user.username}
         </p>
-        <p className="pr-3 p-medium-12 text-grey-600">
+        <p className="pr-3 md:p-medium-16 text-grey-600">
           {formatDateTime(comment.createdAt).dateOnly}{" "}
           {formatDateTime(comment.createdAt).timeOnly}{" "}
         </p>
         {isCommentCreator && (
-          <div className="pr-3">
+          <div className="pr-5">
             <DeleteCommentConfirmation
               commentId={comment._id}
               gameId={gameId}

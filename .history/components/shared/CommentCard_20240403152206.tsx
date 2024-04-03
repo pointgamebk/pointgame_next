@@ -18,7 +18,7 @@ const CommentCard = ({ comment, gameId }: CommentCardProps) => {
   return (
     <div className="w-full max-w-[400px] overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg">
       <div className="flex-between w-full py-3">
-        <p className="font-semibold pl-5 p-medium-16 text-black">
+        <p className="font-semibold pl-5 md:p-medium-14 text-black">
           {comment.user.username}
         </p>
         <p className="pr-3 p-medium-12 text-grey-600">
