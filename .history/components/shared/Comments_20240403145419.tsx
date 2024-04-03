@@ -22,7 +22,7 @@ const Comments = ({
             {data.map((comment) => {
               return (
                 <li key={comment._id} className="flex items-center mb-5">
-                  <CommentCard comment={comment} gameId={gameId} />
+                  <CommentCard comment={comment} />
                 </li>
               );
             })}

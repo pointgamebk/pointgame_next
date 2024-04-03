@@ -18,10 +18,10 @@ const CommentCard = ({ comment, gameId }: CommentCardProps) => {
   return (
     <div className="w-full max-w-[400px] overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg">
       <div className="flex-between w-full py-3">
-        <p className="font-semibold pl-5 md:p-medium-16 text-black xs:p-medium-12">
+        <p className="font-semibold pl-5 md:p-medium-16 text-black">
           {comment.user.username}
         </p>
-        <p className="pr-3 md:p-medium-16 text-grey-600 xs:p-medium-12">
+        <p className="pr-3 md:p-medium-16 text-grey-600">
           {formatDateTime(comment.createdAt).dateOnly}{" "}
           {formatDateTime(comment.createdAt).timeOnly}{" "}
         </p>

@@ -27,6 +27,8 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const comments = game.comments;
 
+  console.log(comments);
+
   //console.log(game.startDateTime);
 
   // const relatedGames = await getRelatedGamesByCategory({
@@ -124,7 +126,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           <div className="flex flex-col gap-2">
             <Comments
               data={comments}
-              gameId={id}
               emptyTitle="No comments yet"
               emptyStateSubtext="Check again later"
             />
