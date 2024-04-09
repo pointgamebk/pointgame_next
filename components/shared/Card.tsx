@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { DeleteGameConfirmation } from "./DeleteGameConfirmation";
 import { Separator } from "../ui/separator";
+import CardLocaleConverter from "./CardLocaleConverter";
 
 type CardProps = {
   game: IGame;
@@ -46,9 +47,10 @@ const Card = ({ game }: CardProps) => {
           </p>
         </div>
 
-        <p className="p-medium-16 p-medium-18 text-grey-500">
+        {/* <p className="p-medium-16 p-medium-18 text-grey-500">
           {formatDateTime(game.startDateTime).dateTime}
-        </p>
+        </p> */}
+        <CardLocaleConverter game={game} />
 
         <p className="p-medium-16 p-medium-18 text-grey-500">{game.location}</p>
 

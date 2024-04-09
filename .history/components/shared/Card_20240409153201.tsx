@@ -3,15 +3,16 @@ import { formatDateTime } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { DeleteConfirmation } from "./DeleteConfirmation";
+import { DeleteGameConfirmation } from "./DeleteGameConfirmation";
 import { Separator } from "../ui/separator";
+import CardLocaleConverter from "./CardLocaleConverter";
 
 type CardProps = {
   game: IGame;
   hasJoinLink?: boolean;
 };
 
-const Card = ({ game, hasJoinLink }: CardProps) => {
+const Card = ({ game }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -35,7 +36,7 @@ const Card = ({ game, hasJoinLink }: CardProps) => {
             />
           </Link>
 
-          <DeleteConfirmation gameId={game._id} />
+          <DeleteGameConfirmation gameId={game._id} userId={userId} />
         </div>
       )}
 
@@ -46,9 +47,10 @@ const Card = ({ game, hasJoinLink }: CardProps) => {
           </p>
         </div>
 
-        <p className="p-medium-16 p-medium-18 text-grey-500">
+        {/* <p className="p-medium-16 p-medium-18 text-grey-500">
           {formatDateTime(game.startDateTime).dateTime}
-        </p>
+        </p> */}
+        <CardLocaleConverter game={game} />
 
         <p className="p-medium-16 p-medium-18 text-grey-500">{game.location}</p>
 
