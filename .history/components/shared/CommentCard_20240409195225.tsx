@@ -21,9 +21,11 @@ const CommentCard = ({ comment, gameId }: CommentCardProps) => {
         <p className="font-semibold pl-5 p-medium-16 text-black">
           {comment.user.username}
         </p>
-
+        {/* <p className="pr-3 p-medium-12 text-grey-600">
+          {formatDateTime(comment.createdAt).dateOnly}{" "}
+          {formatDateTime(comment.createdAt).timeOnly}{" "}
+        </p> */}
         <CommentLocaleConverter comment={comment} />
-
         {isCommentCreator && (
           <div className="pr-3">
             <DeleteCommentConfirmation
