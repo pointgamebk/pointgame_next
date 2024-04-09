@@ -11,7 +11,6 @@ import Image from "next/image";
 import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
-import GameLocaleConverter from "@/components/shared/GameLocaleConverter";
 
 const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const game = await getGameById(id);
@@ -85,15 +84,14 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
                 height={32}
               />
               <div className="p-medium-16 lg:p-regular-20 flex-wrap items-center">
-                {/* <p className="text-white">
+                <p className="text-white">
                   {formatDateTime(game.startDateTime).dateOnly} -{" "}
                   {formatDateTime(game.startDateTime).timeOnly}
                 </p>
                 <p className="text-white">
                   {formatDateTime(game.endDateTime).dateOnly} -{" "}
                   {formatDateTime(game.endDateTime).timeOnly}
-                </p> */}
-                <GameLocaleConverter game={game} />
+                </p>
               </div>
             </div>
 
