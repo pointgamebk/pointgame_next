@@ -5,6 +5,7 @@ import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
+import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Map from "@/components/shared/Map";
@@ -84,6 +85,14 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
                 height={32}
               />
               <div className="p-medium-16 lg:p-regular-20 flex-wrap items-center">
+                {/* <p className="text-white">
+                  {formatDateTime(game.startDateTime).dateOnly} -{" "}
+                  {formatDateTime(game.startDateTime).timeOnly}
+                </p>
+                <p className="text-white">
+                  {formatDateTime(game.endDateTime).dateOnly} -{" "}
+                  {formatDateTime(game.endDateTime).timeOnly}
+                </p> */}
                 <GameLocaleConverter game={game} />
               </div>
             </div>

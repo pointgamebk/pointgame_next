@@ -4,6 +4,7 @@ import { getMatchesByScheduleId } from "@/lib/actions/match.actions";
 import { getLeagueById } from "@/lib/actions/league.action";
 import { IMatch } from "@/lib/database/models/match.model";
 import MatchForm from "@/components/shared/MatchForm";
+import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";
 import { SelectWinner } from "@/components/shared/SelectWinner";
 import { DeleteMatchConfirmation } from "@/components/shared/DeleteMatchConfirmation";
@@ -117,7 +118,10 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
                           row.teamTwo.name
                         )}
                       </td>
-                      <MatchLocaleConverter row={row} />
+                      {/* <td className="min-w-[100px] py-4 text-green">
+                        {formatDateTime(row.startDateTime).dateTime}
+                      </td> */}
+                      <MatchLocaleConverter match={row} />
                       {isAdmin ? (
                         <td className="min-w-[100px] py-4 text-green">
                           <UnsetWinner

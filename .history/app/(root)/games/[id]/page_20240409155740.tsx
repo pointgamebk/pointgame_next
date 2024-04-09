@@ -5,6 +5,7 @@ import {
   getGameById,
   getRelatedGamesByCategory,
 } from "@/lib/actions/game.actions";
+import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Map from "@/components/shared/Map";
