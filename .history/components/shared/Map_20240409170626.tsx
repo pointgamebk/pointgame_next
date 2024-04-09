@@ -60,7 +60,7 @@ const Map = ({ address }: MapProps) => {
         flexDirection: "column",
         height: "50vh",
         width: "100%",
-        borderRadius: "15px", // Adjust the radius value as per your preference
+        borderRadius: "20px", // Adjust the radius value as per your preference
         border: "1px solid #000", // Add a border to make the rounded corners visible
       }}
       ref={mapRef}

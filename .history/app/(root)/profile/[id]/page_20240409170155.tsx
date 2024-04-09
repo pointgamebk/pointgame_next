@@ -1,6 +1,7 @@
 import TableLocaleConverter from "@/components/shared/TableLocaleConverter";
 import { Button } from "@/components/ui/button";
 import { getUserById } from "@/lib/actions/user.actions";
+import { formatDateTime } from "@/lib/utils";
 import { ProfileProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -68,6 +69,9 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                         <td className="min-w-[100px] py-4 text-green">
                           <Link href={`/games/${row._id}`}>{row.title}</Link>
                         </td>
+                        {/* <td className="min-w-[100px] flex-1 py-4 pr-4">
+                          {formatDateTime(row.startDateTime).dateTime}
+                        </td> */}
                         <TableLocaleConverter row={row} />
                         <td className="min-w-[100px] flex-1 py-4 pr-4">
                           {row.location}
@@ -127,6 +131,9 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                     <td className="min-w-[100px] py-4 text-green">
                       <Link href={`/games/${row._id}`}>{row.title}</Link>
                     </td>
+                    {/* <td className="min-w-[100px] flex-1 py-4 pr-4">
+                      {formatDateTime(row.startDateTime).dateTime}
+                    </td> */}
                     <TableLocaleConverter row={row} />
                     <td className="min-w-[100px] flex-1 py-4 pr-4">
                       {row.location}
