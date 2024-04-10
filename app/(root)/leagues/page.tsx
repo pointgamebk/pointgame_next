@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { getLeagues } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -12,8 +13,10 @@ const Leagues = async () => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">Rec Leagues</h2>
           </div>
-          <div className="text-green">
-            <Link href={"/leagues/create"}>+ Create League</Link>
+          <div className="max-w-[275px]">
+            <Button asChild size="lg" className="button">
+              <Link href="/games/create">Create New League</Link>
+            </Button>
           </div>
         </div>
       </section>

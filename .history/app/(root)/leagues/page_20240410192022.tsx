@@ -1,11 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { getLeagues } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 
 const Leagues = async () => {
   const leagues = await getLeagues();
-
-  console.log(leagues, "leagues");
 
   return (
     <>
@@ -14,6 +13,14 @@ const Leagues = async () => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">Rec Leagues</h2>
           </div>
+          {/* <div className="text-green">
+            <Link href={"/leagues/create"}>+ Create League</Link>
+          </div> */}
+          <div className="max-w-[300px]">
+            <Button asChild size="lg" className="button hidden sm:flex">
+              <Link href="/games/create">Create New League</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -21,10 +28,10 @@ const Leagues = async () => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[250px] py-3 text-left text-tan">
+              <th className="min-w-[100px] py-3 text-left text-grey-400">
                 League Name
               </th>
-              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left text-tan">
+              <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Sport
               </th>
             </tr>
@@ -45,10 +52,10 @@ const Leagues = async () => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[250px] py-4 text-green">
+                      <td className="min-w-[100px] py-4 text-green">
                         <Link href={`/leagues/${row._id}`}>{row.name}</Link>
                       </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">
+                      <td className="min-w-[100px] flex-1 py-4 pr-4">
                         {row.category.name}
                       </td>
                     </tr>

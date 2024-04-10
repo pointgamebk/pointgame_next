@@ -92,11 +92,6 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             <Link href="/games/create">Create New Game</Link>
           </Button>
         </div>
-        <div className="text-center">
-          <Button asChild size="lg" className="button text-center sm:hidden">
-            <Link href="/games/create">Create New Game</Link>
-          </Button>
-        </div>
       </section>
 
       <section className="wrapper py-8">

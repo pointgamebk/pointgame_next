@@ -91,10 +91,8 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
           <Button asChild size="lg" className="button hidden sm:flex">
             <Link href="/games/create">Create New Game</Link>
           </Button>
-        </div>
-        <div className="text-center">
           <Button asChild size="lg" className="button text-center sm:hidden">
-            <Link href="/games/create">Create New Game</Link>
+            <Link href="/games/create">Create New Camp</Link>
           </Button>
         </div>
       </section>

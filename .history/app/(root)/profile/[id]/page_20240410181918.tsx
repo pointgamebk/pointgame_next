@@ -92,7 +92,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
             <Link href="/games/create">Create New Game</Link>
           </Button>
         </div>
-        <div className="text-center">
+        <div>
           <Button asChild size="lg" className="button text-center sm:hidden">
             <Link href="/games/create">Create New Game</Link>
           </Button>
