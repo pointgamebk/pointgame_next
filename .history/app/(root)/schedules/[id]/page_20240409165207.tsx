@@ -49,7 +49,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
       </section>
 
       {isAdmin && (
-        <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain px-10">
+        <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
           <MatchForm scheduleId={id} leagueId={leagueId} />
         </section>
       )}

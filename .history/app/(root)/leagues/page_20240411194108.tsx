@@ -13,7 +13,7 @@ const Leagues = async () => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">Rec Leagues</h2>
           </div>
-          <div className="max-w-[275px]">
+          <div className="max-w-[200px]">
             <Button asChild size="sm" className="button">
               <Link href="/games/create">Create New League</Link>
             </Button>
