@@ -8,7 +8,7 @@ import Link from "next/link";
 import { SelectWinner } from "@/components/shared/SelectWinner";
 import { DeleteMatchConfirmation } from "@/components/shared/DeleteMatchConfirmation";
 import { UnsetWinner } from "@/components/shared/UnsetWinner";
-import MatchLocaleConverter from "@/components/shared/MatchLocaleConverter";
+import MatchLocaleConverter from "@/components/shared/TableLocaleConverter";
 
 type ScheduleDetailsProps = {
   params: {

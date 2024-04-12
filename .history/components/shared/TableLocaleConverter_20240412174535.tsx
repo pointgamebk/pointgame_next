@@ -1,14 +1,13 @@
 "use client";
 
-//import { IMatch } from "@/lib/database/models/match.model";
-import { IGame } from "@/lib/database/models/game.model";
+import { IMatch } from "@/lib/database/models/match.model";
 import { formatDateTime } from "@/lib/utils";
 
 // type TableLocaleConverterProps = {
 //   row: IMatch;
 // };
 type TableLocaleConverterProps = {
-  row: IGame;
+  row: IMatch;
 };
 
 const TableLocaleConverter = ({ row }: TableLocaleConverterProps) => {
