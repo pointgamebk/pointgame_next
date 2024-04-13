@@ -9,7 +9,7 @@ type MatchLocaleConverterProps = {
 
 const MatchLocaleConverter = ({ row }: MatchLocaleConverterProps) => {
   return (
-    <td className="min-w-[125px] p-medium-14 py-4 pl-2 text-white">
+    <td className="min-w-[125px] p-14 py-4 pl-2 text-white">
       {formatDateTime(row.startDateTime).dateTime}
     </td>
   );
