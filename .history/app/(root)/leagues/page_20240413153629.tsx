@@ -1,23 +1,14 @@
 import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
-import { getLeagues } from "@/lib/actions/league.action";
+import { getLeagues, _getLeagues } from "@/lib/actions/league.action";
 import { SearchParamProps } from "@/types";
-import { truncate } from "fs";
+import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 
 const Leagues = async ({ searchParams }: SearchParamProps) => {
   const searchText = (searchParams?.query as string) || "";
-  const searchString = searchText;
 
-  const leagues = await getLeagues(searchString);
-
-  const truncateCountry = (str: string) => {
-    const lastCommaIndex = str.lastIndexOf(",");
-    if (lastCommaIndex !== -1) {
-      return str.substring(0, lastCommaIndex);
-    }
-    return str;
-  };
+  const leagues = await _getLeagues();
 
   return (
     <>
@@ -35,7 +26,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper mt-8">
-        <Search placeholder="Filter leagues by location..." />
+        <Search placeholder="Filter by location..." />
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
@@ -73,7 +64,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
                         <Link href={`/leagues/${row._id}`}>{row.name}</Link>
                       </td>
                       <td className="min-w-[100px] flex-1 p-medium-14 py-4 pr-4">
-                        {truncateCountry(row.locale)}
+                        {row.locale}
                       </td>
                       <td className="min-w-[100px] flex-1  py-4 pr-4">
                         {row.category.name}

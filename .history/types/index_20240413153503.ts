@@ -45,6 +45,7 @@ export type UpdateGameParams = {
 
 export type DeleteGameParams = {
   gameId: string;
+  userId: string;
   path: string;
 };
 
@@ -90,17 +91,13 @@ export type Game = {
 
 // ====== LEAGUE PARAMS
 export type CreateLeagueParams = {
-  name: string;
-  description: string;
-  category: {
-    _id: string;
+  userId: string;
+  league: {
     name: string;
+    description: string;
+    category: string;
   };
-  administrator: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-  };
+  path: string;
 };
 
 export type League = {
@@ -120,15 +117,67 @@ export type League = {
 
 // ====== TEAM PARAMS
 export type CreateTeamParams = {
-  name: string;
   leagueId: string;
+  team: {
+    name: string;
+  };
+  path: string;
 };
 
 export type Team = {
   _id: string;
   name: string;
-  description: string;
   league: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== SCHEDULE PARAMS
+export type CreateScheduleParams = {
+  leagueId: string;
+  schedule: {
+    name: string;
+  };
+  path: string;
+};
+
+export type Schedule = {
+  _id: string;
+  name: string;
+  league: {
+    _id: string;
+    name: string;
+  };
+};
+
+// ====== MATCH PARAMS
+export type CreateMatchParams = {
+  scheduleId: string;
+  match: {
+    startDateTime: Date;
+    teamOne: string;
+    teamTwo: string;
+  };
+  path: string;
+};
+
+export type Match = {
+  _id: string;
+  startDateTime: Date;
+  schedule: {
+    _id: string;
+    name: string;
+  };
+  teamOne: {
+    _id: string;
+    name: string;
+  };
+  teamTwo: {
+    _id: string;
+    name: string;
+  };
+  winner: {
     _id: string;
     name: string;
   };
@@ -148,8 +197,11 @@ export type SubmitJoinParams = {
 
 export type CreateJoinParams = {
   gameId: string;
-  playerId: string;
-  createdAt: Date;
+  join: {
+    playerId: string;
+    createdAt: Date;
+    path: string;
+  };
 };
 
 export type GetJoinsByGameParams = {
@@ -161,6 +213,11 @@ export type GetJoinsByUserParams = {
   userId: string | null;
   limit?: number;
   page: string | number | null;
+};
+
+// ====== PROFILE PARAMS
+export type ProfileProps = {
+  params: { id: string };
 };
 
 // ====== URL QUERY PARAMS
@@ -176,7 +233,6 @@ export type RemoveUrlQueryParams = {
 };
 
 export type SearchParamProps = {
-  params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -185,6 +241,7 @@ export type CreateCommentParams = {
   gameId: string;
   userId: string;
   body: string;
+  path: string;
 };
 
 export type GetCommentsByGameParams = {

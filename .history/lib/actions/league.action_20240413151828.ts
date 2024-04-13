@@ -68,18 +68,11 @@ export async function getLeagueById(leagueId: string) {
 }
 
 // LEAGUES
-export async function getLeagues(searchString?: string) {
+export async function getLeagues() {
   try {
     await connectToDatabase();
 
-    let query = League.find();
-
-    if (searchString) {
-      const regex = new RegExp(searchString, "i");
-      query = query.where("locale").regex(regex);
-    }
-
-    const leagues = await populateLeague(query);
+    const leagues = await populateLeague(League.find());
 
     if (!leagues) throw new Error("Leagues not found");
 
@@ -107,6 +100,21 @@ export async function updateLeagueDescription(
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(league));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+// TEST GET LEAGUES
+export async function _getLeagues() {
+  try {
+    await connectToDatabase();
+
+    const leagues = await populateLeague(League.find());
+
+    if (!leagues) throw new Error("Leagues not found");
+
+    return JSON.parse(JSON.stringify(leagues));
   } catch (error) {
     handleError(error);
   }

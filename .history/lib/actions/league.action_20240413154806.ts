@@ -89,6 +89,20 @@ export async function getLeagues(searchString?: string) {
   }
 }
 
+// export async function getLeagues() {
+//   try {
+//     await connectToDatabase();
+
+//     const leagues = await populateLeague(League.find());
+
+//     if (!leagues) throw new Error("Leagues not found");
+
+//     return JSON.parse(JSON.stringify(leagues));
+//   } catch (error) {
+//     handleError(error);
+//   }
+// }
+
 // UPDATE LEAGUE DESCRIPTION
 export async function updateLeagueDescription(
   leagueId: string,

@@ -11,13 +11,13 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
 
   const leagues = await getLeagues(searchString);
 
-  const truncateCountry = (str: string) => {
+  function truncateCountry(str: string) {
     const lastCommaIndex = str.lastIndexOf(",");
     if (lastCommaIndex !== -1) {
       return str.substring(0, lastCommaIndex);
     }
     return str;
-  };
+  }
 
   return (
     <>
