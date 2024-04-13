@@ -41,7 +41,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         <table className="w-full border-collapse border-t">
           <thead>
             <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[90px] py-3 text-left text-grey-400">
+              <th className="min-w-[100px] py-3 text-left text-grey-400">
                 League Name
               </th>
               <th className="min-w-[100px] py-3 text-left text-grey-400">
@@ -71,7 +71,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
                       <td className="min-w-[100px] py-4 text-green">
                         <Link href={`/leagues/${row._id}`}>{row.name}</Link>
                       </td>
-                      <td className="min-w-[90px] flex-1 p-medium-14 py-4 pr-4">
+                      <td className="min-w-[91px] flex-1 p-medium-14 py-4 pr-4">
                         {truncateCountry(row.locale)}
                       </td>
                       <td className="min-w-[100px] flex-1  py-4 pr-4">
