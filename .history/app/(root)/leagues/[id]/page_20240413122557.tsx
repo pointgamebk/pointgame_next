@@ -29,8 +29,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{league.name}</h2>
 
-            <p className="text-white">{league.locale}</p>
-
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
                 <p className="p-medium-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
