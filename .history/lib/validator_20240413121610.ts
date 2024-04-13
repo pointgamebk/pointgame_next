@@ -15,6 +15,16 @@ export const gameFormSchema = z.object({
   categoryId: z.string(),
 });
 
+export const matchFormSchema = z.object({
+  startDateTime: z.date(),
+  teamOne: z.string(),
+  teamTwo: z.string(),
+});
+
+export const winnerFormSchema = z.object({
+  winner: z.string(),
+});
+
 export const leagueFormSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
   description: z
@@ -22,9 +32,17 @@ export const leagueFormSchema = z.object({
     .min(3, "Description must be at least 3 characters")
     .max(400, "Description must be less than 400 characters"),
   category: z.string(),
+  locale: z
+    .string()
+    .min(3, "Location must be at least 3 characters")
+    .max(400, "Location must be less than 400 characters"),
 });
 
 export const teamFormSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+});
+
+export const scheduleFormSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
 });
 
@@ -34,4 +52,11 @@ export const playerFormSchema = z.object({
 
 export const commentFormSchema = z.object({
   body: z.string().min(2, "Comment must be at least 2 characters"),
+});
+
+export const updateLeagueDescriptionFormSchema = z.object({
+  description: z
+    .string()
+    .min(3, "Description must be at least 3 characters")
+    .max(400, "Description must be less than 400 characters"),
 });

@@ -22,6 +22,9 @@ import { useRouter } from "next/navigation";
 import { createLeague } from "@/lib/actions/league.action";
 import { leagueFormSchema } from "@/lib/validator";
 
+import PlacesSearchBox from "./PlacesSearchBox";
+import Image from "next/image";
+
 type LeagueFormProps = {
   userId: string;
 };
@@ -84,6 +87,34 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
                     onChangeHandler={field.onChange}
                     value={field.value}
                   />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="locale"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <Image
+                      src="/assets/icons/location-grey.svg"
+                      width={24}
+                      height={24}
+                      alt="location"
+                    />
+                    <PlacesSearchBox
+                      defaultValue=""
+                      onSelectAddress={(address) => {
+                        form.setValue("locale", address);
+                      }}
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

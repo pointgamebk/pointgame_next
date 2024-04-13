@@ -17,20 +17,19 @@ import Dropdown from "./Dropdown";
 import { leagueDefaultValues } from "@/constants";
 import { Textarea } from "@/components/ui/textarea";
 
-import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 
 import { createLeague } from "@/lib/actions/league.action";
-import { ILeague } from "@/lib/database/models/league.model";
 import { leagueFormSchema } from "@/lib/validator";
+
+import PlacesSearchBox from "./PlacesSearchBox";
+import Image from "next/image";
 
 type LeagueFormProps = {
   userId: string;
-  league?: ILeague;
 };
 
-const LeagueForm = ({ userId, league }: LeagueFormProps) => {
+const LeagueForm = ({ userId }: LeagueFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof leagueFormSchema>>({
@@ -45,8 +44,10 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
       const newLeague = await createLeague({
         league: leagueData,
         userId,
+        path: "/leagues",
       });
-      console.log(newLeague);
+      form.reset();
+      router.push(`/leagues/${newLeague._id}`);
     } catch (error) {
       console.error(error);
     }
@@ -61,12 +62,12 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="title"
+            name="name"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Game title"
+                    placeholder="League name"
                     {...field}
                     className="input-field"
                   />
@@ -78,7 +79,7 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
 
           <FormField
             control={form.control}
-            name="categoryId"
+            name="category"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
@@ -96,26 +97,7 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <Textarea
-                    placeholder="Description..."
-                    {...field}
-                    className="textarea rounded-2xl"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="flex flex-col gap-5 md:flex-row">
-          <FormField
-            control={form.control}
-            name="location"
+            name="locale"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
@@ -129,7 +111,7 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
                     <PlacesSearchBox
                       defaultValue=""
                       onSelectAddress={(address) => {
-                        form.setValue("location", address);
+                        form.setValue("locale", address);
                       }}
                     />
                   </div>
@@ -143,62 +125,15 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="startDateTime"
+            name="description"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="calendar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
-                      Start Date:
-                    </p>
-                    <DatePicker
-                      selected={field.value}
-                      onChange={(date: Date) => field.onChange(date)}
-                      showTimeSelect
-                      timeInputLabel="Time:"
-                      dateFormat="MM/dd/yyyy h:mm aa"
-                      wrapperClassName="datePicker"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="endDateTime"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="calendar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
-                      End Date:
-                    </p>
-                    <DatePicker
-                      selected={field.value}
-                      onChange={(date: Date) => field.onChange(date)}
-                      showTimeSelect
-                      timeInputLabel="Time:"
-                      dateFormat="MM/dd/yyyy h:mm aa"
-                      wrapperClassName="datePicker"
-                    />
-                  </div>
+                <FormControl className="h-72">
+                  <Textarea
+                    placeholder="League description and updates"
+                    {...field}
+                    className="textarea rounded-2xl"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -212,7 +147,7 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? "Submitting..." : `${type} Game `}
+          {form.formState.isSubmitting ? "Submitting..." : "Create League"}
         </Button>
       </form>
     </Form>

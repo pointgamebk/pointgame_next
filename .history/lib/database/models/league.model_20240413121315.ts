@@ -3,7 +3,7 @@ import { Schema, model, models } from "mongoose";
 export interface ILeague extends Document {
   _id: string;
   name: string;
-  locale: string;
+  locality: string;
   description: string;
   createdAt: Date;
   imageUrl?: string;
@@ -17,7 +17,7 @@ const LeagueSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
   createdAt: { type: Date, default: Date.now },
-  locale: { type: String, required: true },
+  locality: { type: String, required: true },
   imageUrl: { type: String },
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   administrator: { type: Schema.Types.ObjectId, ref: "User" },

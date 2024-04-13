@@ -20,15 +20,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 
 import { createLeague } from "@/lib/actions/league.action";
-import { ILeague } from "@/lib/database/models/league.model";
 import { leagueFormSchema } from "@/lib/validator";
+
+import PlacesSearchBox from "./PlacesSearchBox";
 
 type LeagueFormProps = {
   userId: string;
-  league?: ILeague;
 };
 
-const LeagueForm = ({ userId, league }: LeagueFormProps) => {
+const LeagueForm = ({ userId }: LeagueFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof leagueFormSchema>>({
@@ -42,9 +42,11 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
     try {
       const newLeague = await createLeague({
         league: leagueData,
-        adminstrstor: userId,
+        userId,
+        path: "/leagues",
       });
-      console.log(newLeague);
+      form.reset();
+      router.push(`/leagues/${newLeague._id}`);
     } catch (error) {
       console.error(error);
     }
@@ -99,7 +101,7 @@ const LeagueForm = ({ userId, league }: LeagueFormProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="Description..."
+                    placeholder="League description and updates"
                     {...field}
                     className="textarea rounded-2xl"
                   />
