@@ -3,10 +3,7 @@
 import { ChangeEvent, useState } from "react";
 
 import { useGoogleMapsScript, Libraries } from "use-google-maps-script";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+import usePlacesAutocomplete from "use-places-autocomplete";
 
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
@@ -66,28 +63,16 @@ function ReadySearchBox({
     clearSuggestions,
   } = usePlacesAutocomplete({ debounce: 300, defaultValue });
 
-  const handleSelect = async (address: string) => {
-    console.log({ address });
+  const handleSelect = (address: string) => {
     setValue(address, false);
     onSelectAddress(address);
     clearSuggestions();
     setOpen(false);
-
-    // try {
-    //   const results = await getGeocode({ address });
-    //   const { lat, lng } = getLatLng(results[0]);
-    //   console.log({ address, lat, lng });
-    // } catch (error) {
-    //   console.error("😱 Error: ", error);
-    // }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    console.log({ value: e.target.value });
   };
-
-  console.log({ status, data });
 
   return (
     <div className="w-full p-2 ">
@@ -99,7 +84,7 @@ function ReadySearchBox({
             aria-expanded={open}
             className="w-full justify-between"
           >
-            {value === "" ? "Search address..." : value}
+            {value === "" ? "City or town league is based in..." : value}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -116,7 +101,7 @@ function ReadySearchBox({
                 <CommandItem
                   key={suggestion.place_id}
                   value={suggestion.description}
-                  onSelect={handleSelect}
+                  onSelect={() => handleSelect(suggestion.description)}
                 >
                   {suggestion.description}
                   <CheckIcon

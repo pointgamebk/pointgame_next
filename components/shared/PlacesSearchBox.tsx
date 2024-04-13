@@ -84,7 +84,7 @@ function ReadySearchBox({
             aria-expanded={open}
             className="w-full justify-between"
           >
-            {value === "" ? "Search address..." : value}
+            {value === "" ? "City or town league is based in..." : value}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
