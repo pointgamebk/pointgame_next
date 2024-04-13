@@ -84,14 +84,14 @@ function ReadySearchBox({
             aria-expanded={open}
             className="w-full justify-between"
           >
-            {value === "" ? "Search game address..." : value}
+            {value === "" ? "Search address..." : value}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0" onChange={handleChange}>
           <Command>
             <CommandInput
-              placeholder="Search game address..."
+              placeholder="Search address..."
               className="h-9 "
               disabled={!ready}
             />

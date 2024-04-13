@@ -17,14 +17,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const isAdmin = league.administrator._id === userId;
 
-  const truncateCountry = (str: string) => {
-    const lastCommaIndex = str.lastIndexOf(",");
-    if (lastCommaIndex !== -1) {
-      return str.substring(0, lastCommaIndex);
-    }
-    return str;
-  };
-
   type ITeam = {
     _id: string;
     name: string;
@@ -37,7 +29,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{league.name}</h2>
 
-            <p className="text-white">{truncateCountry(league.locale)}</p>
+            <p className="text-white">{league.locale}</p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">

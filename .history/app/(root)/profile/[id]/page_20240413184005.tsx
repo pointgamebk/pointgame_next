@@ -43,7 +43,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
       )}
       {sessionUserId === id && (
         <section className="wrapper py-3">
-          <div className="wrapper py-3">
+          <div className="wrapper py-8">
             <table className="w-full border-collapse border-t">
               <thead>
                 <tr className="p-medium-14 border-b text-grey-500">

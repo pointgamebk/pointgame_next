@@ -168,7 +168,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                       alt="location"
                     />
                     <PlacesSearchBox
-                      defaultValue=""
+                      defaultValue="test"
                       onSelectAddress={(address) => {
                         form.setValue("location", address);
                       }}
@@ -207,7 +207,6 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
                       minDate={new Date()}
-                      minTime={new Date()}
                     />
                   </div>
                 </FormControl>
@@ -240,6 +239,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                       timeInputLabel="Time:"
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      minDate={new Date()}
                     />
                   </div>
                 </FormControl>

@@ -27,14 +27,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const comments = game.comments;
 
-  const truncateCountry = (str: string) => {
-    const lastCommaIndex = str.lastIndexOf(",");
-    if (lastCommaIndex !== -1) {
-      return str.substring(0, lastCommaIndex);
-    }
-    return str;
-  };
-
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
   //   gameId: game._id,
@@ -104,7 +96,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
                 height={32}
               />
               <p className="p-medium-16 lg:p-regular-20 text-white">
-                {truncateCountry(game.location)}
+                {game.location}
               </p>
             </div>
           </div>

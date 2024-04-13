@@ -18,14 +18,6 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   const gamesJoined = user.gamesJoined;
   const gamesOrganized = user.gamesOrganized;
 
-  const truncateCountry = (str: string) => {
-    const lastCommaIndex = str.lastIndexOf(",");
-    if (lastCommaIndex !== -1) {
-      return str.substring(0, lastCommaIndex);
-    }
-    return str;
-  };
-
   return (
     <>
       {/* My Joins */}
@@ -42,8 +34,8 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
         </section>
       )}
       {sessionUserId === id && (
-        <section className="wrapper py-3">
-          <div className="wrapper py-3">
+        <section className="wrapper py-8">
+          <div className="wrapper py-8">
             <table className="w-full border-collapse border-t">
               <thead>
                 <tr className="p-medium-14 border-b text-grey-500">
@@ -78,7 +70,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                         </td>
                         <TableLocaleConverter row={row} />
                         <td className="min-w-[100px] flex-1 py-4 pr-4">
-                          {truncateCountry(row.location)}
+                          {row.location}
                         </td>
                       </tr>
                     ))}
@@ -142,7 +134,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                     </td>
                     <TableLocaleConverter row={row} />
                     <td className="min-w-[100px] flex-1 py-4 pr-4">
-                      {truncateCountry(row.location)}
+                      {row.location}
                     </td>
                   </tr>
                 ))}

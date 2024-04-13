@@ -104,7 +104,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
                 height={32}
               />
               <p className="p-medium-16 lg:p-regular-20 text-white">
-                {truncateCountry(game.location)}
+                {game.location}
               </p>
             </div>
           </div>

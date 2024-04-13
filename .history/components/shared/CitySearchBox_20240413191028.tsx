@@ -22,17 +22,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface IPlacesSearchBoxProps {
+interface ICitySearchBoxProps {
   defaultValue: string;
   onSelectAddress: (address: string) => void;
 }
 
 const libraries: Libraries = ["places"];
 
-const PlacesSearchBox = ({
+const CitySearchBox = ({
   defaultValue,
   onSelectAddress,
-}: IPlacesSearchBoxProps) => {
+}: ICitySearchBoxProps) => {
   const { isLoaded, loadError } = useGoogleMapsScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "",
     libraries,
@@ -52,7 +52,7 @@ const PlacesSearchBox = ({
 function ReadySearchBox({
   defaultValue,
   onSelectAddress,
-}: IPlacesSearchBoxProps) {
+}: ICitySearchBoxProps) {
   const [open, setOpen] = useState(false);
 
   const {
@@ -84,14 +84,14 @@ function ReadySearchBox({
             aria-expanded={open}
             className="w-full justify-between"
           >
-            {value === "" ? "Search game address..." : value}
+            {value === "" ? "City or town league is based in" : value}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0" onChange={handleChange}>
           <Command>
             <CommandInput
-              placeholder="Search game address..."
+              placeholder="Search address..."
               className="h-9 "
               disabled={!ready}
             />
@@ -122,4 +122,4 @@ function ReadySearchBox({
   );
 }
 
-export default PlacesSearchBox;
+export default CitySearchBox;

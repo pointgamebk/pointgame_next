@@ -239,6 +239,7 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
                       timeInputLabel="Time:"
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      minDate={new Date()}
                     />
                   </div>
                 </FormControl>

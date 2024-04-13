@@ -27,7 +27,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
           </div>
           <div className="max-w-[275px]">
             <Button asChild size="sm" className="button">
-              <Link href="/leagues/create">Add League</Link>
+              <Link href="/leagues/create">New League</Link>
             </Button>
           </div>
         </div>
