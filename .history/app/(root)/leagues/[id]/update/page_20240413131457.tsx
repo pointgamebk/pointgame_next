@@ -32,7 +32,13 @@ const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
             path={`/leagues/${id}/update`}
           />
         </div>
-      ) : null}
+      ) : (
+        <div className="wrapper my-8">
+          <h4 className="wrapper h4-bold text-center sm:text-left text-white">
+            Unauthorized route
+          </h4>
+        </div>
+      )}
     </>
   );
 };

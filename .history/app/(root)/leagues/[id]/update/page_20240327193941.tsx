@@ -24,15 +24,13 @@ const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
         </h3>
       </section>
 
-      {isAdmin ? (
-        <div className="wrapper my-8">
-          <LeagueUpdateForm
-            leagueId={id}
-            description={league.description}
-            path={`/leagues/${id}/update`}
-          />
-        </div>
-      ) : null}
+      <div className="wrapper my-8">
+        <LeagueUpdateForm
+          leagueId={id}
+          description={league.description}
+          path={`/leagues/${id}/update`}
+        />
+      </div>
     </>
   );
 };

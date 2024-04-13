@@ -18,32 +18,37 @@ import { useRouter } from "next/navigation";
 import { updateLeagueDescription } from "@/lib/actions/league.action";
 
 import { updateLeagueDescriptionFormSchema } from "@/lib/validator";
-import Image from "next/image";
-import PlacesSearchBox from "./PlacesSearchBox";
 
 type LeagueUpdateFormProps = {
   leagueId: string;
   description: string;
+  locale: string;
   path: string;
 };
 
 const LeagueUpdateForm = ({
   leagueId,
   description,
+  locale,
   path,
 }: LeagueUpdateFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof updateLeagueDescriptionFormSchema>>({
     resolver: zodResolver(updateLeagueDescriptionFormSchema),
-    defaultValues: { description },
+    defaultValues: { description, locale },
   });
 
   async function onSubmit(
     values: z.infer<typeof updateLeagueDescriptionFormSchema>
   ) {
     try {
-      await updateLeagueDescription(leagueId, values.description, path);
+      await updateLeagueDescription(
+        leagueId,
+        values.description,
+        values.locale,
+        path
+      );
       router.push(`/leagues/${leagueId}`);
     } catch (error) {
       console.error(error);
@@ -74,7 +79,6 @@ const LeagueUpdateForm = ({
             )}
           />
         </div>
-
         <Button
           type="submit"
           size="lg"

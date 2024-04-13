@@ -58,7 +58,7 @@ const Leagues = async () => {
                       <td className="min-w-[100px] flex-1 p-medium-14 py-4 pr-4">
                         {row.locale}
                       </td>
-                      <td className="min-w-[100px] flex-1  py-4 pr-4">
+                      <td className="min-w-[100px] flex-1 py-4 pr-4">
                         {row.category.name}
                       </td>
                     </tr>

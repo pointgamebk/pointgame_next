@@ -86,6 +86,7 @@ export async function getLeagues() {
 export async function updateLeagueDescription(
   leagueId: string,
   description: string,
+  locale: string,
   path: string
 ) {
   try {
@@ -93,6 +94,7 @@ export async function updateLeagueDescription(
 
     const league = await League.findByIdAndUpdate(leagueId, {
       description,
+      locale,
     });
 
     if (!league) throw new Error("League not found");
