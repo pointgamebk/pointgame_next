@@ -15,7 +15,13 @@ const Header = () => {
     <header className="w-full border-b bg-blue">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-          <h5 className="text-green h5-bold">point.game</h5>
+          {/* <Image
+            src="/assets/images/logo.png"
+            width={128}
+            height={38}
+            alt="pointgame logo"
+          /> */}
+          <h2 className="text-green h2-bold">point.game</h2>
         </Link>
 
         <SignedIn>

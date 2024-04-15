@@ -6,11 +6,11 @@ const Footer = () => {
     <footer className="border-t bg-blue">
       <div className="flex-center wrapper flex-between flex flex-col gap-4 p-5 text-center sm:flex-row">
         <Link href="/">
-          <p className="text-green p-semibold-18">point.game</p>
+          <p className="text-green p-bold-24">point.game</p>
         </Link>
 
         <Link href="/how_to">
-          <p className="text-green p-semibold-18">How to point.game</p>
+          <p className="text-green">How to point.game</p>
         </Link>
 
         <p className="text-green">2024 pointgame. All Rights reserved.</p>

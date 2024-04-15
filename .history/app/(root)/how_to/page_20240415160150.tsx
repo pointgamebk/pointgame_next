@@ -5,7 +5,7 @@ const HowTo = async () => {
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6 md:pr-40">
             <h2 className="h2-bold text-white">Point.Game How To</h2>
-            <p className="p-regular-20 md:p-regular-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-white underline">
               PointGame Instructions and General Rules
             </p>
 
@@ -25,7 +25,7 @@ const HowTo = async () => {
               <li className="ml-8">Join a recreational league</li>
             </ul>
 
-            <p className="p-regular-20 md:p-regular-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-white underline">
               Recreational Game Instructions/General Rules
             </p>
 
@@ -88,7 +88,7 @@ const HowTo = async () => {
               </li>
             </ul>
 
-            <p className="p-regular-20 md:p-regular-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-white underline">
               Recreational League Instructions/General Rules
             </p>
 
@@ -158,42 +158,7 @@ const HowTo = async () => {
                   team member.
                 </li>
               </ul>
-              <li className="p-regular-18">Creating a schedule:</li>
-              <ul className="ml-8">
-                <li>
-                  League admins can also create a schedule from the league
-                  details page, using the related form on the bottom of the
-                  page.
-                </li>
-                <li>Give the schedule a name, and click “Add Schedule”.</li>
-                <li>
-                  The schedule will then be listed in the Schedules table of the
-                  league details page, and a page for that specific schedule
-                  will also be created.
-                </li>
-              </ul>
-              <li className="p-regular-18">Creating a match:</li>
-              <ul className="ml-8">
-                <li>A schedule consists of “matches”.</li>
-                <li>
-                  To create scheduled matches, league admins can do so from the
-                  specified schedule page.
-                </li>
-                <li>
-                  There the admin can select Team 1 and Team 2 from the team
-                  list dropdown menus, the match date and time, and clicking
-                  Create Match will add it to the schedule.
-                </li>
-                <li>
-                  After the match is completed, the admin can list the winner by
-                  clicking the winning teams name in the table, and confirming
-                  the prompt.
-                </li>
-                <li>
-                  To reset the match, the admin can click the on the team in the
-                  winner column, and follow the prompt.
-                </li>
-              </ul>
+              <li className="p-regular-18">Adding users to a team:</li>
             </ul>
           </div>
         </div>
