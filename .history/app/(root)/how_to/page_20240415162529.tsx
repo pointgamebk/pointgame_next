@@ -5,12 +5,12 @@ const HowTo = async () => {
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6 md:pr-40">
             <h2 className="h2-bold text-white">Point.Game How To</h2>
-            <p className="p-bold-20 md:p-bold-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-green underline">
               PointGame Instructions and General Rules
             </p>
 
             <ul className="list-disc ml-4 text-white">
-              <li className="p-semibold-18">
+              <li className="p-regular-20">
                 Users must register an account with PointGame in order to do the
                 following:
               </li>
@@ -22,7 +22,7 @@ const HowTo = async () => {
               <li className="ml-8">Join a recreational league</li>
             </ul>
 
-            <p className="p-bold-20 md:p-bold-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-green underline">
               Recreational Game Instructions/General Rules
             </p>
 
@@ -85,7 +85,7 @@ const HowTo = async () => {
               </li>
             </ul>
 
-            <p className="p-bold-20 md:p-bold-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-green underline">
               Recreational League Instructions/General Rules
             </p>
 
@@ -95,7 +95,7 @@ const HowTo = async () => {
                 created on the platform.
               </li>
               <li className="p-regular-18">
-                To access this feature, users can click on the “Leagues” link in
+                To access this feature, user can click on the “Leagues” link in
                 the application header, or the link can be accessed through the
                 icon in the far right corner of the header on mobile devices.
               </li>

@@ -10,7 +10,7 @@ const HowTo = async () => {
             </p>
 
             <ul className="list-disc ml-4 text-white">
-              <li className="p-semibold-18">
+              <li className="p-regular-18">
                 Users must register an account with PointGame in order to do the
                 following:
               </li>
@@ -85,7 +85,7 @@ const HowTo = async () => {
               </li>
             </ul>
 
-            <p className="p-bold-20 md:p-bold-24 text-green underline">
+            <p className="p-regular-20 md:p-regular-24 text-green underline">
               Recreational League Instructions/General Rules
             </p>
 

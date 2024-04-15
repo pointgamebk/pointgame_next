@@ -10,7 +10,7 @@ const HowTo = async () => {
             </p>
 
             <ul className="list-disc ml-4 text-white">
-              <li className="p-semibold-18">
+              <li className="p-regular-18">
                 Users must register an account with PointGame in order to do the
                 following:
               </li>
