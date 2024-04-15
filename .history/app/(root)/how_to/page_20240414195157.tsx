@@ -3,26 +3,21 @@ const HowTo = async () => {
     <>
       <section className="flex justify-center bg-blue bg-dotted-pattern bg-contain">
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
-          <div className="flex flex-col gap-6 md:pr-40">
+          <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">Point.Game How To</h2>
             <p className="p-regular-20 md:p-regular-24 text-white underline">
               PointGame Instructions and General Rules
             </p>
-
-            <ul className="list-disc ml-4 text-white">
-              <li className="p-regular-20">
-                &#x2022; Users must register an account with PointGame in order
-                to do the following:
-              </li>
-              <li className="ml-8">&#x2022; Create a recreational game</li>
-              <li className="ml-8">&#x2022; Join a recreational game</li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">&#x2022; Join a recreational league</li>
+            <p className="p-regular-16 md:p-regular-20 text-white">
+              Users must register an account with PointGame in order to do the
+              following:
+            </p>
+            <ul className="list-disc  ml-4  text-white">
+              <li>&#x2022; Create a recreational game</li>
+              <li>&#x2022; Join a recreational game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Join a recreational league</li>
             </ul>
 
             <p className="p-regular-20 md:p-regular-24 text-white underline">
@@ -55,23 +50,6 @@ const HowTo = async () => {
               </li>
               <li>
                 &#x2022; Click the “Create Game” button to complete the process
-              </li>
-            </ul>
-
-            <ul className="list-disc text-white p-regular-18">
-              <li>
-                &#x2022; Games are displayed on the homepage, ordered based on
-                start date ascending
-              </li>
-              <li>
-                &#x2022;Clicking on a game card displayed on the homepage will
-                take you to a page further detailing the selected game, along
-                with a visual map of the game's location
-              </li>
-              <li>
-                &#x2022; From this page, users who have not created the game can
-                either join, or “unjoin” the game if they have already joined
-                it.
               </li>
             </ul>
           </div>

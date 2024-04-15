@@ -15,14 +15,10 @@ const HowTo = async () => {
                 to do the following:
               </li>
               <li className="ml-8">&#x2022; Create a recreational game</li>
-              <li className="ml-8">&#x2022; Join a recreational game</li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">&#x2022; Join a recreational league</li>
+              <li>&#x2022; Join a recreational game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Join a recreational league</li>
             </ul>
 
             <p className="p-regular-20 md:p-regular-24 text-white underline">

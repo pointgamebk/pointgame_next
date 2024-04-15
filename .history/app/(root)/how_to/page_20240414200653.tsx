@@ -8,21 +8,16 @@ const HowTo = async () => {
             <p className="p-regular-20 md:p-regular-24 text-white underline">
               PointGame Instructions and General Rules
             </p>
-
-            <ul className="list-disc ml-4 text-white">
-              <li className="p-regular-20">
-                &#x2022; Users must register an account with PointGame in order
-                to do the following:
-              </li>
-              <li className="ml-8">&#x2022; Create a recreational game</li>
-              <li className="ml-8">&#x2022; Join a recreational game</li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">
-                &#x2022; Leave a comment related to a specific game
-              </li>
-              <li className="ml-8">&#x2022; Join a recreational league</li>
+            <p className="p-regular-16 md:p-regular-20 text-white">
+              &#x2022; Users must register an account with PointGame in order to
+              do the following:
+            </p>
+            <ul className="list-disc  ml-4  text-white">
+              <li>&#x2022; Create a recreational game</li>
+              <li>&#x2022; Join a recreational game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Leave a comment related to a specific game</li>
+              <li>&#x2022; Join a recreational league</li>
             </ul>
 
             <p className="p-regular-20 md:p-regular-24 text-white underline">
