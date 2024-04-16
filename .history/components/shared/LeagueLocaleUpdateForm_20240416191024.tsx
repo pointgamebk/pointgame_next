@@ -15,26 +15,30 @@ import { Input } from "@/components/ui/input";
 import Dropdown from "./Dropdown";
 
 import { leagueDefaultValues } from "@/constants";
-import { Textarea } from "@/components/ui/textarea";
 
 import { useRouter } from "next/navigation";
 
-import { createLeague } from "@/lib/actions/league.action";
-import { leagueFormSchema } from "@/lib/validator";
+import { updateLeagueLocale } from "@/lib/actions/league.action";
+import { updateLeagueLocaleFormSchema } from "@/lib/validator";
 
 import CitySearchBox from "./CitySearchBox";
 import Image from "next/image";
 
-type LeagueFormProps = {
-  userId: string;
+type LeagueLocaleUpdateFormProps = {
+  leagueId: string;
+  locale: string;
+  path: string;
 };
-
-const LeagueForm = ({ userId }: LeagueFormProps) => {
+const LeagueLocaleUpdateForm = ({
+  leagueId,
+  locale,
+  path,
+}: LeagueLocaleUpdateFormProps) => {
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof leagueFormSchema>>({
-    resolver: zodResolver(leagueFormSchema),
-    defaultValues: leagueDefaultValues,
+  const form = useForm<z.infer<typeof updateLeagueLocaleFormSchema>>({
+    resolver: zodResolver(updateLeagueLocaleFormSchema),
+    defaultValues: { locale },
   });
 
   async function onSubmit(values: z.infer<typeof leagueFormSchema>) {
@@ -154,4 +158,4 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
   );
 };
 
-export default LeagueForm;
+export default LeagueLocaleUpdateForm;

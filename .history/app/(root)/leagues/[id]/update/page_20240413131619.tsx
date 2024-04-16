@@ -20,7 +20,7 @@ const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
     <>
       <section className=" bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <h3 className="wrapper h3-bold text-center sm:text-left text-white">
-          Update <span className="text-green">{league.name}</span> Details
+          Update League Details
         </h3>
       </section>
 

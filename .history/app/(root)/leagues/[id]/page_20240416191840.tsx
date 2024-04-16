@@ -70,7 +70,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               {league.description}
             </p>
             {isAdmin && (
-              <div className="flex flex-col">
+              <div>
                 <Link
                   className="text-green text-bold"
                   href={`/leagues/${id}/update`}

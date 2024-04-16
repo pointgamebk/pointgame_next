@@ -1,4 +1,4 @@
-import LeagueUpdateForm from "@/components/shared/LeagueUpdateForm";
+import LeagueLocaleUpdateForm from "@/components/shared/LeagueLocaleUpdateForm";
 import { getLeagueById } from "@/lib/actions/league.action";
 import { auth } from "@clerk/nextjs";
 
@@ -8,7 +8,7 @@ type UpdateLeagueProps = {
   };
 };
 
-const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
+const UpdateLocale = async ({ params: { id } }: UpdateLeagueProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -20,16 +20,16 @@ const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
     <>
       <section className=" bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <h3 className="wrapper h3-bold text-center sm:text-left text-white">
-          Update <span className="text-green">{league.name}</span> Details
+          Update League Locale
         </h3>
       </section>
 
       {isAdmin ? (
-        <div className="wrapper my-8">
-          <LeagueUpdateForm
+        <div className="wrapper my-8 md:p-20">
+          <LeagueLocaleUpdateForm
             leagueId={id}
-            description={league.description}
-            path={`/leagues/${id}/update`}
+            locale={league.locale}
+            path={`/leagues/${id}/update_locale`}
           />
         </div>
       ) : null}
@@ -37,4 +37,4 @@ const UpdateLeague = async ({ params: { id } }: UpdateLeagueProps) => {
   );
 };
 
-export default UpdateLeague;
+export default UpdateLocale;

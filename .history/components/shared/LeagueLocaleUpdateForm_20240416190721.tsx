@@ -25,11 +25,12 @@ import { leagueFormSchema } from "@/lib/validator";
 import CitySearchBox from "./CitySearchBox";
 import Image from "next/image";
 
-type LeagueFormProps = {
-  userId: string;
+type LeagueLocaleUpdateFormProps = {
+  leagueId: string;
+  description: string;
+  path: string;
 };
-
-const LeagueForm = ({ userId }: LeagueFormProps) => {
+const LeagueLocaleUpdateForm = ({ userId }: LeagueFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof leagueFormSchema>>({
@@ -154,4 +155,4 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
   );
 };
 
-export default LeagueForm;
+export default LeagueLocaleUpdateForm;
