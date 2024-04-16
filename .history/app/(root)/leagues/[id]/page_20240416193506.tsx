@@ -48,14 +48,14 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             </div>
 
             <div>
-              <Link className="text-green p-semibold-18" href={`/leagues`}>
+              <Link className="text-green text-bold" href={`/leagues`}>
                 All Leagues
               </Link>
             </div>
 
-            <div className="flex gap-3 sm:flex-row sm:items-center">
-              <p className="p-medium-18 mt-2 sm:mt-0 text-white">Admin:</p>
-              <p className="p-semibold-18  mt-2 sm:mt-0 text-green">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-white">Admin:</p>
+              <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-green">
                 {league.administrator.firstName} {league.administrator.lastName}
               </p>
             </div>
@@ -69,14 +69,14 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             {isAdmin && (
               <div className="flex flex-col">
                 <Link
-                  className="text-green p-semibold-18"
+                  className="text-green text-bold"
                   href={`/leagues/${id}/update`}
                 >
                   Edit League Details
                 </Link>
 
                 <Link
-                  className="text-green p-semibold-18"
+                  className="text-green text-bold"
                   href={`/leagues/${id}/update_locale`}
                 >
                   Edit League Locale
