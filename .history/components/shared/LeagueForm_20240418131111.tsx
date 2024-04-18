@@ -129,7 +129,7 @@ const LeagueForm = ({ userId }: LeagueFormProps) => {
                 <FormControl>
                   <Input
                     placeholder="
-                    League contact email"
+                    Email or preferred contact"
                     {...field}
                     className="input-field"
                   />

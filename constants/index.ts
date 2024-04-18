@@ -33,6 +33,8 @@ export const leagueDefaultValues = {
   description: "",
   categoryId: "",
   administrator: "",
+  locale: "",
+  email: "",
 };
 
 export const teamDefaultValues = {

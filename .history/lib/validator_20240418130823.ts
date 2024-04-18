@@ -38,8 +38,8 @@ export const leagueFormSchema = z.object({
     .max(400, "Location must be less than 400 characters"),
   email: z
     .string()
-    .min(3, "Email address must be at least 3 characters")
-    .max(400, "Email address must be less than 100 characters"),
+    .min(3, "Contact must be at least 3 characters")
+    .max(400, "Contact must be less than 100 characters"),
 });
 
 export const teamFormSchema = z.object({

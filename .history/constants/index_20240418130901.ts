@@ -22,16 +22,28 @@ export const gameDefaultValues = {
   categoryId: "",
 };
 
+export const matchDefaultValues = {
+  startDateTime: new Date(),
+  teamOneId: "",
+  teamTwoId: "",
+};
+
 export const leagueDefaultValues = {
   name: "",
   description: "",
   categoryId: "",
   administrator: "",
+  locale: "",
+  email: "",
 };
 
 export const teamDefaultValues = {
   name: "",
   leagueId: "",
+};
+
+export const playerDefaultValues = {
+  username: "",
 };
 
 export const commentDefaultValues = {
