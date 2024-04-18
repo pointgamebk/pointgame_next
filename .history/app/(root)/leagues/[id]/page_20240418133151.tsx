@@ -201,7 +201,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
       </section>
 
       <section className="wrapper overflow-x-auto text-tan ">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+        <div className="flex flex-col gap-2 mx-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
@@ -209,7 +209,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+        <div className="flex flex-col gap-2 mx-5 min-w-[400px]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && (
               <ScheduleForm leagueId={id} />

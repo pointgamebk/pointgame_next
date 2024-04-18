@@ -71,7 +71,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               {league.description}
             </p>
             {isAdmin && (
-              <div className="flex flex-col max-w-[200px]">
+              <div className="flex flex-col">
                 <Link
                   className="text-green p-semibold-14 mb-3"
                   href={`/leagues/${id}/update`}
@@ -200,8 +200,8 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
         </table>
       </section>
 
-      <section className="wrapper overflow-x-auto text-tan ">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+      <section className="wrapper overflow-x-auto text-tan">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
@@ -209,7 +209,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && (
               <ScheduleForm leagueId={id} />

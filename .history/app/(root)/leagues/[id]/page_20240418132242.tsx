@@ -53,15 +53,18 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               </Link>
             </div>
 
-            <div className="flex gap-2 sm:flex-row sm:items-center">
+            <div className="flex gap-3 sm:flex-row sm:items-center">
               <p className="p-medium-18 mt-2 sm:mt-0 text-white">Admin:</p>
               <p className="p-semibold-18  mt-2 sm:mt-0 text-green">
                 {league.administrator.firstName} {league.administrator.lastName}
               </p>
             </div>
 
-            <div className="flex gap-2 sm:flex-row sm:items-center">
-              <p className="p-semibold-18 sm:mt-0 text-green">{league.email}</p>
+            <div className="flex gap-3 sm:flex-row sm:items-center">
+              <p className="p-medium-18 sm:mt-0 text-white">Email:</p>
+              <p className="p-semibold-18  mt-2 sm:mt-0 text-green">
+                {league.email}
+              </p>
             </div>
           </div>
 
@@ -71,7 +74,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               {league.description}
             </p>
             {isAdmin && (
-              <div className="flex flex-col max-w-[200px]">
+              <div className="flex flex-col">
                 <Link
                   className="text-green p-semibold-14 mb-3"
                   href={`/leagues/${id}/update`}
@@ -200,8 +203,8 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
         </table>
       </section>
 
-      <section className="wrapper overflow-x-auto text-tan ">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+      <section className="wrapper overflow-x-auto text-tan">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
@@ -209,7 +212,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
       </section>
 
       <section className="wrapper overflow-x-auto text-tan">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && (
               <ScheduleForm leagueId={id} />

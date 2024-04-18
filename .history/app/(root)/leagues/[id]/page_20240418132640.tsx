@@ -200,16 +200,14 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
         </table>
       </section>
 
-      <section className="wrapper overflow-x-auto text-tan ">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+      <section className="wrapper overflow-x-auto text-tan">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && <TeamForm leagueId={id} />}
           </div>
         </div>
-      </section>
 
-      <section className="wrapper overflow-x-auto text-tan">
-        <div className="flex flex-col gap-2 mx-5 sm:mx-0">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {league.administrator._id === userId && (
               <ScheduleForm leagueId={id} />
@@ -217,6 +215,16 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
         </div>
       </section>
+
+      {/* <section className="wrapper overflow-x-auto text-tan">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            {league.administrator._id === userId && (
+              <ScheduleForm leagueId={id} />
+            )}
+          </div>
+        </div>
+      </section> */}
     </>
   );
 };
