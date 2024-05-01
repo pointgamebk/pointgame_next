@@ -97,6 +97,24 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
             </Button>
           </SignedOut>
 
+          {/* {!isOrganizer && (
+            <div>
+              {join ? (
+                <UnjoinConfirmation
+                  gameId={id}
+                  userId={userId}
+                  path={`/games/${id}`}
+                />
+              ) : (
+                <JoinConfirmation
+                  gameId={id}
+                  userId={userId}
+                  path={`/games/${id}`}
+                />
+              )}
+            </div>
+          )} */}
+
           <div className="flex flex-col gap-5">
             <div className="flex gap-2 md:gap-3">
               <Image
