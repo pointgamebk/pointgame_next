@@ -17,7 +17,7 @@ const LeagueCard = ({ league }: LeagueCardProps) => {
 
   return (
     <div className="w-full max-w-[300px] overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg">
-      <Link href={`/leagues/${league._id}`}>
+      <Link href={`/games/${league._id}`}>
         <div className="flex-between w-full pt-3">
           <p className="pl-5 p-semibold-18 text-black">{league.name}</p>
         </div>
