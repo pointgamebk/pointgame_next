@@ -7,7 +7,7 @@ import League, { ILeague } from "../database/models/league.model";
 import User from "../database/models/user.model";
 import { handleError } from "@/lib/utils";
 import Schedule from "../database/models/schedule.model";
-import { CreateLeagueParams, GetLeaguesParams } from "@/types";
+import { CreateLeagueParams } from "@/types";
 import Category from "../database/models/category.model";
 import Team from "../database/models/team.model";
 
@@ -68,20 +68,11 @@ export async function getLeagueById(leagueId: string) {
 }
 
 // LEAGUES
-export async function getLeagues({
-  page,
-  searchString,
-  limit,
-}: GetLeaguesParams) {
+export async function getLeagues(searchString?: string) {
   try {
     await connectToDatabase();
 
-    const skipAmount = (Number(page) - 1) * limit;
-
-    let query = League.find()
-      .sort({ locale: "asc" })
-      .skip(skipAmount)
-      .limit(limit);
+    let query = League.find();
 
     if (searchString) {
       const regex = new RegExp(searchString, "i");

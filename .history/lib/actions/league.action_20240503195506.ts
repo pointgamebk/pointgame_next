@@ -71,7 +71,7 @@ export async function getLeagueById(leagueId: string) {
 export async function getLeagues({
   page,
   searchString,
-  limit,
+  limit = 3,
 }: GetLeaguesParams) {
   try {
     await connectToDatabase();

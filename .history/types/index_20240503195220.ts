@@ -115,11 +115,7 @@ export type League = {
   };
 };
 
-export type GetLeaguesParams = {
-  page: number;
-  searchString?: string;
-  limit: number;
-};
+export type GetLeaguesParams = {};
 
 // ====== TEAM PARAMS
 export type CreateTeamParams = {

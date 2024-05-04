@@ -50,7 +50,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         data={leagues?.data}
         emptyTitle="No Leagues Found"
         emptyStateSubtext="Check again later"
-        limit={limit}
+        limit={3}
         page={page}
         totalPages={leagues?.totalPages}
       />

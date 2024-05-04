@@ -61,7 +61,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
         <Collection
           data={games?.data}
-          emptyTitle="No Games In Your Area"
+          emptyTitle="No Games Found"
           emptyStateSubtext="Check again later"
           collectionType="All_Games"
           limit={6}

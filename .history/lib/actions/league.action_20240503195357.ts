@@ -71,7 +71,7 @@ export async function getLeagueById(leagueId: string) {
 export async function getLeagues({
   page,
   searchString,
-  limit,
+  limit = 3,
 }: GetLeaguesParams) {
   try {
     await connectToDatabase();
@@ -79,7 +79,7 @@ export async function getLeagues({
     const skipAmount = (Number(page) - 1) * limit;
 
     let query = League.find()
-      .sort({ locale: "asc" })
+      .sort({ createdAt: "asc" })
       .skip(skipAmount)
       .limit(limit);
 

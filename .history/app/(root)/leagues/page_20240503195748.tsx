@@ -10,9 +10,8 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || "";
   const searchString = searchText;
-  const limit = 3;
 
-  const leagues = await getLeagues({ page, searchString, limit });
+  const leagues = await getLeagues(page, searchString);
 
   const truncateCountry = (str: string) => {
     const lastCommaIndex = str.lastIndexOf(",");
@@ -50,7 +49,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         data={leagues?.data}
         emptyTitle="No Leagues Found"
         emptyStateSubtext="Check again later"
-        limit={limit}
+        limit={3}
         page={page}
         totalPages={leagues?.totalPages}
       />

@@ -68,11 +68,12 @@ export async function getLeagueById(leagueId: string) {
 }
 
 // LEAGUES
-export async function getLeagues({
-  page,
-  searchString,
-  limit,
-}: GetLeaguesParams) {
+export async function getLeagues(
+  // page: number,
+  // searchString?: string,
+  // limit: number = 3
+  { page, searchString, limit }: GetLeaguesParams
+) {
   try {
     await connectToDatabase();
 

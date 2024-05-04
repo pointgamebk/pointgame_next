@@ -29,8 +29,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const comments = game.comments;
 
-  const pastDate = new Date(game.endDateTime) < new Date();
-
   const truncateCountry = (str: string) => {
     const lastCommaIndex = str.lastIndexOf(",");
     if (lastCommaIndex !== -1) {
@@ -70,7 +68,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           <Map address={game.location} />
 
           <SignedIn>
-            {!isOrganizer && !pastDate && (
+            {!isOrganizer && (
               <div>
                 {join ? (
                   <UnjoinConfirmation

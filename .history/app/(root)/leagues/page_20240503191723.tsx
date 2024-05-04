@@ -1,5 +1,4 @@
 import Collection from "@/components/shared/Collection";
-import LeagueCollection from "@/components/shared/LeagueCollection";
 import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getLeagues } from "@/lib/actions/league.action";
@@ -7,12 +6,10 @@ import { SearchParamProps } from "@/types";
 import Link from "next/link";
 
 const Leagues = async ({ searchParams }: SearchParamProps) => {
-  const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || "";
   const searchString = searchText;
-  const limit = 3;
 
-  const leagues = await getLeagues({ page, searchString, limit });
+  const leagues = await getLeagues(searchString);
 
   const truncateCountry = (str: string) => {
     const lastCommaIndex = str.lastIndexOf(",");
@@ -46,13 +43,14 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         className="wrapper bg-blue my-8 flex flex-col gap-8 md:gap-12"
       ></section>
 
-      <LeagueCollection
-        data={leagues?.data}
-        emptyTitle="No Leagues Found"
+      <Collection
+        data={leagues}
+        emptyTitle="No Games In Your Area"
         emptyStateSubtext="Check again later"
-        limit={limit}
+        collectionType="All_Games"
+        limit={6}
         page={page}
-        totalPages={leagues?.totalPages}
+        totalPages={games?.totalPages}
       />
 
       {/* <section className="wrapper overflow-x-auto text-tan">
