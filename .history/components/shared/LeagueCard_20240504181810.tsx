@@ -1,4 +1,5 @@
 import { ILeague } from "@/lib/database/models/league.model";
+import { auth } from "@clerk/nextjs";
 import { Separator } from "../ui/separator";
 
 type LeagueCardProps = {
@@ -6,6 +7,8 @@ type LeagueCardProps = {
 };
 
 const LeagueCard = ({ league }: LeagueCardProps) => {
+  const { sessionClaims } = auth();
+
   const truncateCountry = (str: string) => {
     const lastCommaIndex = str.lastIndexOf(",");
     if (lastCommaIndex !== -1) {

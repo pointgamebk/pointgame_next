@@ -33,16 +33,16 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
       <section
         id="leagues"
         className="wrapper bg-blue my-8 flex flex-col gap-8 md:gap-12"
-      >
-        <LeagueCollection
-          data={leagues?.data}
-          emptyTitle="No Leagues Found"
-          emptyStateSubtext="Check again later"
-          limit={6}
-          page={page}
-          totalPages={leagues?.totalPages}
-        />
-      </section>
+      ></section>
+
+      <LeagueCollection
+        data={leagues?.data}
+        emptyTitle="No Leagues Found"
+        emptyStateSubtext="Check again later"
+        limit={6}
+        page={page}
+        totalPages={leagues?.totalPages}
+      />
     </>
   );
 };

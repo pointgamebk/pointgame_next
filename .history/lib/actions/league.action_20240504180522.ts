@@ -68,7 +68,42 @@ export async function getLeagueById(leagueId: string) {
 }
 
 // LEAGUES
-export async function getLeagues({ page, query, limit = 6 }: GetLeaguesParams) {
+// export async function getLeagues({
+//   page,
+//   searchString,
+//   limit,
+// }: GetLeaguesParams) {
+//   try {
+//     await connectToDatabase();
+
+//     const skipAmount = (Number(page) - 1) * limit;
+
+//     let query = League.find()
+//       .sort({ locale: "asc" })
+//       .skip(skipAmount)
+//       .limit(limit);
+
+//     if (searchString) {
+//       const regex = new RegExp(searchString, "i");
+//       query = query.where("locale").regex(regex);
+//     }
+
+//     const leagues = await populateLeague(query);
+
+//     const leaguesCount = await League.countDocuments();
+
+//     if (!leagues) throw new Error("Leagues not found");
+
+//     return {
+//       data: JSON.parse(JSON.stringify(leagues)),
+//       totalPages: Math.ceil(leaguesCount / limit),
+//     };
+//   } catch (error) {
+//     handleError(error);
+//   }
+// }
+
+export async function getLeagues({ page, query, limit = 3 }: GetLeaguesParams) {
   try {
     await connectToDatabase();
 
@@ -76,19 +111,15 @@ export async function getLeagues({ page, query, limit = 6 }: GetLeaguesParams) {
       ? { locale: { $regex: query, $options: "i" } }
       : {};
 
-    const conditions = {
-      $and: [localeCondition],
-    };
-
     const skipAmount = (Number(page) - 1) * limit;
 
-    const leaguesQuery = League.find(conditions)
+    const leaguesQuery = League.find(localeCondition)
       .sort({ locale: "asc" })
       .skip(skipAmount)
       .limit(limit);
 
     const leagues = await populateLeague(leaguesQuery);
-    const leaguesCount = await League.countDocuments(conditions);
+    const leaguesCount = await League.countDocuments();
 
     if (!leagues) throw new Error("Leagues not found");
 

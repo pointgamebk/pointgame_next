@@ -1,4 +1,5 @@
 import { ILeague } from "@/lib/database/models/league.model";
+import { auth } from "@clerk/nextjs";
 import { Separator } from "../ui/separator";
 
 type LeagueCardProps = {
@@ -6,13 +7,8 @@ type LeagueCardProps = {
 };
 
 const LeagueCard = ({ league }: LeagueCardProps) => {
-  const truncateCountry = (str: string) => {
-    const lastCommaIndex = str.lastIndexOf(",");
-    if (lastCommaIndex !== -1) {
-      return str.substring(0, lastCommaIndex);
-    }
-    return str;
-  };
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
 
   return (
     <div className="w-full max-w-[300px] overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg">
@@ -33,9 +29,7 @@ const LeagueCard = ({ league }: LeagueCardProps) => {
       </div>
 
       <div className="flex-between w-full">
-        <p className="p-5 md:p-medium-16 text-grey-600">
-          {truncateCountry(league.locale)}
-        </p>
+        <p className="p-5 md:p-medium-16 text-grey-600">{league.locale}</p>
       </div>
     </div>
   );

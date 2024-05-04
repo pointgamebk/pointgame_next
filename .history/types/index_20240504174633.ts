@@ -115,6 +115,12 @@ export type League = {
   };
 };
 
+// export type GetLeaguesParams = {
+//   page: number;
+//   searchString?: string;
+//   limit: number;
+// };
+
 export type GetLeaguesParams = {
   page: number;
   query: string;

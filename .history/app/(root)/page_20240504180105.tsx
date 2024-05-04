@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SearchParamProps } from "@/types";
 import { getAllGames } from "@/lib/actions/game.actions";
+
 import Collection from "@/components/shared/Collection";
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import AddressSearch from "@/components/shared/AddressSearch";
