@@ -11,12 +11,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
   const searchText = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";
 
-  const leagues = await getLeagues({
-    page,
-    query: searchText,
-    category,
-    limit: 6,
-  });
+  const leagues = await getLeagues({ page, query: searchText, limit: 6 });
 
   return (
     <>

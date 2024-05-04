@@ -11,10 +11,6 @@ import { CreateLeagueParams, GetLeaguesParams } from "@/types";
 import Category from "../database/models/category.model";
 import Team from "../database/models/team.model";
 
-const getCategoryByName = async (name: string) => {
-  return Category.findOne({ name: { $regex: name, $options: "i" } });
-};
-
 const populateLeague = (query: any) => {
   return query
     .populate({
@@ -84,14 +80,12 @@ export async function getLeagues({
     const localeCondition = query
       ? { locale: { $regex: query, $options: "i" } }
       : {};
-    let categoryCondition = null;
-    if (category) {
-      categoryCondition = await getCategoryByName(category);
-    }
+    const categoryCondition = category
+      ? await getCategoryByName(category)
+      : null;
 
     const conditions = {
       $and: [localeCondition],
-      ...(categoryCondition ? { category: categoryCondition._id } : {}),
     };
 
     const skipAmount = (Number(page) - 1) * limit;

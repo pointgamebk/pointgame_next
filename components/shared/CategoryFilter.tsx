@@ -49,7 +49,7 @@ const CategoryFilter = () => {
   return (
     <Select onValueChange={(value: string) => onSelectCategory(value)}>
       <SelectTrigger className="select-field">
-        <SelectValue placeholder="Filter games by sport" />
+        <SelectValue placeholder="Filter by sport" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="All" className="select-item p-regular-14">

@@ -84,14 +84,13 @@ export async function getLeagues({
     const localeCondition = query
       ? { locale: { $regex: query, $options: "i" } }
       : {};
-    let categoryCondition = null;
-    if (category) {
-      categoryCondition = await getCategoryByName(category);
-    }
+    const categoryCondition = category
+      ? await getCategoryByName(category)
+      : null;
 
     const conditions = {
       $and: [localeCondition],
-      ...(categoryCondition ? { category: categoryCondition._id } : {}),
+      //categoryCondition ? { category: categoryCondition._id } : {},
     };
 
     const skipAmount = (Number(page) - 1) * limit;

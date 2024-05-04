@@ -10,10 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  createCategory,
-  getAllCategories,
-} from "@/lib/actions/category.actions";
+import { getAllCategories } from "@/lib/actions/category.actions";
 import { ICategory } from "@/lib/database/models/category.model";
 
 const CategoryFilter = () => {
@@ -51,8 +48,8 @@ const CategoryFilter = () => {
   };
   return (
     <Select onValueChange={(value: string) => onSelectCategory(value)}>
-      <SelectTrigger className="select-field]">
-        <SelectValue placeholder="Category" />
+      <SelectTrigger className="select-field">
+        <SelectValue placeholder="Filter by sport" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="All" className="select-item p-regular-14">
