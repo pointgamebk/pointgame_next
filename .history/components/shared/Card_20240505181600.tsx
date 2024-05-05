@@ -51,12 +51,18 @@ const Card = ({ game }: CardProps) => {
           </div>
         </Link>
 
+        {/* <CardLocaleConverter game={game} /> */}
+
         <Link href={`/games/${game._id}`}>
           <CardLocaleConverter game={game} />
           <p className="p-medium-16 p-medium-18 text-grey-500">
             {truncateCountry(game.location)}
           </p>
         </Link>
+
+        {/* <p className="p-medium-16 p-medium-18 text-grey-500">
+          {truncateCountry(game.location)}
+        </p> */}
 
         <Separator className="border border-black" />
 

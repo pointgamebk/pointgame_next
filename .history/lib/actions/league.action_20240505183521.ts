@@ -75,7 +75,7 @@ export async function getLeagueById(leagueId: string) {
 export async function getLeagues({
   page,
   query,
-  nameQuery,
+  name,
   category,
   limit = 6,
 }: GetLeaguesParams) {
@@ -85,8 +85,8 @@ export async function getLeagues({
     const localeCondition = query
       ? { locale: { $regex: query, $options: "i" } }
       : {};
-    const nameCondition = nameQuery
-      ? { name: { $regex: nameQuery, $options: "i" } }
+    const nameCondition = query
+      ? { name: { $regex: query, $options: "i" } }
       : {};
     let categoryCondition = null;
     if (category) {

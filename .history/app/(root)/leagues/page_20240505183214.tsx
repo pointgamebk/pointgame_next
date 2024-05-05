@@ -1,7 +1,7 @@
 import AddressSearch from "@/components/shared/AddressSearch";
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import LeagueCollection from "@/components/shared/LeagueCollection";
-import NameSearch from "@/components/shared/NameSearch";
+import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getLeagues } from "@/lib/actions/league.action";
 import { SearchParamProps } from "@/types";
@@ -10,13 +10,13 @@ import Link from "next/link";
 const Leagues = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || "";
-  const nameSearchText = (searchParams?.nameQuery as string) || "";
+  const nameSearchText = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";
 
   const leagues = await getLeagues({
     page,
     query: searchText,
-    nameQuery: nameSearchText,
+    name: nameSearchText,
     category,
     limit: 6,
   });
@@ -41,7 +41,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         className="wrapper bg-blue my-8 flex flex-col gap-8 md:gap-12"
       >
         <div className="flex w-full flex-col gap-5 md:flex-row ">
-          <NameSearch />
+          <Search placeholder="Search League Name" />
           <AddressSearch />
           <CategoryFilter />
         </div>

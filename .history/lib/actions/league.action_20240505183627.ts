@@ -85,7 +85,7 @@ export async function getLeagues({
     const localeCondition = query
       ? { locale: { $regex: query, $options: "i" } }
       : {};
-    const nameCondition = nameQuery
+    const nameCondition = query
       ? { name: { $regex: nameQuery, $options: "i" } }
       : {};
     let categoryCondition = null;

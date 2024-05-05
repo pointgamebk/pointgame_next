@@ -41,7 +41,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
         className="wrapper bg-blue my-8 flex flex-col gap-8 md:gap-12"
       >
         <div className="flex w-full flex-col gap-5 md:flex-row ">
-          <NameSearch />
+          <NameSearch placeholder="Search League name..." />
           <AddressSearch />
           <CategoryFilter />
         </div>

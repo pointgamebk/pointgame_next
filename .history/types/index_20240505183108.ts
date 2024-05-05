@@ -118,7 +118,7 @@ export type League = {
 export type GetLeaguesParams = {
   page: number;
   query: string;
-  nameQuery: string;
+  name: string;
   limit: number;
   category: string;
 };

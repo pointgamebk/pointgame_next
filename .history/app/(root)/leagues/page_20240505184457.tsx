@@ -18,7 +18,7 @@ const Leagues = async ({ searchParams }: SearchParamProps) => {
     query: searchText,
     nameQuery: nameSearchText,
     category,
-    limit: 6,
+    limit: 3,
   });
 
   return (

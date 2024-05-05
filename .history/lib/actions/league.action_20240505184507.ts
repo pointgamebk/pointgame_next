@@ -77,7 +77,7 @@ export async function getLeagues({
   query,
   nameQuery,
   category,
-  limit = 6,
+  limit = 3,
 }: GetLeaguesParams) {
   try {
     await connectToDatabase();
