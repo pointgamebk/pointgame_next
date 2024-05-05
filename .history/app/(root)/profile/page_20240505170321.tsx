@@ -2,19 +2,18 @@ import TableLocaleConverter from "@/components/shared/TableLocaleConverter";
 import { Button } from "@/components/ui/button";
 import { getUserById } from "@/lib/actions/user.actions";
 import { IGame } from "@/lib/database/models/game.model";
-import { ProfileProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
-const ProfilePage = async ({ params: { id } }: ProfileProps) => {
+const ProfilePage = async () => {
   const { sessionClaims } = auth();
 
   //Session user id
-  const sessionUserId = sessionClaims?.userId as string;
+  const userId = sessionClaims?.userId as string;
 
   //Profile user id
-  const user = await getUserById(id);
+  const user = await getUserById(userId);
 
   function filterPastGames(games: any) {
     const currentDate = new Date();

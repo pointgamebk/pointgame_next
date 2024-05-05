@@ -25,7 +25,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold text-white">
               Share. Connect. <span className="text-green">Play</span>. <br />{" "}
-              Your <span className="text-green">Games</span>, One Platform.
+              Your Games, One Platform.
             </h1>
             <p className="p-regular-20 md:p-regular-24 text-white">
               Post and play with millions of recreational sports players across

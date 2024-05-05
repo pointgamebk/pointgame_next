@@ -16,7 +16,7 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   //Profile user id
   const user = await getUserById(id);
 
-  function filterPastGames(games: any) {
+  function filterPastGames(games: any): IGame[] {
     const currentDate = new Date();
 
     // Filter games where endDateTime is before the current date

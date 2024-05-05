@@ -16,12 +16,12 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   //Profile user id
   const user = await getUserById(id);
 
-  function filterPastGames(games: any) {
+  function filterPastGames(games: IGame): IGame[] {
     const currentDate = new Date();
 
     // Filter games where endDateTime is before the current date
-    const pastGames: any = games.filter(
-      (game: IGame) => new Date(game.endDateTime) > currentDate
+    const pastGames: IGame[] = gamesJoined.filter(
+      (game: IGame) => new Date(game.endDateTime) < currentDate
     );
 
     return pastGames;

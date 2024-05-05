@@ -1,7 +1,6 @@
 import TableLocaleConverter from "@/components/shared/TableLocaleConverter";
 import { Button } from "@/components/ui/button";
 import { getUserById } from "@/lib/actions/user.actions";
-import { IGame } from "@/lib/database/models/game.model";
 import { ProfileProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -16,19 +15,11 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
   //Profile user id
   const user = await getUserById(id);
 
-  function filterPastGames(games: any) {
-    const currentDate = new Date();
+  const currentDate = new Date();
+  const pastDay = new Date(currentDate.getTime() - 13 * 60 * 60 * 1000);
 
-    // Filter games where endDateTime is before the current date
-    const pastGames: any = games.filter(
-      (game: IGame) => new Date(game.endDateTime) > currentDate
-    );
-
-    return pastGames;
-  }
-
-  const gamesJoined = filterPastGames(user.gamesJoined);
-  const gamesOrganized = filterPastGames(user.gamesOrganized);
+  const gamesJoined = user.gamesJoined;
+  const gamesOrganized = user.gamesOrganized;
 
   return (
     <>

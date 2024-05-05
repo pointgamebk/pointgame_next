@@ -7,14 +7,14 @@ import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
-const ProfilePage = async ({ params: { id } }: ProfileProps) => {
+const ProfilePage = async () => {
   const { sessionClaims } = auth();
 
   //Session user id
-  const sessionUserId = sessionClaims?.userId as string;
+  const userId = sessionClaims?.userId as string;
 
   //Profile user id
-  const user = await getUserById(id);
+  const user = await getUserById(userId);
 
   function filterPastGames(games: any) {
     const currentDate = new Date();

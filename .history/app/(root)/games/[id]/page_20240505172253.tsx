@@ -99,9 +99,9 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
             </Button>
           </SignedOut>
 
-          {joins.length > 0 && (
+          {joins.length && (
             <div className="flex flex-col gap-2">
-              <p className="p-semibold-18 text-white">
+              <p className="p-bold-20 text-white">
                 Players Joined: {joins.length}
               </p>
             </div>
