@@ -61,8 +61,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0 text-green">
                 <span className="text-green">
-                  {game.organizer.firstName} {game.organizer.lastName.charAt(0)}
-                  .
+                  {game.organizer.firstName} {game.organizer.lastName}
                 </span>
               </p>
             </div>

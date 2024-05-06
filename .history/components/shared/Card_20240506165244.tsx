@@ -69,7 +69,7 @@ const Card = ({ game }: CardProps) => {
         <div className="flex-between w-full">
           <Link href={`/profile/${game.organizer._id}`}>
             <p className="p-medium-14 md:p-medium-16 text-grey-600">
-              {game.organizer.firstName} {game.organizer.lastName.charAt(0)}.
+              {game.organizer.firstName} {game.organizer.lastName.charAt(0)}
             </p>
           </Link>
         </div>
