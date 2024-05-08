@@ -4,7 +4,9 @@ import React from "react";
 import { Button } from "../ui/button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
+
 import { auth } from "@clerk/nextjs";
+import SignedOutNav from "./SignedOutNav";
 
 const Header = () => {
   const { sessionClaims } = auth();
