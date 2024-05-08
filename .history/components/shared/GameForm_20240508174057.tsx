@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -36,6 +37,8 @@ type GameFormProps = {
 };
 
 const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
+  const [startDateTime, setStartDateTime] = useState(new Date());
+
   const initialValues =
     game && type === "Update"
       ? {
@@ -55,10 +58,6 @@ const GameForm = ({ userId, type, game, gameId }: GameFormProps) => {
     const gameData = values;
 
     if (type === "Create") {
-      if (gameData.startDateTime >= gameData.endDateTime) {
-        alert("The game's end date/time must be after its start date/time.");
-        return;
-      }
       try {
         const newGame = await createGame({
           game: gameData,

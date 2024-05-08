@@ -23,6 +23,8 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const userId = sessionClaims?.userId as string;
   const organizerId = game.organizer._id;
 
+  console.log(organizerId);
+
   const isOrganizer = userId === organizerId;
 
   const joins = game.joins;

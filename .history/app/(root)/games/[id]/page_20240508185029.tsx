@@ -13,7 +13,6 @@ import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 import GameLocaleConverter from "@/components/shared/GameLocaleConverter";
-import { demoUserTds } from "@/constants";
 
 const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const game = await getGameById(id);
@@ -22,6 +21,8 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
 
   const userId = sessionClaims?.userId as string;
   const organizerId = game.organizer._id;
+
+  console.log(organizerId);
 
   const isOrganizer = userId === organizerId;
 
@@ -39,8 +40,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
     }
     return str;
   };
-
-  const isDemoUser = demoUserTds.includes(organizerId);
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
@@ -136,18 +135,6 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
               </p>
             </div>
           </div>
-
-          {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-green">
-              <p className="p-regular-18 lg:p-regular-18 text-red">
-                This post is for demonstration purposes only. Please check the{" "}
-                <Link href="/how_to" className="text-white underline">
-                  How To PointGame
-                </Link>{" "}
-                guide for instructions on how to post or join an existing game!
-              </p>
-            </div>
-          )}
 
           <div className="flex flex-col gap-2">
             <p className="p-bold-20 text-white">Game Details:</p>

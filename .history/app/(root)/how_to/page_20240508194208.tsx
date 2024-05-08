@@ -15,7 +15,7 @@ const HowTo = async () => {
               <li className="ml-8">
                 Leave a comment related to a specific game
               </li>
-              <li className="ml-8">Create or join a recreational league</li>
+              <li className="ml-8">Create or oin a recreational league</li>
             </ul>
 
             <p className="p-bold-20 md:p-bold-24 text-green underline">

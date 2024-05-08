@@ -50,7 +50,7 @@ export const commentDefaultValues = {
   body: "",
 };
 
-export const demoUserTds = [
+const demoUserTds = [
   "66087c7cc30e486c688da475",
   "660886ceb8db48e3e294acc3",
   "6615ae26a08c4d7a9b0fbf10",

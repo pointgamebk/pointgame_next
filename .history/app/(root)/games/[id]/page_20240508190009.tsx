@@ -23,6 +23,8 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const userId = sessionClaims?.userId as string;
   const organizerId = game.organizer._id;
 
+  console.log(organizerId);
+
   const isOrganizer = userId === organizerId;
 
   const joins = game.joins;
@@ -41,6 +43,8 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   };
 
   const isDemoUser = demoUserTds.includes(organizerId);
+
+  console.log(isDemoUser);
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
@@ -138,14 +142,9 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-green">
-              <p className="p-regular-18 lg:p-regular-18 text-red">
-                This post is for demonstration purposes only. Please check the{" "}
-                <Link href="/how_to" className="text-white underline">
-                  How To PointGame
-                </Link>{" "}
-                guide for instructions on how to post or join an existing game!
-              </p>
+            <div className="p-regular-20 flex items-center gap-3">
+              this post is for demonstration purposes only. Please check the How
+              To guide for instructions on how to post or join an existing game!
             </div>
           )}
 
