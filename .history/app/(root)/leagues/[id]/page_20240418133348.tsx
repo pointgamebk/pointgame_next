@@ -56,8 +56,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             <div className="flex gap-2 sm:flex-row sm:items-center">
               <p className="p-medium-18 mt-2 sm:mt-0 text-white">Admin:</p>
               <p className="p-semibold-18  mt-2 sm:mt-0 text-green">
-                {league.administrator.firstName}{" "}
-                {league.administrator.lastName.charAt(0)}.
+                {league.administrator.firstName} {league.administrator.lastName}
               </p>
             </div>
 

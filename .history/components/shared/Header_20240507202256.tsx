@@ -33,10 +33,14 @@ const Header = () => {
           <SignedOut>
             <Link
               href="/leagues"
-              className="flex  flex-col items-start pt-2 px-10 p-semibold-18 md:flex-row  text-white"
+              className="flex w-full flex-col items-start pt-2 p-semibold-18 md:flex-row  text-white"
             >
               <p className="text-white">Leagues</p>
             </Link>
+            {/* <nav className="md:flex-between w-full max-w-xs">
+              <SignedOutNav />
+            </nav> */}
+
             <Button asChild className="rounded-full" size="lg">
               <Link href="/sign-in">Login</Link>
             </Button>

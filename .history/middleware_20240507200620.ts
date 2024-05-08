@@ -5,7 +5,6 @@ export default authMiddleware({
     "/",
     "/how_to",
     "/leagues",
-    "/leagues/:id",
     "/games/:id",
     "/api/webhook/clerk",
     "/api/uploadthing",

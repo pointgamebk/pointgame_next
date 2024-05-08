@@ -6,7 +6,6 @@ import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 
 import { auth } from "@clerk/nextjs";
-import SignedOutNav from "./SignedOutNav";
 
 const Header = () => {
   const { sessionClaims } = auth();
@@ -31,10 +30,7 @@ const Header = () => {
             <MobileNav id={userId} />
           </SignedIn>
           <SignedOut>
-            <Link
-              href="/leagues"
-              className="flex  flex-col items-start pt-2 px-10 p-semibold-18 md:flex-row  text-white"
-            >
+            <Link href="/leagues" className="w-36">
               <p className="text-white">Leagues</p>
             </Link>
             <Button asChild className="rounded-full" size="lg">

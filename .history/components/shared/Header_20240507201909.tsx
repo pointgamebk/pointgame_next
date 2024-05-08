@@ -31,12 +31,13 @@ const Header = () => {
             <MobileNav id={userId} />
           </SignedIn>
           <SignedOut>
-            <Link
+            {/* <Link
               href="/leagues"
-              className="flex  flex-col items-start pt-2 px-10 p-semibold-18 md:flex-row  text-white"
+              className="flex w-full flex-col  items-start px-10 pt-2 p-semibold-18 md:flex-row  text-white"
             >
               <p className="text-white">Leagues</p>
-            </Link>
+            </Link> */}
+            <SignedOutNav />
             <Button asChild className="rounded-full" size="lg">
               <Link href="/sign-in">Login</Link>
             </Button>
