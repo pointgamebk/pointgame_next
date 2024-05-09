@@ -7,7 +7,6 @@ import { DeleteScheduleConfirmation } from "@/components/shared/DeleteScheduleCo
 import { DeleteTeamConfirmation } from "@/components/shared/DeleteTeamConfirmation";
 import ScheduleForm from "@/components/shared/ScheduleForm";
 import { ISchedule } from "@/lib/database/models/schedule.model";
-import { demoUserIds } from "@/constants";
 
 const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const league = await getLeagueById(id);
@@ -17,8 +16,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
   const userId = sessionClaims?.userId as string;
 
   const isAdmin = league.administrator._id === userId;
-
-  const isDemoUser = demoUserIds.includes(league.administrator._id);
 
   const truncateCountry = (str: string) => {
     const lastCommaIndex = str.lastIndexOf(",");
@@ -68,20 +65,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
               <p className="p-semibold-18 sm:mt-0 text-green">{league.email}</p>
             </div>
           </div>
-
-          {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-green">
-              <p className="p-regular-18 lg:p-regular-18 text-red">
-                This league is for demonstration purposes only and does not
-                represent an actual league. For instructions on how to create
-                and/or join an existing league, check out the{" "}
-                <Link href="/how_to" className="text-white underline">
-                  How To PointGame
-                </Link>{" "}
-                guide!
-              </p>
-            </div>
-          )}
 
           <div className="flex flex-col gap-2">
             <p className="p-bold-20 text-white">League Details & Updates:</p>

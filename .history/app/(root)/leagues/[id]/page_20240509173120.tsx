@@ -69,20 +69,6 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
             </div>
           </div>
 
-          {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-green">
-              <p className="p-regular-18 lg:p-regular-18 text-red">
-                This league is for demonstration purposes only and does not
-                represent an actual league. For instructions on how to create
-                and/or join an existing league, check out the{" "}
-                <Link href="/how_to" className="text-white underline">
-                  How To PointGame
-                </Link>{" "}
-                guide!
-              </p>
-            </div>
-          )}
-
           <div className="flex flex-col gap-2">
             <p className="p-bold-20 text-white">League Details & Updates:</p>
             <p className="p-medium-16 lg:p-regular-18 text-white">

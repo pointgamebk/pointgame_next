@@ -13,7 +13,7 @@ import Map from "@/components/shared/Map";
 import { JoinConfirmation } from "@/components/shared/JoinConfirmation";
 import { UnjoinConfirmation } from "@/components/shared/UnjoinConfirmation";
 import GameLocaleConverter from "@/components/shared/GameLocaleConverter";
-import { demoUserIds } from "@/constants";
+import { demoUserTds } from "@/constants";
 
 const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const game = await getGameById(id);
@@ -40,7 +40,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
     return str;
   };
 
-  const isDemoUser = demoUserIds.includes(organizerId);
+  const isDemoUser = demoUserTds.includes(organizerId);
 
   // const relatedGames = await getRelatedGamesByCategory({
   //   categoryId: game.category._id,
