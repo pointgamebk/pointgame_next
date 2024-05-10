@@ -64,7 +64,7 @@ const ScheduleDetails: React.FC<ScheduleDetailsProps> = async ({
               <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Team 2
               </th>
-              <th className="min-w-[100px] py-3 text-left  text-grey-400">
+              <th className="min-w-[100px] py-3 text-left text-grey-400">
                 Game Date
               </th>
               <th className="min-w-[100px] py-3 text-left text-grey-400">
