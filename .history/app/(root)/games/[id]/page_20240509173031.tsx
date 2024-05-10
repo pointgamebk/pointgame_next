@@ -138,11 +138,11 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-red-600">
-              <p className="p-regular-18 lg:p-regular-18">
+            <div className="p-regular-20 flex items-center gap-3 text-green">
+              <p className="p-regular-18 lg:p-regular-18 text-red">
                 This post is for demonstration purposes only. Please check the{" "}
                 <Link href="/how_to" className="text-white underline">
-                  How To point.game
+                  How To PointGame
                 </Link>{" "}
                 guide for instructions on how to post or join an existing game!
               </p>
@@ -156,11 +156,9 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
             </p>
           </div>
 
-          <SignedIn>
-            <div className="flex flex-col gap-2">
-              <CommentForm gameId={id} userId={userId} />
-            </div>
-          </SignedIn>
+          <div className="flex flex-col gap-2">
+            <CommentForm gameId={id} userId={userId} />
+          </div>
 
           <div className="flex flex-col gap-2">
             <Comments

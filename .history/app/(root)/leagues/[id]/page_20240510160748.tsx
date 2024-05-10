@@ -40,9 +40,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{league.name}</h2>
 
-            <p className="text-white p-semibold-18">
-              {truncateCountry(league.locale)}
-            </p>
+            <p className="text-white">{truncateCountry(league.locale)}</p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">

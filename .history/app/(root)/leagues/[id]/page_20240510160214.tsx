@@ -40,9 +40,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           <div className="flex flex-col gap-6">
             <h2 className="h2-bold text-white">{league.name}</h2>
 
-            <p className="text-white p-semibold-18">
-              {truncateCountry(league.locale)}
-            </p>
+            <p className="text-white">{truncateCountry(league.locale)}</p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
@@ -72,8 +70,8 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-red-600">
-              <p className="p-regular-18 lg:p-regular-18">
+            <div className="p-regular-20 flex items-center gap-3 text-green">
+              <p className="p-regular-18 lg:p-regular-18 text-red">
                 This league is for demonstration purposes only and does not
                 represent an actual league. For instructions on how to create
                 and/or join an existing league, check out the{" "}
