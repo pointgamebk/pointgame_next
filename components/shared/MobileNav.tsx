@@ -28,12 +28,6 @@ const MobileNav = ({ id }: MobileNavProps) => {
           />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-6 bg-blue md:hidden">
-          {/* <Image
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={128}
-            height={38}
-          /> */}
           <h2 className="text-white">point.game</h2>
           <Separator className="border border-gray-50" />
           <NavItems id={id} />
