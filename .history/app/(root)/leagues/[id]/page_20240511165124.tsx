@@ -77,7 +77,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                 This league is for demonstration purposes only and does not
                 represent an actual league. For instructions on how to create
                 and/or join an existing league, check out the{" "}
-                <Link href="/how_to" className="text-white underline">
+                <Link href="/how_to" className="text-green underline">
                   How To point.game
                 </Link>{" "}
                 guide!

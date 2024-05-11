@@ -46,7 +46,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
-                <p className="p-medium-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
+                <p className="p-semibold-16 rounded-full bg-white/30 px-4 py-2.5 text-white">
                   {league.category.name}
                 </p>
               </div>
@@ -72,7 +72,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-red-400">
+            <div className="p-regular-20 flex items-center gap-3 text-red-600">
               <p className="p-regular-18 lg:p-regular-18">
                 This league is for demonstration purposes only and does not
                 represent an actual league. For instructions on how to create
@@ -145,7 +145,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[100px] py-4 text-green p-medium-16">
+                      <td className="min-w-[100px] py-4 text-green">
                         <Link href={`/schedules/${row._id}`}>{row.name}</Link>
                       </td>
 
@@ -199,13 +199,8 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b text-white"
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[100px] py-4 text-green ">
-                        <Link
-                          className="p-medium-16"
-                          href={`/teams/${row._id}`}
-                        >
-                          {row.name}
-                        </Link>
+                      <td className="min-w-[100px] py-4 text-green">
+                        <Link href={`/teams/${row._id}`}>{row.name}</Link>
                       </td>
 
                       {isAdmin && (

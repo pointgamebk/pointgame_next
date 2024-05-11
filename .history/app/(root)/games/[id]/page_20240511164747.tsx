@@ -138,7 +138,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-red-400">
+            <div className="p-regular-20 flex items-center gap-3 text-red-300">
               <p className="p-regular-18 lg:p-regular-18">
                 This post is for demonstration purposes only. Please check the{" "}
                 <Link href="/how_to" className="text-white underline">

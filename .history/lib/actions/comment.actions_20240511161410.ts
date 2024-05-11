@@ -1,12 +1,19 @@
 "use server";
 
-import { CreateCommentParams, GetCommentsByUserParams } from "@/types";
+import {
+  CreateCommentParams,
+  GetCommentsByGameParams,
+  GetCommentsByUserParams,
+} from "@/types";
 
 import { handleError } from "../utils";
 import { connectToDatabase } from "../database";
+
 import Comment from "../database/models/comment.model";
 import Game from "../database/models/game.model";
 import User from "../database/models/user.model";
+
+import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
 
 // CREATE COMMENT

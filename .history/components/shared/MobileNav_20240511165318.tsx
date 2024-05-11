@@ -28,7 +28,7 @@ const MobileNav = ({ id }: MobileNavProps) => {
           />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-6 bg-blue md:hidden">
-          <h3 className="text-green h3-medium">point.game</h3>
+          <h2 className="text-green h2-medium">point.game</h2>
           <Separator className="border border-gray-50" />
           <NavItems id={id} />
         </SheetContent>

@@ -72,7 +72,7 @@ const LeagueDetails = async ({ params: { id } }: SearchParamProps) => {
           </div>
 
           {isDemoUser && (
-            <div className="p-regular-20 flex items-center gap-3 text-red-400">
+            <div className="p-regular-20 flex items-center gap-3 text-red-300">
               <p className="p-regular-18 lg:p-regular-18">
                 This league is for demonstration purposes only and does not
                 represent an actual league. For instructions on how to create
