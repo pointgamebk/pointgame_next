@@ -21,7 +21,7 @@ const GameDetails = async ({ params: { id } }: SearchParamProps) => {
   const { sessionClaims } = auth();
 
   const userId = sessionClaims?.userId as string;
-  const organizerId = await game.organizer._id;
+  const organizerId = game.organizer._id;
 
   const isOrganizer = userId === organizerId;
 
