@@ -83,6 +83,48 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
           </div>
         </section>
       )}
+      {/* {sessionUserId === id && (
+        <section className="wrapper py-3">
+          <div className="wrapper py-3">
+            <table className="w-full border-collapse border-t">
+              <thead>
+                <tr className="p-medium-14 border-b text-grey-500">
+                  <th className="min-w-[100px] py-3 text-left text-grey-400">
+                    Game Title
+                  </th>
+                  <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+                    Game Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {gamesJoined.length === 0 ? (
+                  <tr className="border-b">
+                    <td colSpan={5} className="py-4 text-center text-gray-500">
+                      No games joined currently.
+                    </td>
+                  </tr>
+                ) : (
+                  <>
+                    {gamesJoined.map((row: any) => (
+                      <tr
+                        key={row._id}
+                        className="p-regular-14 lg:p-regular-16 border-b text-white"
+                        style={{ boxSizing: "border-box" }}
+                      >
+                        <td className="min-w-[100px] py-4 text-green">
+                          <Link href={`/games/${row._id}`}>{row.title}</Link>
+                        </td>
+                        <TableLocaleConverter row={row} />
+                      </tr>
+                    ))}
+                  </>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )} */}
 
       {/* Games Organized */}
       <section className="bg-dotted-pattern bg-cover bg-center py-5">
@@ -111,6 +153,9 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
               <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
                 Game Date
               </th>
+              {/* <th className="min-w-[100px] flex-1 py-3 pr-4 text-left text-grey-400">
+                Game Location
+              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -132,6 +177,9 @@ const ProfilePage = async ({ params: { id } }: ProfileProps) => {
                       <Link href={`/games/${row._id}`}>{row.title}</Link>
                     </td>
                     <TableLocaleConverter row={row} />
+                    {/* <td className="min-w-[100px] flex-1 py-4 pr-4">
+                      {truncateCountry(row.location)}
+                    </td> */}
                   </tr>
                 ))}
               </>

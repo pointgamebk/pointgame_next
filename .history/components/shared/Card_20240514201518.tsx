@@ -28,7 +28,7 @@ const Card = ({ game }: CardProps) => {
   return (
     <div className="group relative flex min-h-[200px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[200px]">
       {isGameCreator && (
-        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-grey-600/20 p-3 shadow-sm transition-all">
+        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white/70 p-3 shadow-sm transition-all">
           <Link href={`/games/${game._id}/update`}>
             <Image
               src="/assets/icons/edit.svg"

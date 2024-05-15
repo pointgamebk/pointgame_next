@@ -27,13 +27,8 @@ const Card = ({ game }: CardProps) => {
 
   return (
     <div className="group relative flex min-h-[200px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[200px]">
-      {/* <Link
-        href={`/games/${game._id}`}
-        className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
-      /> */}
-
       {isGameCreator && (
-        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
+        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white/90 p-3 shadow-sm transition-all">
           <Link href={`/games/${game._id}/update`}>
             <Image
               src="/assets/icons/edit.svg"
@@ -48,17 +43,20 @@ const Card = ({ game }: CardProps) => {
       )}
 
       <div className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
-        <div className="flex gap-2">
-          <p className="p-semibold-14  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
-            {game.category.name}
+        <Link href={`/games/${game._id}`}>
+          <div className="flex gap-2">
+            <p className="p-semibold-14  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
+              {game.category.name}
+            </p>
+          </div>
+        </Link>
+
+        <Link href={`/games/${game._id}`}>
+          <CardLocaleConverter game={game} />
+          <p className="p-medium-16 p-medium-18 text-grey-500">
+            {truncateCountry(game.location)}
           </p>
-        </div>
-
-        <CardLocaleConverter game={game} />
-
-        <p className="p-medium-16 p-medium-18 text-grey-500">
-          {truncateCountry(game.location)}
-        </p>
+        </Link>
 
         <Separator className="border border-black" />
 
@@ -71,7 +69,7 @@ const Card = ({ game }: CardProps) => {
         <div className="flex-between w-full">
           <Link href={`/profile/${game.organizer._id}`}>
             <p className="p-medium-14 md:p-medium-16 text-grey-600">
-              {game.organizer.firstName} {game.organizer.lastName}
+              {game.organizer.firstName} {game.organizer.lastName.charAt(0)}.
             </p>
           </Link>
         </div>
