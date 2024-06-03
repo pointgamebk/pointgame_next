@@ -88,7 +88,6 @@ const TeamDetails = async ({ params: { id } }: SearchParamProps) => {
                           <DeletePlayerConfirmation
                             teamId={id}
                             userId={row._id}
-                            path={`/teams/${id}`}
                           />
                         </td>
                       )}

@@ -19,9 +19,11 @@ import { removePlayerFromTeam } from "@/lib/actions/team.actions";
 export const DeletePlayerConfirmation = ({
   teamId,
   userId,
+  path,
 }: {
   teamId: string;
   userId: string;
+  path: string;
 }) => {
   let [isPending, startTransition] = useTransition();
 
@@ -46,7 +48,7 @@ export const DeletePlayerConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await removePlayerFromTeam(teamId, userId);
+                await removePlayerFromTeam(teamId, userId, path);
               })
             }
           >
