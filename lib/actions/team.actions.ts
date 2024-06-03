@@ -151,10 +151,6 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
     // REMOVE PLAYER FROM TEAM
     team.players = team.players.filter((p: string) => p.toString() !== userId);
 
-    // REMOVE TEAM FROM USER
-    user.teamsJoined = user.teamsJoined.filter(
-      (t: string) => t.toString() !== teamId
-    );
     await team.save();
   } catch (error) {
     handleError(error);

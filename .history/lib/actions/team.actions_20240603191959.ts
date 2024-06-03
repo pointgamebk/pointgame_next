@@ -8,6 +8,7 @@ import { CreateTeamParams } from "@/types";
 import Team from "../database/models/team.model";
 import User from "../database/models/user.model";
 import { revalidatePath } from "next/cache";
+import Match from "../database/models/match.model";
 
 const populateTeam = (query: any) => {
   return query
@@ -82,14 +83,14 @@ export async function addPlayerToTeam(
     if (!user) throw new Error("User not found");
 
     // Push the ID of the user you want to add to the `players` array
-    //team.players.push(userId);
     if (!team.players.includes(userId)) {
+      // If not, push the userId into the players array
       team.players.push(userId);
     } else {
       return;
     }
 
-    // Push the ID of the team you want to add to the `leaguesJoined` array
+    // Push the ID of the league you want to add to the `leaguesJoined` array
     if (!user.leaguesJoined.includes(leagueId)) {
       // If not, push the leagueId into the leaguesJoined array
       user.leaguesJoined.push(leagueId);
@@ -108,24 +109,35 @@ export async function addPlayerToTeam(
   }
 }
 
-export const deleteTeam = async (teamId: string, leagueId: string) => {
+//DELETE TEAM
+export const deleteTeam = async (
+  teamId: string,
+  leagueId: string,
+  path: string
+) => {
   try {
     await connectToDatabase();
 
     const league = await League.findById(leagueId);
     if (!league) throw new Error("League not found");
 
-    // DELETE TEAM INSTANCE
+    // Delete 'matches' referencing the deleted team
+    await Match.deleteMany({ $or: [{ teamOne: teamId }, { teamTwo: teamId }] });
+
+    // Delete team instance
     await Team.findByIdAndDelete(teamId);
 
-    // REMOVE TEAM FROM LEAGUE
+    // Remove the team from the league
     league.teams = league.teams.filter((t: ITeam) => t.toString() !== teamId);
     await league.save();
+
+    revalidatePath(path);
   } catch (error) {
     handleError(error);
   }
 };
 
+// REMOVE PLAYER FROM TEAM
 export const removePlayerFromTeam = async (teamId: string, userId: string) => {
   try {
     await connectToDatabase();
@@ -144,11 +156,13 @@ export const removePlayerFromTeam = async (teamId: string, userId: string) => {
       (t: string) => t.toString() !== teamId
     );
     await team.save();
+    await user.save();
   } catch (error) {
     handleError(error);
   }
 };
 
+// TEAMS BY LEAGUE
 export async function getTeamsByLeague(leagueId: string) {
   try {
     await connectToDatabase();
