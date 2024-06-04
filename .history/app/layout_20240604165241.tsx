@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "point.game",
   description: "point.game is a platform for recreational sports players.",
   icons: {
-    icon: "/assets/images/logo.svg",
+    icon: "/assets/images/logo.png",
   },
 };
 
